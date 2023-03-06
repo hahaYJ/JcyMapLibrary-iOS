@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import ArcGIS
 
 @main
 struct JcyMapLibraryApp: App {
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

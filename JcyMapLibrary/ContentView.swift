@@ -6,6 +6,20 @@
 //
 
 import SwiftUI
+import ArcGIS
+
+struct MapView: UIViewRepresentable {
+    var bColor: UIColor
+    func makeUIView(context: UIViewRepresentableContext<MapView>) -> UIView {
+        return createMapView {_ in
+            
+        }
+    }
+    
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<MapView>) {
+        uiView.backgroundColor = bColor
+    }
+}
 
 struct ContentView: View {
     var body: some View {
@@ -14,6 +28,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+            MapView(bColor: UIColor.blue).frame(width: 300, height: 300)
         }
         .padding()
     }
