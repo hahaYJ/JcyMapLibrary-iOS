@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		814FD62329B5AFEB00A54771 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		81D7B0AE29B427870074ED03 /* WrapperMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperMapView.swift; sourceTree = "<group>"; };
 		81D7B0B029B4293B0074ED03 /* JCYMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCYMapView.swift; sourceTree = "<group>"; };
 		81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayerBuilder.swift; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		81DC549829B31E9E006488B4 = {
 			isa = PBXGroup;
 			children = (
+				814FD62329B5AFEB00A54771 /* README.md */,
 				81DC54A329B31E9E006488B4 /* JcyMapLibrary */,
 				81DC54B429B31E9F006488B4 /* JcyMapLibraryTests */,
 				81DC54BE29B31E9F006488B4 /* JcyMapLibraryUITests */,
@@ -236,7 +238,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 81DC549C29B31E9E006488B4 /* Build configuration list for PBXProject "JcyMapLibrary- iOS" */;
+			buildConfigurationList = 81DC549C29B31E9E006488B4 /* Build configuration list for PBXProject "JcyMapLibrary-iOS" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -584,7 +586,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		81DC549C29B31E9E006488B4 /* Build configuration list for PBXProject "JcyMapLibrary- iOS" */ = {
+		81DC549C29B31E9E006488B4 /* Build configuration list for PBXProject "JcyMapLibrary-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81DC54C329B31E9F006488B4 /* Debug */,
