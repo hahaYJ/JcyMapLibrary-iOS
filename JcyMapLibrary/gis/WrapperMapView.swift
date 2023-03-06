@@ -13,14 +13,14 @@ import ArcGIS
  */
 func createMapView(_ context: (_ mapView: JCYMapView) -> Void) -> AGSMapView {
     let mapView = AGSMapView()
-    context(WrapperMapView(mapView: mapView))
+    context(JCYWrapperMapView(mapView: mapView))
     return mapView
 }
 
 /**
  gis包装类
  */
-public class WrapperMapView : JCYMapView {
+public class JCYWrapperMapView : JCYMapView {
     
     
     private let _apiKey = "AAPKc12108e2a01b43e9b649b408720b42b8w4N50bBdYUr1xocWZVfifdb9o2PNrz_Hs_uXC2UwrE1h0ZWZKiPk9Fv-8iO8aLQX"

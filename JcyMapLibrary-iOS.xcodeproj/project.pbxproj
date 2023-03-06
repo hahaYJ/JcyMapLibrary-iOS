@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		814EB57D29B392F8000CC9FE /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 814EB57C29B392F8000CC9FE /* ArcGIS */; };
+		814FD62529B5B3EF00A54771 /* TianDiTuLayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62429B5B3EF00A54771 /* TianDiTuLayerInfo.swift */; };
+		814FD62729B5BF4100A54771 /* LayerInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62629B5BF4100A54771 /* LayerInfoFactory.swift */; };
 		81D7B0AF29B427870074ED03 /* WrapperMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0AE29B427870074ED03 /* WrapperMapView.swift */; };
 		81D7B0B129B4293B0074ED03 /* JCYMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B029B4293B0074ED03 /* JCYMapView.swift */; };
 		81D7B0B429B588AD0074ED03 /* TianDiTuLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		814FD62329B5AFEB00A54771 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		814FD62429B5B3EF00A54771 /* TianDiTuLayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayerInfo.swift; sourceTree = "<group>"; };
+		814FD62629B5BF4100A54771 /* LayerInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerInfoFactory.swift; sourceTree = "<group>"; };
 		81D7B0AE29B427870074ED03 /* WrapperMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperMapView.swift; sourceTree = "<group>"; };
 		81D7B0B029B4293B0074ED03 /* JCYMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCYMapView.swift; sourceTree = "<group>"; };
 		81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayerBuilder.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */,
+				814FD62429B5B3EF00A54771 /* TianDiTuLayerInfo.swift */,
+				814FD62629B5BF4100A54771 /* LayerInfoFactory.swift */,
 			);
 			path = tianditu;
 			sourceTree = "<group>";
@@ -295,6 +301,8 @@
 				81D7B0AF29B427870074ED03 /* WrapperMapView.swift in Sources */,
 				81D7B0B429B588AD0074ED03 /* TianDiTuLayerBuilder.swift in Sources */,
 				81DC54A729B31E9E006488B4 /* ContentView.swift in Sources */,
+				814FD62729B5BF4100A54771 /* LayerInfoFactory.swift in Sources */,
+				814FD62529B5B3EF00A54771 /* TianDiTuLayerInfo.swift in Sources */,
 				81D7B0B129B4293B0074ED03 /* JCYMapView.swift in Sources */,
 				81DC54A529B31E9E006488B4 /* JcyMapLibraryApp.swift in Sources */,
 			);
