@@ -31,16 +31,16 @@ public class TianDiTuLayerBuilder {
         return self
     }
 
-//    public func build() -> TianDiTuLayer {
-//        TianDiTuLayerInfo layerInfo = LayerInfoFactory.getLayerInfo(layerType);
-//        TileInfo tileInfo = layerInfo.getTileInfo();
-//        Envelope fullExtent = layerInfo.getFullExtent();
-//        TianDiTuLayer tianDiTuLayer = new TianDiTuLayer(tileInfo, fullExtent);
-//        tianDiTuLayer.setLayerType(layerType);
-//        tianDiTuLayer.setCachePath(cachePath);
-//        tianDiTuLayer.setToken(token);
-//        return tianDiTuLayer;
-//    }
+    public func build() -> TianDiTuLayer? {
+        let layerInfo = LayerInfoFactory.getLayerInfo(layerType: layerType)
+        guard let tileInfo = layerInfo.getTileInfo() else { return nil}
+        guard let fullExtent = layerInfo.getFullExtent() else { return nil }
+        let tianDiTuLayer = TianDiTuLayer(tileInfo: tileInfo, fullExtent: fullExtent)
+        tianDiTuLayer.layerType = layerType
+        tianDiTuLayer.cachePath = cachePath
+        tianDiTuLayer.token = token
+        return tianDiTuLayer
+    }
 }
 
 /**
