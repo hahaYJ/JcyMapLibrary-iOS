@@ -45,6 +45,7 @@
 		814FD62429B5B3EF00A54771 /* TianDiTuLayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayerInfo.swift; sourceTree = "<group>"; };
 		814FD62629B5BF4100A54771 /* LayerInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerInfoFactory.swift; sourceTree = "<group>"; };
 		814FD62829B5E27A00A54771 /* TianDiTuLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayer.swift; sourceTree = "<group>"; };
+		814FD62A29BA1F1800A54771 /* JcyMapLibrary--iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "JcyMapLibrary--iOS-Info.plist"; sourceTree = "<group>"; };
 		81D7B0AE29B427870074ED03 /* WrapperMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperMapView.swift; sourceTree = "<group>"; };
 		81D7B0B029B4293B0074ED03 /* JCYMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCYMapView.swift; sourceTree = "<group>"; };
 		81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayerBuilder.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		81DC549829B31E9E006488B4 = {
 			isa = PBXGroup;
 			children = (
+				814FD62A29BA1F1800A54771 /* JcyMapLibrary--iOS-Info.plist */,
 				814FD62329B5AFEB00A54771 /* README.md */,
 				81DC54A329B31E9E006488B4 /* JcyMapLibrary */,
 				81DC54B429B31E9F006488B4 /* JcyMapLibraryTests */,
@@ -470,6 +472,7 @@
 				DEVELOPMENT_TEAM = R353886A6R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "JcyMapLibrary--iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -500,6 +503,7 @@
 				DEVELOPMENT_TEAM = R353886A6R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "JcyMapLibrary--iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
