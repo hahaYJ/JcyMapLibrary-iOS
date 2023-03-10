@@ -9,15 +9,6 @@ import Foundation
 import ArcGIS
 
 /**
- 创建git
- */
-func createMapView(_ context: (_ mapView: JCYMapView) -> Void) -> AGSMapView {
-    let mapView = AGSMapView()
-    context(JCYWrapperMapView(mapView: mapView))
-    return mapView
-}
-
-/**
  gis包装类
  */
 public class JCYWrapperMapView : JCYMapView {
@@ -26,8 +17,17 @@ public class JCYWrapperMapView : JCYMapView {
     private let ARCGIS_API_KEY = "AAPKc12108e2a01b43e9b649b408720b42b8w4N50bBdYUr1xocWZVfifdb9o2PNrz_Hs_uXC2UwrE1h0ZWZKiPk9Fv-8iO8aLQX"
     private var mapView: AGSMapView?
     
+    /**
+     创建git
+     */
+    public static func createMapView(_ onLoaded: (_ mapView: JCYMapView) -> Void) -> AGSMapView {
+        let mapView = AGSMapView()
+        _ = JCYWrapperMapView(mapView, onLoaded: onLoaded)
+        return mapView
+    }
     
-    init(mapView: AGSMapView) {
+    
+    init(_ mapView: AGSMapView, onLoaded mapContext: (_ mapView: JCYMapView) -> Void) {
         // 初始化低图
         initMapBasemap(mapView)
     

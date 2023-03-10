@@ -38,7 +38,6 @@ public class TianDiTuLayerBuilder {
         let tianDiTuLayer = TianDiTuLayer(tileInfo: tileInfo, fullExtent: fullExtent)
         tianDiTuLayer.layerType = layerType
         tianDiTuLayer.layerInfo = LayerInfoFactory.getLayerInfo(layerType: layerType)
-        tianDiTuLayer.cachePath = cachePath
         tianDiTuLayer.token = token
         return tianDiTuLayer
     }
