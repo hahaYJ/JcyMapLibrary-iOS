@@ -44,7 +44,7 @@ public class JCYWrapperMapView : JCYMapView {
         // 设置天地图国家2000坐标低图
         if let tdtImage2000 = TianDiTuLayerBuilder()
             .setLayerType(layerType: TianDiTuLayerTypes.TIANDITU_IMAGE_2000)
-            .setCachePath(cachePath: "")
+            .setCachePath(cachePath: "tdtimg")
             .setToken(token: TIANTITU_TOKEN)
             .build() {
             map.basemap.baseLayers.add(tdtImage2000)
@@ -52,7 +52,7 @@ public class JCYWrapperMapView : JCYMapView {
 
         if let tdtImageChinese2000 = TianDiTuLayerBuilder()
             .setLayerType(layerType: TianDiTuLayerTypes.TIANDITU_IMAGE_ANNOTATION_CHINESE_2000)
-            .setCachePath(cachePath: "")
+            .setCachePath(cachePath: "tdttxt")
             .setToken(token: TIANTITU_TOKEN)
             .build() {
             map.basemap.baseLayers.add(tdtImageChinese2000)

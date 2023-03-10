@@ -13,7 +13,7 @@ import Foundation
 public class TianDiTuLayerBuilder {
     
     private var layerType: TianDiTuLayerTypes = TianDiTuLayerTypes.TIANDITU_VECTOR_MERCATOR
-    private var cachePath: String? = nil
+    private var cachePath: String = ""
     private var token: String? = nil
 
     public func setLayerType(layerType: TianDiTuLayerTypes) -> TianDiTuLayerBuilder {
@@ -36,6 +36,7 @@ public class TianDiTuLayerBuilder {
         guard let tileInfo = layerInfo.getTileInfo() else { return nil}
         guard let fullExtent = layerInfo.getFullExtent() else { return nil }
         let tianDiTuLayer = TianDiTuLayer(tileInfo: tileInfo, fullExtent: fullExtent)
+        tianDiTuLayer.pathKey = cachePath
         tianDiTuLayer.layerType = layerType
         tianDiTuLayer.layerInfo = LayerInfoFactory.getLayerInfo(layerType: layerType)
         tianDiTuLayer.token = token
