@@ -24,16 +24,16 @@ public class TianDiTuLayer : AGSImageTiledLayer {
             let col = tileKey.column
             let row = tileKey.row
             
-            // 获取缓存路径
-            let path = self?.cacheTilePath(level: level, col: col, row: row)
-            
             // 层级超过范围
             if (level > layerInfo.maxZoomLevel || level < layerInfo.minZoomLevel) {
                 self?.respond(with: tileKey, data: Data(count: 0), error: nil)
                 return
             }
             
-            // 查看本地数据
+            // 获取缓存路径
+            let path = self?.cacheTilePath(level: level, col: col, row: row)
+            
+            // 加载本地瓦片数据
             if let cacheData = self?.readTile(path: path) {
                 self?.respond(with: tileKey, data: cacheData, error: nil)
                 return
@@ -42,7 +42,7 @@ public class TianDiTuLayer : AGSImageTiledLayer {
             // 天地图地址
             let layerUrl = "\(layerInfo.url)?service=wmts&request=gettile&version=1.0.0&tk=\(self?.token ?? "")&layer=\(layerInfo.layerName)&format=tiles&tilematrixset=\(layerInfo.tileMatrixSet)&tilecol=\(col)&tilerow=\(row)&tilematrix=\(level)"
             
-            // 网络获取
+            // 网络获取瓦片数据并保存本地
             self?.layerOnline(layerUrl: layerUrl) { [weak self] (data, response, error) in
                 if let tilePath = path {self?.writeTile(path: tilePath, data: data)}
                 self?.respond(with: tileKey, data: data, error: error)

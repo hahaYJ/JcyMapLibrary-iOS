@@ -11,8 +11,8 @@ import ArcGIS
 struct MapView: UIViewRepresentable {
 
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> UIView {
-        return JCYWrapperMapView.createMapView {_ in
-            
+        return JCYWrapperMapView.createMapView {mapView in
+            mapView.addProjectPolygon()
         }
     }
     

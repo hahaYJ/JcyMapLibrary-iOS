@@ -13,4 +13,9 @@ public protocol JCYMapView {
      添加图斑
      */
     func addProjectPolygon()
+    
+    /**
+     清空图形选中状态
+     */
+    func clearGraphicsSelection()
 }
