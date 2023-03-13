@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import ArcGIS
 
-public protocol JCYMapView {
+public protocol JCYMapViewDelegate {
     
     /**
      添加图斑
      */
-    func addProjectPolygon()
+    mutating func addProjectPolygon(polygon: AGSPolygon?, id: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: (() -> Void)?)
     
     /**
      清空图形选中状态

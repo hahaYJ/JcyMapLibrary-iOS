@@ -11,12 +11,13 @@ import ArcGIS
 /**
  gis包装类
  */
-public class JCYWrapperMapView : JCYMapView {
-    
+public class JCMapView: AGSMapView {
     
     private let TIANTITU_TOKEN = "323a1605e14a07ab30daf74e78c3e1ae"
     private let ARCGIS_API_KEY = "AAPKc12108e2a01b43e9b649b408720b42b8w4N50bBdYUr1xocWZVfifdb9o2PNrz_Hs_uXC2UwrE1h0ZWZKiPk9Fv-8iO8aLQX"
-    private var mapView: AGSMapView?
+    
+    // 定位权限
+    let locationManager = CLLocationManager()
     
     // 测量图形
     private var mGraphicsOverlay: AGSGraphicsOverlay?
@@ -34,26 +35,29 @@ public class JCYWrapperMapView : JCYMapView {
     private var mLocationDisplay: AGSLocationDisplay?
     // 实时GPS定位点
     private var mCurrentLocationPoint: AGSPoint?
-    /**
-     创建gis
-     */
-    public static func createMapView(_ onLoaded: ((_ mapView: JCYMapView) -> Void)?) -> AGSMapView {
-        let mapView = AGSMapView()
-        _ = JCYWrapperMapView(mapView, onLoaded: onLoaded)
-        return mapView
+    // 所有多边形范围统计
+    private var mAllPolygonExtent: AGSEnvelope?
+    
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        initMapView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     
-    init(_ mapView: AGSMapView, onLoaded mapContext: ((_ mapView: JCYMapView) -> Void)?) {
+    func initMapView() {
         // 关闭底部文字
-        mapView.isAttributionTextVisible = false
+        self.isAttributionTextVisible = false
         // 初始化底图
-        initMapBasemap(mapView)
+        initMapBasemap(self)
         // 初始化图层、事件相关
-        mapView.map?.load { _ in
-            self.initMapOverlay()
-            self.setMapLocationDisplay()
-            mapContext?(self)
+        self.map?.load { [weak self] _ in
+            self?.initMapOverlay()
+            self?.setMapLocationDisplay()
         }
     }
     
@@ -83,46 +87,115 @@ public class JCYWrapperMapView : JCYMapView {
         }
         
         map.maxScale = 19.0
-        self.mapView = mapView
     }
     
     private func initMapOverlay() {
-        guard let mapView = mapView else { return }
-        mapView.graphicsOverlays.add(mGraphicsOverlay = AGSGraphicsOverlay())
-        mapView.graphicsOverlays.add(mGraphicsTxtOverlay = AGSGraphicsOverlay())
-        mapView.graphicsOverlays.add(mGraphicsScopeOverlay = AGSGraphicsOverlay())
-        mapView.graphicsOverlays.add(mAreaGraphics = AGSGraphicsOverlay())
-        mapView.graphicsOverlays.add(mGpsRouteGraphics = AGSGraphicsOverlay())
-        mapView.graphicsOverlays.add(mOverlayPictureAngle = AGSGraphicsOverlay())
+        graphicsOverlays.add(mGraphicsOverlay = AGSGraphicsOverlay())
+        graphicsOverlays.add(mGraphicsTxtOverlay = AGSGraphicsOverlay())
+        graphicsOverlays.add(mGraphicsScopeOverlay = AGSGraphicsOverlay())
+        graphicsOverlays.add(mAreaGraphics = AGSGraphicsOverlay())
+        graphicsOverlays.add(mGpsRouteGraphics = AGSGraphicsOverlay())
+        graphicsOverlays.add(mOverlayPictureAngle = AGSGraphicsOverlay())
     }
     
     private func setMapLocationDisplay() {
-        guard let mapView = mapView else { return }
-        let locationDisplay = mapView.locationDisplay
         locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.recenter
         locationDisplay.showAccuracy = true
         locationDisplay.showLocation = true
         locationDisplay.start()
-        locationDisplay.locationChangedHandler = { location in
-            guard let mapView = self.mapView else { return }
+        locationDisplay.locationChangedHandler = { [weak self] location in
+            guard let mapView = self else { return }
             guard let position = location.position else { return }
             // 第一次 跳转到当前位置
-            if (self.mCurrentLocationPoint == nil) {
+            if (mapView.mCurrentLocationPoint == nil) {
                 mapView.setViewpointCenter(position, scale: 4000)
             }
-            self.mCurrentLocationPoint = location.position
+            mapView.mCurrentLocationPoint = location.position
         }
     }
     
-    public func addProjectPolygon() {
-        print("xxxxx")
+    /**
+     统计所有图斑范围
+     */
+    private func statisticsAllPolygonExtent(geometry: AGSGeometry) {
+        if (mAllPolygonExtent == nil) {
+            mAllPolygonExtent = geometry.extent
+        } else {
+            mAllPolygonExtent = AGSGeometryEngine.union(ofGeometry1: mAllPolygonExtent!, geometry2: geometry.extent)?.extent
+        }
     }
     
+}
+
+
+extension JCMapView : JCYMapViewDelegate {
+    
+    /**
+     添加多边形
+     */
+    public func addProjectPolygon(polygon: AGSPolygon?, id: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: (() -> Void)?) {
+        guard let graphicsOverlay = mGraphicsOverlay else { return }
+        guard let polygon = polygon else { return }
+        statisticsAllPolygonExtent(geometry: polygon)
+        
+        // 多边形边框、内部填充
+        let polygonLineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: UIColor(red: 225, green: 25, blue: 25, alpha: 225), width: 2)
+        let polygonFillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.null, color: UIColor.clear, outline: polygonLineSymbol)
+        
+        // 添加图形
+        let graphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
+        graphicsOverlay.graphics.add(graphic)
+        //        attributes["id"] = id
+        //                       clickGeometryMap[id ?: ""] = onClickGeometry
+        
+        // 添加文字
+        graphicsOverlay.graphics.add(AGSGraphic(geometry: polygon, symbol: getTextSymbol(text: id ?? "", textSize: 10)))
+        
+        if (isMoveToGeometry) {
+            moveToGeometry(extent: polygon, pindding: pindding, moveUp: false)
+        }
+    }
+    
+    public func moveToGeometry(extent: AGSGeometry, pindding: Double, moveUp: Bool) {
+        setViewpointGeometry(extent, padding: pindding) { _ in
+        }
+    }
+    
+    /**
+     文字图形
+     */
+    private func getTextSymbol(text: String, textSize: Float) -> AGSTextSymbol {
+        let textSymbol = AGSTextSymbol(text: text, color: UIColor(red: 255, green: 136, blue: 0, alpha: 255), size: CGFloat(textSize), horizontalAlignment: AGSHorizontalAlignment.center, verticalAlignment: AGSVerticalAlignment.middle)
+        textSymbol.haloWidth = 0.5
+        textSymbol.haloColor = UIColor.white
+        return textSymbol
+    }
+    
+    /**
+     清空选中
+     */
     public func clearGraphicsSelection() {
         mGraphicsOverlay?.clearSelection()
         mGraphicsTxtOverlay?.clearSelection()
         mGraphicsScopeOverlay?.clearSelection()
         mOverlayPictureAngle?.clearSelection()
         mAreaGraphics?.clearSelection()
+    }
+}
+
+/**
+ json数据转多边形
+ */
+extension String {
+    public func toParsePolygon() -> AGSPolygon? {
+        guard let data = self.data(using: .utf8) else { return nil }
+        if let dit = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, Any> {
+            if let geometry = dit["geometry"] as? Dictionary<String, Any> {
+                if let coordinates = geometry["coordinates"] as? Array<Any> {
+                    
+                }
+            }
+        }
+        return nil
     }
 }
