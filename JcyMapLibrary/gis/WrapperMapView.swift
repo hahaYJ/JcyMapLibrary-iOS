@@ -88,12 +88,12 @@ public class JCMapView: AGSMapView {
     }
     
     private func initMapOverlay() {
-        graphicsOverlays.add(mGraphicsOverlay = AGSGraphicsOverlay())
-        graphicsOverlays.add(mGraphicsTxtOverlay = AGSGraphicsOverlay())
-        graphicsOverlays.add(mGraphicsScopeOverlay = AGSGraphicsOverlay())
-        graphicsOverlays.add(mAreaGraphics = AGSGraphicsOverlay())
-        graphicsOverlays.add(mGpsRouteGraphics = AGSGraphicsOverlay())
-        graphicsOverlays.add(mOverlayPictureAngle = AGSGraphicsOverlay())
+        graphicsOverlays.add(mGraphicsOverlay)
+        graphicsOverlays.add(mGraphicsTxtOverlay)
+        graphicsOverlays.add(mGraphicsScopeOverlay)
+        graphicsOverlays.add(mAreaGraphics)
+        graphicsOverlays.add(mGpsRouteGraphics)
+        graphicsOverlays.add(mOverlayPictureAngle)
     }
     
     private func setMapLocationDisplay() {
@@ -136,7 +136,7 @@ extension JCMapView : JCYMapViewDelegate {
         statisticsAllPolygonExtent(geometry: polygon)
         
         // 多边形边框、内部填充
-        let polygonLineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: UIColor(red: 225, green: 25, blue: 25, alpha: 225), width: 2)
+        let polygonLineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: UIColor.red, width: 2)
         let polygonFillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.null, color: UIColor.clear, outline: polygonLineSymbol)
         
         // 添加图形
@@ -146,6 +146,12 @@ extension JCMapView : JCYMapViewDelegate {
         //                       clickGeometryMap[id ?: ""] = onClickGeometry
         
         // 添加文字
+        var realId = (id ?? "")
+        if (realId.count > 5) {
+            realId = String(realId[realId.endIndex..<realId.endIndex])
+        } else {
+            
+        }
         mGraphicsOverlay.graphics.add(AGSGraphic(geometry: polygon, symbol: getTextSymbol(text: id ?? "", textSize: 10)))
         
         if (isMoveToGeometry) {
@@ -162,7 +168,7 @@ extension JCMapView : JCYMapViewDelegate {
      文字图形
      */
     private func getTextSymbol(text: String, textSize: Float) -> AGSTextSymbol {
-        let textSymbol = AGSTextSymbol(text: text, color: UIColor(red: 255, green: 136, blue: 0, alpha: 255), size: CGFloat(textSize), horizontalAlignment: AGSHorizontalAlignment.center, verticalAlignment: AGSVerticalAlignment.middle)
+        let textSymbol = AGSTextSymbol(text: text, color: UIColor(red: 136 / 255, green: 119 / 255, blue: 220 / 255, alpha: 1), size: CGFloat(textSize), horizontalAlignment: AGSHorizontalAlignment.center, verticalAlignment: AGSVerticalAlignment.middle)
         textSymbol.haloWidth = 0.5
         textSymbol.haloColor = UIColor.white
         return textSymbol

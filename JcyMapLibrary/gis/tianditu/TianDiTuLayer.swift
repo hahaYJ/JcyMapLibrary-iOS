@@ -55,7 +55,6 @@ public class TianDiTuLayer : AGSImageTiledLayer {
      请求网络瓦片地图
      */
     private func layerOnline(layerUrl: String, completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void) {
-        print(layerUrl)
         // 构建URL
         guard let url = URL(string: layerUrl) else { return }
         // 发送HTTP请求的的session对象
