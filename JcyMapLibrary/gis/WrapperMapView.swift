@@ -50,24 +50,23 @@ public class JCMapView: AGSMapView {
         // 关闭底部文字
         self.isAttributionTextVisible = false
         // 初始化底图
-        initMapBasemap(self)
-        // 初始化图层、事件相关
-        self.map?.load { [weak self] _ in
-            guard let self = self else { return }
-            self.initMapOverlay()
-            self.setMapLocationDisplay()
-            onLoad()
-        }
+        initMapBasemap()
+//        // 初始化图层、事件相关
+//        self.map?.load { [weak self] _ in
+//            guard let self = self else { return }
+//            self.initMapOverlay()
+//            self.setMapLocationDisplay()
+//            onLoad()
+//        }
     }
     
     /**
      添加天地图低图
      */
-    private func initMapBasemap(_ mapView: AGSMapView) {
+    private func initMapBasemap() {
         AGSArcGISRuntimeEnvironment.apiKey = ARCGIS_API_KEY
-        let map = AGSMap(basemapStyle: .arcGISTopographic)
-        // 关联mapview
-        mapView.map = map
+        let map = AGSMap()
+        map.maxScale = 19.0
         // 设置天地图国家2000坐标低图
         if let tdtImage2000 = TianDiTuLayerBuilder()
             .setLayerType(layerType: TianDiTuLayerTypes.TIANDITU_IMAGE_2000)
@@ -84,8 +83,8 @@ public class JCMapView: AGSMapView {
             .build() {
             map.basemap.baseLayers.add(tdtImageChinese2000)
         }
-        
-        map.maxScale = 19.0
+        // 关联mapview
+        self.map = map
     }
     
     private func initMapOverlay() {
