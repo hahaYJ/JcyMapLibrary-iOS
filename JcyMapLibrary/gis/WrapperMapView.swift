@@ -20,17 +20,17 @@ public class JCMapView: AGSMapView {
     let locationManager = CLLocationManager()
     
     // 测量图形
-    private var mGraphicsOverlay: AGSGraphicsOverlay?
+    private var mGraphicsOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 测量图形文字层
-    private var mGraphicsTxtOverlay: AGSGraphicsOverlay?
+    private var mGraphicsTxtOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 范围层
-    private var mGraphicsScopeOverlay: AGSGraphicsOverlay?
+    private var mGraphicsScopeOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 手绘层
-    private var mAreaGraphics: AGSGraphicsOverlay?
+    private var mAreaGraphics: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // gsp轨迹层
-    private var mGpsRouteGraphics: AGSGraphicsOverlay?
+    private var mGpsRouteGraphics: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 方向角层
-    private var mOverlayPictureAngle: AGSGraphicsOverlay?
+    private var mOverlayPictureAngle: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 定位图层
     private var mLocationDisplay: AGSLocationDisplay?
     // 实时GPS定位点
@@ -38,26 +38,25 @@ public class JCMapView: AGSMapView {
     // 所有多边形范围统计
     private var mAllPolygonExtent: AGSEnvelope?
     
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        initMapView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    func initMapView() {
+    public func initMapView(_ onLoad: @escaping () -> Void) {
         // 关闭底部文字
         self.isAttributionTextVisible = false
         // 初始化底图
         initMapBasemap(self)
         // 初始化图层、事件相关
         self.map?.load { [weak self] _ in
-            self?.initMapOverlay()
-            self?.setMapLocationDisplay()
+            guard let self = self else { return }
+            self.initMapOverlay()
+            self.setMapLocationDisplay()
+            onLoad()
         }
     }
     
@@ -134,7 +133,6 @@ extension JCMapView : JCYMapViewDelegate {
      添加多边形
      */
     public func addProjectPolygon(polygon: AGSPolygon?, id: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: (() -> Void)?) {
-        guard let graphicsOverlay = mGraphicsOverlay else { return }
         guard let polygon = polygon else { return }
         statisticsAllPolygonExtent(geometry: polygon)
         
@@ -144,12 +142,12 @@ extension JCMapView : JCYMapViewDelegate {
         
         // 添加图形
         let graphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
-        graphicsOverlay.graphics.add(graphic)
+        mGraphicsOverlay.graphics.add(graphic)
         //        attributes["id"] = id
         //                       clickGeometryMap[id ?: ""] = onClickGeometry
         
         // 添加文字
-        graphicsOverlay.graphics.add(AGSGraphic(geometry: polygon, symbol: getTextSymbol(text: id ?? "", textSize: 10)))
+        mGraphicsOverlay.graphics.add(AGSGraphic(geometry: polygon, symbol: getTextSymbol(text: id ?? "", textSize: 10)))
         
         if (isMoveToGeometry) {
             moveToGeometry(extent: polygon, pindding: pindding, moveUp: false)
@@ -175,11 +173,11 @@ extension JCMapView : JCYMapViewDelegate {
      清空选中
      */
     public func clearGraphicsSelection() {
-        mGraphicsOverlay?.clearSelection()
-        mGraphicsTxtOverlay?.clearSelection()
-        mGraphicsScopeOverlay?.clearSelection()
-        mOverlayPictureAngle?.clearSelection()
-        mAreaGraphics?.clearSelection()
+        mGraphicsOverlay.clearSelection()
+        mGraphicsTxtOverlay.clearSelection()
+        mGraphicsScopeOverlay.clearSelection()
+        mOverlayPictureAngle.clearSelection()
+        mAreaGraphics.clearSelection()
     }
 }
 
@@ -189,13 +187,33 @@ extension JCMapView : JCYMapViewDelegate {
 extension String {
     public func toParsePolygon() -> AGSPolygon? {
         guard let data = self.data(using: .utf8) else { return nil }
-        if let dit = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, Any> {
-            if let geometry = dit["geometry"] as? Dictionary<String, Any> {
-                if let coordinates = geometry["coordinates"] as? Array<Any> {
-                    
+        guard let dit = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, Any> else { return nil }
+        guard let geometry = dit["geometry"] as? Dictionary<String, Any> else { return nil }
+        guard let coordinates = geometry["coordinates"] as? Array<Any> else { return nil }
+        
+        let spatialReference = AGSSpatialReference(wkid: 4524)
+        var multiPolygon = [AGSGeometry]()
+        
+        coordinates.forEach { coordinate in
+            guard let rings = coordinate as? Array<Any> else { return }
+//            let partCollection = AGSMutablePartCollection(spatialReference: spatialReference)
+            let pointCollection = AGSMutablePointCollection(spatialReference: spatialReference)
+
+            rings.forEach { ring in
+                guard let points = ring as? Array<Any> else { return }
+
+                points.forEach { point in
+                    guard let pt = point as? Array<Any> else { return }
+                    if (pt.count >= 2) {
+                        pointCollection.addPointWith(x: pt[0] as? Double ?? 0, y: pt[1] as? Double ?? 0)
+                    }
                 }
+//                partCollection.add(AGSMutablePart(points: pointCollection.array()))
             }
+            multiPolygon.append(AGSPolygon(points: pointCollection.array()))
         }
-        return nil
+        
+        guard let retPolygon = AGSGeometryEngine.unionGeometries(multiPolygon) as? AGSPolygon else { return nil }
+        return retPolygon
     }
 }
