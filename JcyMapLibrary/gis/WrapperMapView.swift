@@ -51,13 +51,13 @@ public class JCMapView: AGSMapView {
         self.isAttributionTextVisible = false
         // 初始化底图
         initMapBasemap()
-//        // 初始化图层、事件相关
-//        self.map?.load { [weak self] _ in
-//            guard let self = self else { return }
-//            self.initMapOverlay()
-//            self.setMapLocationDisplay()
-//            onLoad()
-//        }
+        // 初始化图层、事件相关
+        self.map?.load { [weak self] _ in
+            guard let self = self else { return }
+            self.initMapOverlay()
+            self.setMapLocationDisplay()
+            onLoad()
+        }
     }
     
     /**

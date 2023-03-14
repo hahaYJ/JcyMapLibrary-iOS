@@ -43,7 +43,7 @@ public class TianDiTuLayer : AGSImageTiledLayer {
             
             // 网络获取瓦片数据并保存本地
             self?.layerOnline(layerUrl: layerUrl) { [weak self] (data, response, error) in
-                if (error != nil) {
+                if (error == nil) {
                     if let tilePath = path {self?.writeTile(path: tilePath, data: data)}
                 }
                 self?.respond(with: tileKey, data: data, error: error)
@@ -63,7 +63,14 @@ public class TianDiTuLayer : AGSImageTiledLayer {
         // 构建请求request
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36", forHTTPHeaderField: "User-agent")
+        request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36", forHTTPHeaderField: "User-agent")
+        request.setValue("Upgrade-Insecure-Requests", forHTTPHeaderField: "Upgrade-Insecure-Requests")
+        request.setValue("text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", forHTTPHeaderField: "Accept")
+        request.setValue("gzip, deflate", forHTTPHeaderField: "Accept-Encoding")
+        request.setValue("zh-CN,zh;q=0.9", forHTTPHeaderField: "Accept-Language")
+        request.setValue("max-age=0", forHTTPHeaderField: "Cache-Control")
+        request.setValue("keep-alive", forHTTPHeaderField: "Connection")
+        request.setValue("t0.tianditu.com", forHTTPHeaderField: "Host")
         // 发一个get请求
         let task = session.dataTask(with: request, completionHandler: completionHandler)
         task.resume()
