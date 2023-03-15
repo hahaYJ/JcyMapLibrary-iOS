@@ -148,11 +148,9 @@ extension JCMapView : JCYMapViewDelegate {
         // 添加文字
         var realId = (id ?? "")
         if (realId.count > 5) {
-            realId = String(realId[realId.endIndex..<realId.endIndex])
-        } else {
-            
+            realId = "...\(String(realId[realId.index(realId.startIndex, offsetBy: realId.count - 5)..<realId.endIndex]))"
         }
-        mGraphicsOverlay.graphics.add(AGSGraphic(geometry: polygon, symbol: getTextSymbol(text: id ?? "", textSize: 10)))
+        mGraphicsOverlay.graphics.add(AGSGraphic(geometry: polygon, symbol: getTextSymbol(text: realId, textSize: 10)))
         
         if (isMoveToGeometry) {
             moveToGeometry(extent: polygon, pindding: pindding, moveUp: false)
