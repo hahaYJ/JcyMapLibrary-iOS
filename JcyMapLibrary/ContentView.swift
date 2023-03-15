@@ -25,6 +25,10 @@ struct MapView: UIViewRepresentable {
             mapView.addPictureAngle(azimuth: 131.44, longitude: 111.30974884, latitude: 23.56688617, id: "Angle2", isSelected: false) { graphic in
                 print(graphic)
             }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                mapView.selecteAngle(id: "Angle2", isSelected: true)
+            })
         }
         return mapView
     }
