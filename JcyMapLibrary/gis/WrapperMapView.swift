@@ -123,6 +123,14 @@ public class JCMapView: AGSMapView {
         }
     }
     
+    /**
+     移动到图斑
+     */
+    public func moveToGeometry(extent: AGSGeometry, pindding: Double, moveUp: Bool) {
+        setViewpointGeometry(extent, padding: pindding) { _ in
+        }
+    }
+    
 }
 
 
@@ -148,7 +156,7 @@ extension JCMapView : JCYMapViewDelegate {
         // 添加文字
         var realId = (id ?? "")
         if (realId.count > 5) {
-            realId = "...\(String(realId[realId.index(realId.startIndex, offsetBy: realId.count - 5)..<realId.endIndex]))"
+            realId = "...\(String(realId[realId.index(realId.startIndex, offsetBy: realId.count - 4)..<realId.endIndex]))"
         }
         mGraphicsOverlay.graphics.add(AGSGraphic(geometry: polygon, symbol: getTextSymbol(text: realId, textSize: 10)))
         
@@ -157,8 +165,21 @@ extension JCMapView : JCYMapViewDelegate {
         }
     }
     
-    public func moveToGeometry(extent: AGSGeometry, pindding: Double, moveUp: Bool) {
-        setViewpointGeometry(extent, padding: pindding) { _ in
+    /**
+     添加方向角
+     */
+    public func addPictureAngle(azimuth: Float, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: (() -> Void)?) {
+        guard let arrowImg = UIImage(named: "map_arrow") else { return }
+        let future = AGSPictureMarkerSymbol(image: arrowImg)
+        future.height = 20
+        future.width = 11.6
+        future.angle = azimuth
+        future.load { [weak self] _ in
+            guard let self = self else { return }
+            let graphicPoint = AGSPoint(clLocationCoordinate2D: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+            let graphic = AGSGraphic(geometry: graphicPoint, symbol: future)
+            graphic.isSelected = isSelected
+            self.mOverlayPictureAngle.graphics.add(graphic)
         }
     }
     
