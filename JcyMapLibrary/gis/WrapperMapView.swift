@@ -9,7 +9,7 @@ import Foundation
 import ArcGIS
 
 /**
- gis包装类
+ gis包装类，初始化、天地图相关
  */
 public class JCMapView: AGSMapView {
     
@@ -37,7 +37,9 @@ public class JCMapView: AGSMapView {
     private var mCurrentLocationPoint: AGSPoint?
     // 所有多边形范围统计
     private var mAllPolygonExtent: AGSEnvelope?
-    
+    // 方向角缓存的图形
+    private var angleGeometryMap: [String : AGSGraphic] = [:]
+        
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -56,6 +58,7 @@ public class JCMapView: AGSMapView {
             guard let self = self else { return }
             self.initMapOverlay()
             self.setMapLocationDisplay()
+            self.touchDelegate = self
             onLoad()
         }
     }
@@ -134,12 +137,44 @@ public class JCMapView: AGSMapView {
 }
 
 
+
+
+/**
+ 点击代理
+ */
+extension JCMapView : AGSGeoViewTouchDelegate {
+    public func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
+        clearGraphicsSelection()
+        identifyGraphicsOverlays(atScreenPoint: screenPoint, tolerance: 10.0, returnPopupsOnly: false, maximumResultsPerOverlay: 1) { identifyGraphicsOverlayResults, error in
+            guard error == nil else { return }
+            guard let identifyGraphicsOverlayResults = identifyGraphicsOverlayResults else { return }
+            guard identifyGraphicsOverlayResults.count > 0 else { return }
+            
+            // 获取层
+            let identifyGraphicsOverlayResult = identifyGraphicsOverlayResults[0]
+            guard identifyGraphicsOverlayResult.graphics.count > 0 else { return }
+            
+            // 获取图斑
+            let selectGraphic = identifyGraphicsOverlayResult.graphics[0]
+            selectGraphic.isSelected = true
+            guard let onClickGeometry = selectGraphic.attributes["onClickGeometry"] as? ((AGSGraphic) -> Void) else { return }
+            onClickGeometry(selectGraphic)
+        }
+    }
+}
+
+
+
+
+/**
+ 图形操作
+ */
 extension JCMapView : JCYMapViewDelegate {
     
     /**
      添加多边形
      */
-    public func addProjectPolygon(polygon: AGSPolygon?, id: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: (() -> Void)?) {
+    public func addProjectPolygon(polygon: AGSPolygon?, id: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
         guard let polygon = polygon else { return }
         statisticsAllPolygonExtent(geometry: polygon)
         
@@ -149,16 +184,19 @@ extension JCMapView : JCYMapViewDelegate {
         
         // 添加图形
         let graphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
+        graphic.attributes["id"] = id
+        graphic.attributes["onClickGeometry"] = onClickGeometry
         mGraphicsOverlay.graphics.add(graphic)
-        //        attributes["id"] = id
-        //                       clickGeometryMap[id ?: ""] = onClickGeometry
         
         // 添加文字
         var realId = (id ?? "")
         if (realId.count > 5) {
             realId = "...\(String(realId[realId.index(realId.startIndex, offsetBy: realId.count - 4)..<realId.endIndex]))"
         }
-        mGraphicsOverlay.graphics.add(AGSGraphic(geometry: polygon, symbol: getTextSymbol(text: realId, textSize: 10)))
+        let txtGraphic = AGSGraphic(geometry: polygon, symbol: getTextSymbol(text: realId, textSize: 10))
+        txtGraphic.attributes["id"] = id
+        txtGraphic.attributes["onClickGeometry"] = onClickGeometry
+        mGraphicsOverlay.graphics.add(txtGraphic)
         
         if (isMoveToGeometry) {
             moveToGeometry(extent: polygon, pindding: pindding, moveUp: false)
@@ -168,17 +206,20 @@ extension JCMapView : JCYMapViewDelegate {
     /**
      添加方向角
      */
-    public func addPictureAngle(azimuth: Float, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: (() -> Void)?) {
+    public func addPictureAngle(azimuth: Float, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
         guard let arrowImg = UIImage(named: "map_arrow") else { return }
         let future = AGSPictureMarkerSymbol(image: arrowImg)
-        future.height = 20
-        future.width = 11.6
+        future.height = 30
+        future.width = 17.4
         future.angle = azimuth
         future.load { [weak self] _ in
             guard let self = self else { return }
             let graphicPoint = AGSPoint(clLocationCoordinate2D: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
             let graphic = AGSGraphic(geometry: graphicPoint, symbol: future)
             graphic.isSelected = isSelected
+            graphic.attributes["id"] = id
+            graphic.attributes["onClickGeometry"] = onClickGeometry
+            self.angleGeometryMap[id ?? ""] = graphic
             self.mOverlayPictureAngle.graphics.add(graphic)
         }
     }
@@ -203,7 +244,15 @@ extension JCMapView : JCYMapViewDelegate {
         mOverlayPictureAngle.clearSelection()
         mAreaGraphics.clearSelection()
     }
+    
+    public func selecteAngle(id: String?, isSelected: Bool) {
+        guard let id = id else { return }
+        angleGeometryMap[id]?.isSelected = isSelected
+    }
 }
+
+
+
 
 /**
  json数据转多边形
