@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-         .package(url: "https://github.com/esri/arcgis-runtime-ios", from: "100.15.1"),
+        .package(name: "arcgis-runtime-ios", url: "https://github.com/Esri/arcgis-runtime-ios.git", .upToNextMajor(from: "100.15.1"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
