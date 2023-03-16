@@ -20,6 +20,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "JCYMapLibrary",
+            dependencies: [Target.Dependency.byName(name: "arcgis-runtime-ios")],
             path: "JcyMapLibrary/gis",
             resources: [Resource.copy("JcyMapLibrary/Assets.xcassets")]),
     ]
