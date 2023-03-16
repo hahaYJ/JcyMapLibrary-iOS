@@ -8,7 +8,6 @@
 import SwiftUI
 import ArcGIS
 
-@available(iOS 14.0, *)
 @main
 struct JcyMapLibraryApp: App {
     
