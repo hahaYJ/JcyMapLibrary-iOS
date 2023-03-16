@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		811EBF4B29C2AF4F00E54BDB /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 811EBF4A29C2AF4F00E54BDB /* ArcGIS */; };
+		8123A9D829C30FC80040983C /* JcyMapLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8123A9D729C30FC80040983C /* JcyMapLibraryTests.swift */; };
 		814FD62529B5B3EF00A54771 /* TianDiTuLayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62429B5B3EF00A54771 /* TianDiTuLayerInfo.swift */; };
 		814FD62729B5BF4100A54771 /* LayerInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62629B5BF4100A54771 /* LayerInfoFactory.swift */; };
 		814FD62929B5E27A00A54771 /* TianDiTuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62829B5E27A00A54771 /* TianDiTuLayer.swift */; };
-		81D7B0AF29B427870074ED03 /* WrapperMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0AE29B427870074ED03 /* WrapperMapView.swift */; };
-		81D7B0B129B4293B0074ED03 /* JCYMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B029B4293B0074ED03 /* JCYMapView.swift */; };
+		81D7B0AF29B427870074ED03 /* JCYMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0AE29B427870074ED03 /* JCYMapView.swift */; };
+		81D7B0B129B4293B0074ED03 /* JCYMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */; };
 		81D7B0B429B588AD0074ED03 /* TianDiTuLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */; };
 		81DC54A529B31E9E006488B4 /* JcyMapLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC54A429B31E9E006488B4 /* JcyMapLibraryApp.swift */; };
 		81DC54A729B31E9E006488B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC54A629B31E9E006488B4 /* ContentView.swift */; };
@@ -24,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8123A9D429C30FC80040983C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81DC549929B31E9E006488B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81DC54A029B31E9E006488B4;
+			remoteInfo = "JcyMapLibrary- iOS";
+		};
 		81DC54B229B31E9F006488B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 81DC549929B31E9E006488B4 /* Project object */;
@@ -40,14 +48,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8123A9DE29C30FC80040983C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8123A9C929C30FC80040983C /* JcyMapLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JcyMapLibrary.h; sourceTree = "<group>"; };
+		8123A9CA29C30FC80040983C /* JcyMapLibrary.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = JcyMapLibrary.docc; sourceTree = "<group>"; };
+		8123A9D029C30FC80040983C /* JcyMapLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JcyMapLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8123A9D729C30FC80040983C /* JcyMapLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcyMapLibraryTests.swift; sourceTree = "<group>"; };
 		814FD62329B5AFEB00A54771 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		814FD62429B5B3EF00A54771 /* TianDiTuLayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayerInfo.swift; sourceTree = "<group>"; };
 		814FD62629B5BF4100A54771 /* LayerInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerInfoFactory.swift; sourceTree = "<group>"; };
 		814FD62829B5E27A00A54771 /* TianDiTuLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayer.swift; sourceTree = "<group>"; };
 		814FD62A29BA1F1800A54771 /* JcyMapLibrary--iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "JcyMapLibrary--iOS-Info.plist"; sourceTree = "<group>"; };
-		81D7B0AE29B427870074ED03 /* WrapperMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperMapView.swift; sourceTree = "<group>"; };
-		81D7B0B029B4293B0074ED03 /* JCYMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCYMapView.swift; sourceTree = "<group>"; };
+		81D7B0AE29B427870074ED03 /* JCYMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCYMapView.swift; sourceTree = "<group>"; };
+		81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCYMapViewDelegate.swift; sourceTree = "<group>"; };
 		81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayerBuilder.swift; sourceTree = "<group>"; };
 		81DC54A129B31E9E006488B4 /* JcyMapLibrary- iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JcyMapLibrary- iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81DC54A429B31E9E006488B4 /* JcyMapLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcyMapLibraryApp.swift; sourceTree = "<group>"; };
@@ -62,6 +87,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8123A9CD29C30FC80040983C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81DC549E29B31E9E006488B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -87,12 +119,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8123A9C829C30FC80040983C /* JcyMapLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				8123A9C929C30FC80040983C /* JcyMapLibrary.h */,
+				8123A9CA29C30FC80040983C /* JcyMapLibrary.docc */,
+			);
+			path = JcyMapLibrary;
+			sourceTree = "<group>";
+		};
+		8123A9D629C30FC80040983C /* JcyMapLibraryTests */ = {
+			isa = PBXGroup;
+			children = (
+				8123A9D729C30FC80040983C /* JcyMapLibraryTests.swift */,
+			);
+			path = JcyMapLibraryTests;
+			sourceTree = "<group>";
+		};
 		81D7B0AD29B426B10074ED03 /* gis */ = {
 			isa = PBXGroup;
 			children = (
 				81D7B0B229B588550074ED03 /* tianditu */,
-				81D7B0AE29B427870074ED03 /* WrapperMapView.swift */,
-				81D7B0B029B4293B0074ED03 /* JCYMapView.swift */,
+				81D7B0AE29B427870074ED03 /* JCYMapView.swift */,
+				81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */,
 			);
 			path = gis;
 			sourceTree = "<group>";
@@ -116,6 +165,8 @@
 				81DC54A329B31E9E006488B4 /* JcyMapLibrary */,
 				81DC54B429B31E9F006488B4 /* JcyMapLibraryTests */,
 				81DC54BE29B31E9F006488B4 /* JcyMapLibraryUITests */,
+				8123A9C829C30FC80040983C /* JcyMapLibrary */,
+				8123A9D629C30FC80040983C /* JcyMapLibraryTests */,
 				81DC54A229B31E9E006488B4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,6 +177,7 @@
 				81DC54A129B31E9E006488B4 /* JcyMapLibrary- iOS.app */,
 				81DC54B129B31E9F006488B4 /* JcyMapLibrary- iOSTests.xctest */,
 				81DC54BB29B31E9F006488B4 /* JcyMapLibrary- iOSUITests.xctest */,
+				8123A9D029C30FC80040983C /* JcyMapLibraryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,6 +222,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8123A9CF29C30FC80040983C /* JcyMapLibraryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8123A9E429C30FC80040983C /* Build configuration list for PBXNativeTarget "JcyMapLibraryTests" */;
+			buildPhases = (
+				8123A9CC29C30FC80040983C /* Sources */,
+				8123A9CD29C30FC80040983C /* Frameworks */,
+				8123A9CE29C30FC80040983C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8123A9D529C30FC80040983C /* PBXTargetDependency */,
+			);
+			name = JcyMapLibraryTests;
+			productName = JcyMapLibraryTests;
+			productReference = 8123A9D029C30FC80040983C /* JcyMapLibraryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		81DC54A029B31E9E006488B4 /* JcyMapLibrary- iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81DC54C529B31E9F006488B4 /* Build configuration list for PBXNativeTarget "JcyMapLibrary- iOS" */;
@@ -177,10 +247,12 @@
 				81DC549D29B31E9E006488B4 /* Sources */,
 				81DC549E29B31E9E006488B4 /* Frameworks */,
 				81DC549F29B31E9E006488B4 /* Resources */,
+				8123A9DE29C30FC80040983C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8139124429C3D55300D6E630 /* PBXTargetDependency */,
 			);
 			name = "JcyMapLibrary- iOS";
 			packageProductDependencies = (
@@ -236,6 +308,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					8123A9CF29C30FC80040983C = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 81DC54A029B31E9E006488B4;
+					};
 					81DC54A029B31E9E006488B4 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -268,11 +344,19 @@
 				81DC54A029B31E9E006488B4 /* JcyMapLibrary- iOS */,
 				81DC54B029B31E9F006488B4 /* JcyMapLibrary- iOSTests */,
 				81DC54BA29B31E9F006488B4 /* JcyMapLibrary- iOSUITests */,
+				8123A9CF29C30FC80040983C /* JcyMapLibraryTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8123A9CE29C30FC80040983C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81DC549F29B31E9E006488B4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -299,17 +383,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8123A9CC29C30FC80040983C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8123A9D829C30FC80040983C /* JcyMapLibraryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		81DC549D29B31E9E006488B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81D7B0AF29B427870074ED03 /* WrapperMapView.swift in Sources */,
+				81D7B0AF29B427870074ED03 /* JCYMapView.swift in Sources */,
 				81D7B0B429B588AD0074ED03 /* TianDiTuLayerBuilder.swift in Sources */,
 				81DC54A729B31E9E006488B4 /* ContentView.swift in Sources */,
 				814FD62729B5BF4100A54771 /* LayerInfoFactory.swift in Sources */,
 				814FD62529B5B3EF00A54771 /* TianDiTuLayerInfo.swift in Sources */,
 				814FD62929B5E27A00A54771 /* TianDiTuLayer.swift in Sources */,
-				81D7B0B129B4293B0074ED03 /* JCYMapView.swift in Sources */,
+				81D7B0B129B4293B0074ED03 /* JCYMapViewDelegate.swift in Sources */,
 				81DC54A529B31E9E006488B4 /* JcyMapLibraryApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +426,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8123A9D529C30FC80040983C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81DC54A029B31E9E006488B4 /* JcyMapLibrary- iOS */;
+			targetProxy = 8123A9D429C30FC80040983C /* PBXContainerItemProxy */;
+		};
+		8139124429C3D55300D6E630 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 8139124329C3D55300D6E630 /* ArcGIS */;
+		};
 		81DC54B329B31E9F006488B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 81DC54A029B31E9E006488B4 /* JcyMapLibrary- iOS */;
@@ -347,6 +448,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		8123A9E129C30FC80040983C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R353886A6R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.gov.gxzf.dnr.jcy.lib.JcyMapLibraryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JcyMapLibrary- iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JcyMapLibrary- iOS";
+			};
+			name = Debug;
+		};
+		8123A9E229C30FC80040983C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R353886A6R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.gov.gxzf.dnr.jcy.lib.JcyMapLibraryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JcyMapLibrary- iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JcyMapLibrary- iOS";
+			};
+			name = Release;
+		};
 		81DC54C329B31E9F006488B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -464,6 +601,7 @@
 		81DC54C629B31E9F006488B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -495,6 +633,7 @@
 		81DC54C729B31E9F006488B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -602,6 +741,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8123A9E429C30FC80040983C /* Build configuration list for PBXNativeTarget "JcyMapLibraryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8123A9E129C30FC80040983C /* Debug */,
+				8123A9E229C30FC80040983C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		81DC549C29B31E9E006488B4 /* Build configuration list for PBXProject "JcyMapLibrary-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -653,6 +801,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		811EBF4A29C2AF4F00E54BDB /* ArcGIS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 811EBF4929C2AF4F00E54BDB /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */;
+			productName = ArcGIS;
+		};
+		8139124329C3D55300D6E630 /* ArcGIS */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 811EBF4929C2AF4F00E54BDB /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */;
 			productName = ArcGIS;
