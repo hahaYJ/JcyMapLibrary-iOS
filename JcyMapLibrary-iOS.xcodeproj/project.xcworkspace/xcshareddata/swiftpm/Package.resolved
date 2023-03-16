@@ -3,7 +3,7 @@
     {
       "identity" : "arcgis-runtime-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://gitee.com/mirrors_Esri/arcgis-runtime-ios.git",
+      "location" : "https://github.com/esri/arcgis-runtime-ios",
       "state" : {
         "revision" : "cf8338c283184808fb05d3bd26abc7187bc1cb1e",
         "version" : "100.15.1"

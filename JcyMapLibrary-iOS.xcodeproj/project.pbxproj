@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		814EB57D29B392F8000CC9FE /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 814EB57C29B392F8000CC9FE /* ArcGIS */; };
+		811EBF4B29C2AF4F00E54BDB /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 811EBF4A29C2AF4F00E54BDB /* ArcGIS */; };
 		814FD62529B5B3EF00A54771 /* TianDiTuLayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62429B5B3EF00A54771 /* TianDiTuLayerInfo.swift */; };
 		814FD62729B5BF4100A54771 /* LayerInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62629B5BF4100A54771 /* LayerInfoFactory.swift */; };
 		814FD62929B5E27A00A54771 /* TianDiTuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62829B5E27A00A54771 /* TianDiTuLayer.swift */; };
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				814EB57D29B392F8000CC9FE /* ArcGIS in Frameworks */,
+				811EBF4B29C2AF4F00E54BDB /* ArcGIS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +184,7 @@
 			);
 			name = "JcyMapLibrary- iOS";
 			packageProductDependencies = (
-				814EB57C29B392F8000CC9FE /* ArcGIS */,
+				811EBF4A29C2AF4F00E54BDB /* ArcGIS */,
 			);
 			productName = JcyMapLibrary;
 			productReference = 81DC54A129B31E9E006488B4 /* JcyMapLibrary- iOS.app */;
@@ -259,7 +259,7 @@
 			);
 			mainGroup = 81DC549829B31E9E006488B4;
 			packageReferences = (
-				814EB57B29B392F8000CC9FE /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */,
+				811EBF4929C2AF4F00E54BDB /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */,
 			);
 			productRefGroup = 81DC54A229B31E9E006488B4 /* Products */;
 			projectDirPath = "";
@@ -641,9 +641,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		814EB57B29B392F8000CC9FE /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */ = {
+		811EBF4929C2AF4F00E54BDB /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://gitee.com/mirrors_Esri/arcgis-runtime-ios.git";
+			repositoryURL = "https://github.com/esri/arcgis-runtime-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 100.0.0;
@@ -652,9 +652,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		814EB57C29B392F8000CC9FE /* ArcGIS */ = {
+		811EBF4A29C2AF4F00E54BDB /* ArcGIS */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 814EB57B29B392F8000CC9FE /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */;
+			package = 811EBF4929C2AF4F00E54BDB /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */;
 			productName = ArcGIS;
 		};
 /* End XCSwiftPackageProductDependency section */
