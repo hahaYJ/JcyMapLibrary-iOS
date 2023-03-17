@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		811EBF4B29C2AF4F00E54BDB /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 811EBF4A29C2AF4F00E54BDB /* ArcGIS */; };
 		8123A9D829C30FC80040983C /* JcyMapLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8123A9D729C30FC80040983C /* JcyMapLibraryTests.swift */; };
 		814FD62529B5B3EF00A54771 /* TianDiTuLayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62429B5B3EF00A54771 /* TianDiTuLayerInfo.swift */; };
 		814FD62729B5BF4100A54771 /* LayerInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62629B5BF4100A54771 /* LayerInfoFactory.swift */; };
@@ -35,6 +34,7 @@
 		81DC54B629B31E9F006488B4 /* JcyMapLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC54B529B31E9F006488B4 /* JcyMapLibraryTests.swift */; };
 		81DC54C029B31E9F006488B4 /* JcyMapLibraryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC54BF29B31E9F006488B4 /* JcyMapLibraryUITests.swift */; };
 		81DC54C229B31E9F006488B4 /* JcyMapLibraryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC54C129B31E9F006488B4 /* JcyMapLibraryUITestsLaunchTests.swift */; };
+		96786A2B29C40053002410C3 /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 96786A2A29C40053002410C3 /* ArcGIS */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,13 +58,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 81DC54A029B31E9E006488B4;
 			remoteInfo = "JcyMapLibrary- iOS";
-		};
-		8182C42329C3D96C0040C3B2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 81DC549929B31E9E006488B4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8182C40F29C3D96B0040C3B2;
-			remoteInfo = JcyMapFramework;
 		};
 		81DC54B229B31E9F006488B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -97,8 +90,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8123A9C929C30FC80040983C /* JcyMapLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JcyMapLibrary.h; sourceTree = "<group>"; };
-		8123A9CA29C30FC80040983C /* JcyMapLibrary.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = JcyMapLibrary.docc; sourceTree = "<group>"; };
 		8123A9D029C30FC80040983C /* JcyMapLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JcyMapLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8123A9D729C30FC80040983C /* JcyMapLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcyMapLibraryTests.swift; sourceTree = "<group>"; };
 		814FD62329B5AFEB00A54771 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -138,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96786A2B29C40053002410C3 /* ArcGIS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +145,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				811EBF4B29C2AF4F00E54BDB /* ArcGIS in Frameworks */,
 				8182C42529C3D96C0040C3B2 /* JcyMapFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,15 +166,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8123A9C829C30FC80040983C /* JcyMapLibrary */ = {
-			isa = PBXGroup;
-			children = (
-				8123A9C929C30FC80040983C /* JcyMapLibrary.h */,
-				8123A9CA29C30FC80040983C /* JcyMapLibrary.docc */,
-			);
-			path = JcyMapLibrary;
-			sourceTree = "<group>";
-		};
 		8123A9D629C30FC80040983C /* JcyMapLibraryTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,7 +220,6 @@
 				81DC54A329B31E9E006488B4 /* JcyMapLibrary */,
 				81DC54B429B31E9F006488B4 /* JcyMapLibraryTests */,
 				81DC54BE29B31E9F006488B4 /* JcyMapLibraryUITests */,
-				8123A9C829C30FC80040983C /* JcyMapLibrary */,
 				8123A9D629C30FC80040983C /* JcyMapLibraryTests */,
 				8182C41129C3D96C0040C3B2 /* JcyMapFramework */,
 				8182C41F29C3D96C0040C3B2 /* JcyMapFrameworkTests */,
@@ -340,9 +321,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				8182C42E29C3D9820040C3B2 /* PBXTargetDependency */,
+				96786A2829C3FEAC002410C3 /* PBXTargetDependency */,
 			);
 			name = JcyMapFramework;
+			packageProductDependencies = (
+				96786A2A29C40053002410C3 /* ArcGIS */,
+			);
 			productName = JcyMapFramework;
 			productReference = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */;
 			productType = "com.apple.product-type.framework";
@@ -378,12 +362,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				8139124429C3D55300D6E630 /* PBXTargetDependency */,
-				8182C42429C3D96C0040C3B2 /* PBXTargetDependency */,
 			);
 			name = "JcyMapLibrary- iOS";
 			packageProductDependencies = (
-				811EBF4A29C2AF4F00E54BDB /* ArcGIS */,
 			);
 			productName = JcyMapLibrary;
 			productReference = 81DC54A129B31E9E006488B4 /* JcyMapLibrary- iOS.app */;
@@ -469,7 +450,7 @@
 			);
 			mainGroup = 81DC549829B31E9E006488B4;
 			packageReferences = (
-				811EBF4929C2AF4F00E54BDB /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */,
+				96786A2929C40053002410C3 /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */,
 			);
 			productRefGroup = 81DC54A229B31E9E006488B4 /* Products */;
 			projectDirPath = "";
@@ -604,10 +585,6 @@
 			target = 81DC54A029B31E9E006488B4 /* JcyMapLibrary- iOS */;
 			targetProxy = 8123A9D429C30FC80040983C /* PBXContainerItemProxy */;
 		};
-		8139124429C3D55300D6E630 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 8139124329C3D55300D6E630 /* ArcGIS */;
-		};
 		8182C41C29C3D96C0040C3B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8182C40F29C3D96B0040C3B2 /* JcyMapFramework */;
@@ -618,15 +595,6 @@
 			target = 81DC54A029B31E9E006488B4 /* JcyMapLibrary- iOS */;
 			targetProxy = 8182C41D29C3D96C0040C3B2 /* PBXContainerItemProxy */;
 		};
-		8182C42429C3D96C0040C3B2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8182C40F29C3D96B0040C3B2 /* JcyMapFramework */;
-			targetProxy = 8182C42329C3D96C0040C3B2 /* PBXContainerItemProxy */;
-		};
-		8182C42E29C3D9820040C3B2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 8182C42D29C3D9820040C3B2 /* ArcGIS */;
-		};
 		81DC54B329B31E9F006488B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 81DC54A029B31E9E006488B4 /* JcyMapLibrary- iOS */;
@@ -636,6 +604,10 @@
 			isa = PBXTargetDependency;
 			target = 81DC54A029B31E9E006488B4 /* JcyMapLibrary- iOS */;
 			targetProxy = 81DC54BC29B31E9F006488B4 /* PBXContainerItemProxy */;
+		};
+		96786A2829C3FEAC002410C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 96786A2729C3FEAC002410C3 /* ArcGIS */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1107,22 +1079,25 @@
 				minimumVersion = 100.0.0;
 			};
 		};
+		96786A2929C40053002410C3 /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/esri/arcgis-runtime-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 100.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		811EBF4A29C2AF4F00E54BDB /* ArcGIS */ = {
+		96786A2729C3FEAC002410C3 /* ArcGIS */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 811EBF4929C2AF4F00E54BDB /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */;
 			productName = ArcGIS;
 		};
-		8139124329C3D55300D6E630 /* ArcGIS */ = {
+		96786A2A29C40053002410C3 /* ArcGIS */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 811EBF4929C2AF4F00E54BDB /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */;
-			productName = ArcGIS;
-		};
-		8182C42D29C3D9820040C3B2 /* ArcGIS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 811EBF4929C2AF4F00E54BDB /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */;
+			package = 96786A2929C40053002410C3 /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */;
 			productName = ArcGIS;
 		};
 /* End XCSwiftPackageProductDependency section */

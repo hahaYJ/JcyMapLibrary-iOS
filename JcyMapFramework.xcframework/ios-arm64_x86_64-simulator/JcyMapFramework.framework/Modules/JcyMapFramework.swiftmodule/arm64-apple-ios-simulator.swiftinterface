@@ -1,0 +1,77 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name JcyMapFramework
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import ArcGIS
+import Foundation
+@_exported import JcyMapFramework
+import Swift
+import _Concurrency
+import _StringProcessing
+@_hasMissingDesignatedInitializers public class TianDiTuLayerBuilder {
+  public func setLayerType(layerType: JcyMapFramework.TianDiTuLayerTypes) -> JcyMapFramework.TianDiTuLayerBuilder
+  public func setCachePath(cachePath: Swift.String) -> JcyMapFramework.TianDiTuLayerBuilder
+  public func setToken(token: Swift.String) -> JcyMapFramework.TianDiTuLayerBuilder
+  public func build() -> JcyMapFramework.TianDiTuLayer?
+  @objc deinit
+}
+public enum TianDiTuLayerTypes : Swift.Int {
+  case TIANDITU_VECTOR_MERCATOR
+  case TIANDITU_VECTOR_ANNOTATION_CHINESE_MERCATOR
+  case TIANDITU_VECTOR_ANNOTATION_ENGLISH_MERCATOR
+  case TIANDITU_IMAGE_MERCATOR
+  case TIANDITU_IMAGE_ANNOTATION_CHINESE_MERCATOR
+  case TIANDITU_IMAGE_ANNOTATION_ENGLISH_MERCATOR
+  case TIANDITU_TERRAIN_MERCATOR
+  case TIANDITU_TERRAIN_ANNOTATION_CHINESE_MERCATOR
+  case TIANDITU_VECTOR_2000
+  case TIANDITU_VECTOR_ANNOTATION_CHINESE_2000
+  case TIANDITU_VECTOR_ANNOTATION_ENGLISH_2000
+  case TIANDITU_IMAGE_2000
+  case TIANDITU_IMAGE_ANNOTATION_CHINESE_2000
+  case TIANDITU_IMAGE_ANNOTATION_ENGLISH_2000
+  case TIANDITU_TERRAIN_2000
+  case TIANDITU_TERRAIN_ANNOTATION_CHINESE_2000
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class TianDiTuLayerInfo {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class LayerInfoFactory {
+  public static func getLayerInfo(layerType: JcyMapFramework.TianDiTuLayerTypes) -> JcyMapFramework.TianDiTuLayerInfo
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TianDiTuLayer : ArcGIS.AGSImageTiledLayer {
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class JCYMapView : ArcGIS.AGSMapView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) public func initMapView(_ onLoad: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public func moveToGeometry(extent: ArcGIS.AGSGeometry, pindding: Swift.Double, moveUp: Swift.Bool)
+  @objc deinit
+}
+extension JcyMapFramework.JCYMapView : ArcGIS.AGSGeoViewTouchDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func geoView(_ geoView: ArcGIS.AGSGeoView, didTapAtScreenPoint screenPoint: CoreFoundation.CGPoint, mapPoint: ArcGIS.AGSPoint)
+}
+extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
+  @_Concurrency.MainActor(unsafe) public func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) public func addPictureAngle(azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) public func clearGraphicsSelection()
+  @_Concurrency.MainActor(unsafe) public func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
+}
+extension Swift.String {
+  public func toParsePolygon() -> ArcGIS.AGSPolygon?
+}
+public protocol JCYMapViewDelegate {
+  func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
+  func addPictureAngle(azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
+  func clearGraphicsSelection()
+  func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
+}
+extension JcyMapFramework.TianDiTuLayerTypes : Swift.Equatable {}
+extension JcyMapFramework.TianDiTuLayerTypes : Swift.Hashable {}
+extension JcyMapFramework.TianDiTuLayerTypes : Swift.RawRepresentable {}

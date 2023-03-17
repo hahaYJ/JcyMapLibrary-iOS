@@ -1,0 +1,11 @@
+framework module JcyMapFramework {
+  umbrella header "JcyMapFramework.h"
+
+  export *
+  module * { export * }
+}
+
+module JcyMapFramework.Swift {
+  header "JcyMapFramework-Swift.h"
+  requires objc
+}
