@@ -17,12 +17,14 @@ struct MapView: UIViewRepresentable {
                 print(graphic)
             }
             
+            
+            let arrowImg = UIImage(named: "map_arrow")
             // 添加方向角
-            mapView.addPictureAngle(azimuth: 242.06, longitude: 111.30997668, latitude: 23.56701794, id: "Angle1", isSelected: true) { graphic in
+            mapView.addPictureAngle(arrowImage: arrowImg, azimuth: 242.06, longitude: 111.30997668, latitude: 23.56701794, id: "Angle1", isSelected: true) { graphic in
                 print(graphic)
             }
             // 添加方向角
-            mapView.addPictureAngle(azimuth: 131.44, longitude: 111.30974884, latitude: 23.56688617, id: "Angle2", isSelected: false) { graphic in
+            mapView.addPictureAngle(arrowImage: arrowImg, azimuth: 131.44, longitude: 111.30974884, latitude: 23.56688617, id: "Angle2", isSelected: false) { graphic in
                 print(graphic)
             }
             

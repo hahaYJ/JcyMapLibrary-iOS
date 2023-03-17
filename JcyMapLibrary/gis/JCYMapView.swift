@@ -39,7 +39,7 @@ public class JCYMapView: AGSMapView {
     private var mAllPolygonExtent: AGSEnvelope?
     // 方向角缓存的图形
     private var angleGeometryMap: [String : AGSGraphic] = [:]
-        
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -206,9 +206,9 @@ extension JCYMapView : JCYMapViewDelegate {
     /**
      添加方向角
      */
-    public func addPictureAngle(azimuth: Float, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
-        guard let arrowImg = UIImage(named: "map_arrow") else { return }
-        let future = AGSPictureMarkerSymbol(image: arrowImg)
+    public func addPictureAngle(arrowImage: UIImage?, azimuth: Float, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
+        guard let arrowImage = arrowImage else { return }
+        let future = AGSPictureMarkerSymbol(image: arrowImage)
         future.height = 30
         future.width = 17.4
         future.angle = azimuth
@@ -269,19 +269,19 @@ extension String {
         
         coordinates.forEach { coordinate in
             guard let rings = coordinate as? Array<Any> else { return }
-//            let partCollection = AGSMutablePartCollection(spatialReference: spatialReference)
+            //            let partCollection = AGSMutablePartCollection(spatialReference: spatialReference)
             let pointCollection = AGSMutablePointCollection(spatialReference: spatialReference)
-
+            
             rings.forEach { ring in
                 guard let points = ring as? Array<Any> else { return }
-
+                
                 points.forEach { point in
                     guard let pt = point as? Array<Any> else { return }
                     if (pt.count >= 2) {
                         pointCollection.addPointWith(x: pt[0] as? Double ?? 0, y: pt[1] as? Double ?? 0)
                     }
                 }
-//                partCollection.add(AGSMutablePart(points: pointCollection.array()))
+                //                partCollection.add(AGSMutablePart(points: pointCollection.array()))
             }
             multiPolygon.append(AGSPolygon(points: pointCollection.array()))
         }

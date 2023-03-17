@@ -18,7 +18,7 @@ public protocol JCYMapViewDelegate {
     /**
      添加方向角
      */
-    func addPictureAngle(azimuth: Float, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
+    func addPictureAngle(arrowImage: UIImage?, azimuth: Float, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
     
     /**
      清空图形选中状态
