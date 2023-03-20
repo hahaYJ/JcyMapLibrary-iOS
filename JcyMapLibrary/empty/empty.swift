@@ -7,3 +7,10 @@
 
 import Foundation
 import ArcGIS
+
+
+class GisEmpty {
+    init() {
+        _ = AGSMapView()
+    }
+}
