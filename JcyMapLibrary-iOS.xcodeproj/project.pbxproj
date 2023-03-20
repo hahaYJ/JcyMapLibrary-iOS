@@ -11,6 +11,7 @@
 		814FD62529B5B3EF00A54771 /* TianDiTuLayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62429B5B3EF00A54771 /* TianDiTuLayerInfo.swift */; };
 		814FD62729B5BF4100A54771 /* LayerInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62629B5BF4100A54771 /* LayerInfoFactory.swift */; };
 		814FD62929B5E27A00A54771 /* TianDiTuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62829B5E27A00A54771 /* TianDiTuLayer.swift */; };
+		8163A40D29C7F412004C201A /* empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8163A40C29C7F412004C201A /* empty.swift */; };
 		8182C41429C3D96C0040C3B2 /* JcyMapFramework.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8182C41329C3D96C0040C3B2 /* JcyMapFramework.docc */; };
 		8182C41A29C3D96C0040C3B2 /* JcyMapFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */; };
 		8182C42129C3D96C0040C3B2 /* JcyMapFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182C42029C3D96C0040C3B2 /* JcyMapFrameworkTests.swift */; };
@@ -97,6 +98,7 @@
 		814FD62629B5BF4100A54771 /* LayerInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerInfoFactory.swift; sourceTree = "<group>"; };
 		814FD62829B5E27A00A54771 /* TianDiTuLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayer.swift; sourceTree = "<group>"; };
 		814FD62A29BA1F1800A54771 /* JcyMapLibrary--iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "JcyMapLibrary--iOS-Info.plist"; sourceTree = "<group>"; };
+		8163A40C29C7F412004C201A /* empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = empty.swift; sourceTree = "<group>"; };
 		8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JcyMapFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8182C41229C3D96C0040C3B2 /* JcyMapFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JcyMapFramework.h; sourceTree = "<group>"; };
 		8182C41329C3D96C0040C3B2 /* JcyMapFramework.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = JcyMapFramework.docc; sourceTree = "<group>"; };
@@ -174,6 +176,14 @@
 			path = JcyMapLibraryTests;
 			sourceTree = "<group>";
 		};
+		8163A40E29C7F4D5004C201A /* empty */ = {
+			isa = PBXGroup;
+			children = (
+				8163A40C29C7F412004C201A /* empty.swift */,
+			);
+			path = empty;
+			sourceTree = "<group>";
+		};
 		8182C41129C3D96C0040C3B2 /* JcyMapFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +253,7 @@
 		81DC54A329B31E9E006488B4 /* JcyMapLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				8163A40E29C7F4D5004C201A /* empty */,
 				81D7B0AD29B426B10074ED03 /* gis */,
 				81DC54A429B31E9E006488B4 /* JcyMapLibraryApp.swift */,
 				81DC54A629B31E9E006488B4 /* ContentView.swift */,
@@ -549,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8163A40D29C7F412004C201A /* empty.swift in Sources */,
 				81D7B0AF29B427870074ED03 /* JCYMapView.swift in Sources */,
 				81D7B0B429B588AD0074ED03 /* TianDiTuLayerBuilder.swift in Sources */,
 				81DC54A729B31E9E006488B4 /* ContentView.swift in Sources */,

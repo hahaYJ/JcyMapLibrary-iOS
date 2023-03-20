@@ -1358,12 +1358,26 @@
           {
             "kind": "Function",
             "name": "addPictureAngle",
-            "printedName": "addPictureAngle(azimuth:longitude:latitude:id:isSelected:onClickGeometry:)",
+            "printedName": "addPictureAngle(arrowImage:azimuth:longitude:latitude:id:isSelected:onClickGeometry:)",
             "children": [
               {
                 "kind": "TypeNominal",
                 "name": "Void",
                 "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
               },
               {
                 "kind": "TypeNominal",
@@ -1431,8 +1445,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:15JcyMapFramework10JCYMapViewC15addPictureAngle7azimuth9longitude8latitude2id10isSelected15onClickGeometryySf_S2dSSSgSbySo10AGSGraphicCcSgtF",
-            "mangledName": "$s15JcyMapFramework10JCYMapViewC15addPictureAngle7azimuth9longitude8latitude2id10isSelected15onClickGeometryySf_S2dSSSgSbySo10AGSGraphicCcSgtF",
+            "usr": "s:15JcyMapFramework10JCYMapViewC15addPictureAngle10arrowImage7azimuth9longitude8latitude2id10isSelected15onClickGeometryySo7UIImageCSg_SfS2dSSSgSbySo10AGSGraphicCcSgtF",
+            "mangledName": "$s15JcyMapFramework10JCYMapViewC15addPictureAngle10arrowImage7azimuth9longitude8latitude2id10isSelected15onClickGeometryySo7UIImageCSg_SfS2dSSSgSbySo10AGSGraphicCcSgtF",
             "moduleName": "JcyMapFramework",
             "declAttributes": [
               "Custom",
@@ -1710,12 +1724,26 @@
           {
             "kind": "Function",
             "name": "addPictureAngle",
-            "printedName": "addPictureAngle(azimuth:longitude:latitude:id:isSelected:onClickGeometry:)",
+            "printedName": "addPictureAngle(arrowImage:azimuth:longitude:latitude:id:isSelected:onClickGeometry:)",
             "children": [
               {
                 "kind": "TypeNominal",
                 "name": "Void",
                 "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
               },
               {
                 "kind": "TypeNominal",
@@ -1783,8 +1811,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:15JcyMapFramework18JCYMapViewDelegateP15addPictureAngle7azimuth9longitude8latitude2id10isSelected15onClickGeometryySf_S2dSSSgSbySo10AGSGraphicCcSgtF",
-            "mangledName": "$s15JcyMapFramework18JCYMapViewDelegateP15addPictureAngle7azimuth9longitude8latitude2id10isSelected15onClickGeometryySf_S2dSSSgSbySo10AGSGraphicCcSgtF",
+            "usr": "s:15JcyMapFramework18JCYMapViewDelegateP15addPictureAngle10arrowImage7azimuth9longitude8latitude2id10isSelected15onClickGeometryySo7UIImageCSg_SfS2dSSSgSbySo10AGSGraphicCcSgtF",
+            "mangledName": "$s15JcyMapFramework18JCYMapViewDelegateP15addPictureAngle10arrowImage7azimuth9longitude8latitude2id10isSelected15onClickGeometryySo7UIImageCSg_SfS2dSSSgSbySo10AGSGraphicCcSgtF",
             "moduleName": "JcyMapFramework",
             "genericSig": "<τ_0_0 where τ_0_0 : JcyMapFramework.JCYMapViewDelegate>",
             "sugared_genericSig": "<Self where Self : JcyMapFramework.JCYMapViewDelegate>",

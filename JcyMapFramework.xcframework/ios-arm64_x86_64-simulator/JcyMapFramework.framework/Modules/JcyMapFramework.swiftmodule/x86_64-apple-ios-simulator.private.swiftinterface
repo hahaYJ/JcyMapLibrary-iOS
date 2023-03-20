@@ -59,7 +59,7 @@ extension JcyMapFramework.JCYMapView : ArcGIS.AGSGeoViewTouchDelegate {
 }
 extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
   @_Concurrency.MainActor(unsafe) public func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
-  @_Concurrency.MainActor(unsafe) public func addPictureAngle(azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) public func addPictureAngle(arrowImage: UIKit.UIImage?, azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func clearGraphicsSelection()
   @_Concurrency.MainActor(unsafe) public func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
 }
@@ -68,7 +68,7 @@ extension Swift.String {
 }
 public protocol JCYMapViewDelegate {
   func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
-  func addPictureAngle(azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
+  func addPictureAngle(arrowImage: UIKit.UIImage?, azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   func clearGraphicsSelection()
   func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
 }
