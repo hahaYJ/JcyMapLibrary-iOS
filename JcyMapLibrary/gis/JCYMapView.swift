@@ -37,6 +37,8 @@ public class JCYMapView: AGSMapView {
     private var mCurrentLocationPoint: AGSPoint?
     // 所有多边形范围统计
     private var mAllPolygonExtent: AGSEnvelope?
+    // 所有绘图范围统计
+    private var mDrawGeometryExtent: AGSEnvelope?
     // 方向角缓存的图形
     private var angleGeometryMap: [String : AGSGraphic] = [:]
     
@@ -127,6 +129,17 @@ public class JCYMapView: AGSMapView {
     }
     
     /**
+     * 统计所有绘图范围
+     */
+    private func statisticsAllDrawGeometryExtent(geometry: AGSGeometry) {
+        if (mDrawGeometryExtent == nil) {
+            mDrawGeometryExtent = geometry.extent
+        } else {
+            mDrawGeometryExtent = AGSGeometryEngine.union(ofGeometry1: mDrawGeometryExtent!, geometry2: geometry.extent)?.extent
+        }
+    }
+    
+    /**
      移动到图斑
      */
     public func moveToGeometry(extent: AGSGeometry, pindding: Double, moveUp: Bool) {
@@ -170,6 +183,36 @@ extension JCYMapView : AGSGeoViewTouchDelegate {
  图形操作
  */
 extension JCYMapView : JCYMapViewDelegate {
+    
+    /**
+     * 添加绘制图形
+     */
+    public func addAreaGeometry(geometryJson: String?, id: String?, showTag: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
+        guard let geometryJson = geometryJson else { return }
+        guard let geometryDictionary = geometryJson.toDictionary() else { return }
+        guard let drawGeometry = (try? AGSGeometry.fromJSON(geometryDictionary) as? AGSGeometry) else { return  }
+        statisticsAllDrawGeometryExtent(geometry: drawGeometry)
+
+        // 多边形边框、内部填充
+        let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.white, width: 2)
+        let fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 121 / 255, green: 67 / 255, blue: 39 / 255, alpha: 0.7), outline: lineSymbol)
+
+        // 添加图形
+        let graphic = AGSGraphic(geometry: drawGeometry, symbol: fillSymbol)
+        graphic.attributes["id"] = id
+        graphic.attributes["onClickGeometry"] = onClickGeometry
+        mGraphicsOverlay.graphics.add(graphic)
+
+        // 添加文字
+        let txtGraphic = AGSGraphic(geometry: drawGeometry, symbol: getTextSymbol(text: showTag ?? "", textSize: 10))
+        txtGraphic.attributes["id"] = id
+        txtGraphic.attributes["onClickGeometry"] = onClickGeometry
+        mGraphicsOverlay.graphics.add(txtGraphic)
+
+        if (isMoveToGeometry) {
+            moveToGeometry(extent: drawGeometry, pindding: pindding, moveUp: false)
+        }
+    }
     
     /**
      添加多边形
@@ -248,45 +291,5 @@ extension JCYMapView : JCYMapViewDelegate {
     public func selecteAngle(id: String?, isSelected: Bool) {
         guard let id = id else { return }
         angleGeometryMap[id]?.isSelected = isSelected
-    }
-}
-
-
-
-
-/**
- json数据转多边形
- */
-extension String {
-    public func toParsePolygon() -> AGSPolygon? {
-        guard let data = self.data(using: .utf8) else { return nil }
-        guard let dit = try? JSONSerialization.jsonObject(with: data) as? Dictionary<String, Any> else { return nil }
-        guard let geometry = dit["geometry"] as? Dictionary<String, Any> else { return nil }
-        guard let coordinates = geometry["coordinates"] as? Array<Any> else { return nil }
-        
-        let spatialReference = AGSSpatialReference(wkid: 4524)
-        var multiPolygon = [AGSGeometry]()
-        
-        coordinates.forEach { coordinate in
-            guard let rings = coordinate as? Array<Any> else { return }
-            //            let partCollection = AGSMutablePartCollection(spatialReference: spatialReference)
-            let pointCollection = AGSMutablePointCollection(spatialReference: spatialReference)
-            
-            rings.forEach { ring in
-                guard let points = ring as? Array<Any> else { return }
-                
-                points.forEach { point in
-                    guard let pt = point as? Array<Any> else { return }
-                    if (pt.count >= 2) {
-                        pointCollection.addPointWith(x: pt[0] as? Double ?? 0, y: pt[1] as? Double ?? 0)
-                    }
-                }
-                //                partCollection.add(AGSMutablePart(points: pointCollection.array()))
-            }
-            multiPolygon.append(AGSPolygon(points: pointCollection.array()))
-        }
-        
-        guard let retPolygon = AGSGeometryEngine.unionGeometries(multiPolygon) as? AGSPolygon else { return nil }
-        return retPolygon
     }
 }

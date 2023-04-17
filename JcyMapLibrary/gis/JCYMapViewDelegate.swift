@@ -11,10 +11,15 @@ import ArcGIS
 public protocol JCYMapViewDelegate {
     
     /**
+     * 添加绘制图形
+     */
+    func addAreaGeometry(geometryJson: String?, id: String?, showTag: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
+    
+    /**
      添加图斑
      */
     func addProjectPolygon(polygon: AGSPolygon?, id: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
-
+    
     /**
      添加方向角
      */
