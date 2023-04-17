@@ -15,6 +15,23 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "ArcGIS",
+        "printedName": "ArcGIS",
+        "declKind": "Import",
+        "moduleName": "JcyMapFramework"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "JcyMapFramework",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "TypeDecl",
         "name": "TianDiTuLayerBuilder",
         "printedName": "TianDiTuLayerBuilder",
@@ -1268,6 +1285,109 @@
           },
           {
             "kind": "Function",
+            "name": "addAreaGeometry",
+            "printedName": "addAreaGeometry(geometryJson:id:showTag:pindding:isMoveToGeometry:onClickGeometry:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((ArcGIS.AGSGraphic) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(ArcGIS.AGSGraphic) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AGSGraphic",
+                        "printedName": "ArcGIS.AGSGraphic",
+                        "usr": "c:objc(cs)AGSGraphic"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:15JcyMapFramework10JCYMapViewC15addAreaGeometry12geometryJson2id7showTag8pindding08isMoveToH007onClickH0ySSSg_A2KSdSbySo10AGSGraphicCcSgtF",
+            "mangledName": "$s15JcyMapFramework10JCYMapViewC15addAreaGeometry12geometryJson2id7showTag8pindding08isMoveToH007onClickH0ySSSg_A2KSdSbySo10AGSGraphicCcSgtF",
+            "moduleName": "JcyMapFramework",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "addProjectPolygon",
             "printedName": "addProjectPolygon(polygon:id:pindding:isMoveToGeometry:onClickGeometry:)",
             "children": [
@@ -1633,6 +1753,110 @@
         "children": [
           {
             "kind": "Function",
+            "name": "addAreaGeometry",
+            "printedName": "addAreaGeometry(geometryJson:id:showTag:pindding:isMoveToGeometry:onClickGeometry:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((ArcGIS.AGSGraphic) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(ArcGIS.AGSGraphic) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AGSGraphic",
+                        "printedName": "ArcGIS.AGSGraphic",
+                        "usr": "c:objc(cs)AGSGraphic"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:15JcyMapFramework18JCYMapViewDelegateP15addAreaGeometry12geometryJson2id7showTag8pindding08isMoveToI007onClickI0ySSSg_A2KSdSbySo10AGSGraphicCcSgtF",
+            "mangledName": "$s15JcyMapFramework18JCYMapViewDelegateP15addAreaGeometry12geometryJson2id7showTag8pindding08isMoveToI007onClickI0ySSSg_A2KSdSbySo10AGSGraphicCcSgtF",
+            "moduleName": "JcyMapFramework",
+            "genericSig": "<τ_0_0 where τ_0_0 : JcyMapFramework.JCYMapViewDelegate>",
+            "sugared_genericSig": "<Self where Self : JcyMapFramework.JCYMapViewDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "addProjectPolygon",
             "printedName": "addProjectPolygon(polygon:id:pindding:isMoveToGeometry:onClickGeometry:)",
             "children": [
@@ -1930,7 +2154,39 @@
             "mangledName": "$sSS15JcyMapFrameworkE14toParsePolygonSo10AGSPolygonCSgyF",
             "moduleName": "JcyMapFramework",
             "declAttributes": [
-              "AccessControl"
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "toDictionary",
+            "printedName": "toDictionary()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSDictionary?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSDictionary",
+                    "printedName": "Foundation.NSDictionary",
+                    "usr": "c:objc(cs)NSDictionary"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:SS15JcyMapFrameworkE12toDictionarySo12NSDictionaryCSgyF",
+            "mangledName": "$sSS15JcyMapFrameworkE12toDictionarySo12NSDictionaryCSgyF",
+            "moduleName": "JcyMapFramework",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
             ],
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
@@ -2471,6 +2727,62 @@
   },
   "ConstValues": [
     {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
+      "kind": "StringLiteral",
+      "offset": 487,
+      "length": 10,
+      "value": "\"geometry\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
+      "kind": "StringLiteral",
+      "offset": 588,
+      "length": 13,
+      "value": "\"coordinates\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 704,
+      "length": 4,
+      "value": "4524"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1369,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1433,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1450,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1459,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1476,
+      "length": 1,
+      "value": "0"
+    },
+    {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayerBuilder.swift",
       "kind": "StringLiteral",
       "offset": 310,
@@ -2905,6 +3217,27 @@
       "value": "\"\""
     },
     {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayerInfo.swift",
+      "kind": "Array",
+      "offset": 1071,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayerInfo.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1133,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayerInfo.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1136,
+      "length": 1,
+      "value": "0"
+    },
+    {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/LayerInfoFactory.swift",
       "kind": "StringLiteral",
       "offset": 214,
@@ -3091,7 +3424,7 @@
       "kind": "IntegerLiteral",
       "offset": 2526,
       "length": 4,
-      "value": "180"
+      "value": "-180"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/LayerInfoFactory.swift",
@@ -3105,7 +3438,7 @@
       "kind": "FloatLiteral",
       "offset": 2655,
       "length": 17,
-      "value": "20037508.3427892"
+      "value": "-20037508.3427892"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/LayerInfoFactory.swift",
@@ -3133,14 +3466,14 @@
       "kind": "IntegerLiteral",
       "offset": 2887,
       "length": 4,
-      "value": "180"
+      "value": "-180"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/LayerInfoFactory.swift",
       "kind": "IntegerLiteral",
       "offset": 2936,
       "length": 3,
-      "value": "90"
+      "value": "-90"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/LayerInfoFactory.swift",
@@ -3161,14 +3494,14 @@
       "kind": "FloatLiteral",
       "offset": 3084,
       "length": 17,
-      "value": "20037508.3427892"
+      "value": "-20037508.3427892"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/LayerInfoFactory.swift",
       "kind": "FloatLiteral",
       "offset": 3150,
       "length": 17,
-      "value": "20037508.3427892"
+      "value": "-20037508.3427892"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/LayerInfoFactory.swift",
@@ -3969,6 +4302,272 @@
       "value": "\"\""
     },
     {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 926,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 1385,
+      "length": 218,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 1402,
+      "length": 1,
+      "value": "\"?service=wmts&request=gettile&version=1.0.0&tk=\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 1466,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 1469,
+      "length": 1,
+      "value": "\"&layer=\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 1498,
+      "length": 1,
+      "value": "\"&format=tiles&tilematrixset=\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 1552,
+      "length": 1,
+      "value": "\"&tilecol=\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 1567,
+      "length": 1,
+      "value": "\"&tilerow=\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 1582,
+      "length": 1,
+      "value": "\"&tilematrix=\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 1602,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 2458,
+      "length": 5,
+      "value": "\"GET\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 2489,
+      "length": 119,
+      "value": "\"Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/111.0.0.0 Safari\/537.36\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 2630,
+      "length": 12,
+      "value": "\"User-agent\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 2669,
+      "length": 27,
+      "value": "\"Upgrade-Insecure-Requests\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 2718,
+      "length": 27,
+      "value": "\"Upgrade-Insecure-Requests\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 2772,
+      "length": 137,
+      "value": "\"text\/html,application\/xhtml+xml,application\/xml;q=0.9,image\/avif,image\/webp,image\/apng,*\/*;q=0.8,application\/signed-exchange;v=b3;q=0.7\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 2931,
+      "length": 8,
+      "value": "\"Accept\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 2966,
+      "length": 15,
+      "value": "\"gzip, deflate\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3003,
+      "length": 17,
+      "value": "\"Accept-Encoding\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3047,
+      "length": 16,
+      "value": "\"zh-CN,zh;q=0.9\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3085,
+      "length": 17,
+      "value": "\"Accept-Language\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3129,
+      "length": 11,
+      "value": "\"max-age=0\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3162,
+      "length": 15,
+      "value": "\"Cache-Control\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3204,
+      "length": 12,
+      "value": "\"keep-alive\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3238,
+      "length": 12,
+      "value": "\"Connection\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3277,
+      "length": 17,
+      "value": "\"t0.tianditu.com\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3316,
+      "length": 6,
+      "value": "\"Host\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3792,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3818,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3847,
+      "length": 34,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3860,
+      "length": 1,
+      "value": "\"\/\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3871,
+      "length": 1,
+      "value": "\"\/\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3880,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3971,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 3996,
+      "length": 32,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 4009,
+      "length": 1,
+      "value": "\"\/\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 4016,
+      "length": 1,
+      "value": "\"x\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/tianditu\/TianDiTuLayer.swift",
+      "kind": "StringLiteral",
+      "offset": 4023,
+      "length": 1,
+      "value": "\".tdt\""
+    },
+    {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
       "kind": "StringLiteral",
       "offset": 249,
@@ -3985,9 +4584,408 @@
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
       "kind": "Dictionary",
-      "offset": 1407,
+      "offset": 1489,
       "length": 3,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 1640,
+      "length": 39,
+      "value": "\"init(coder:) has not been implemented\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1824,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2360,
+      "length": 4,
+      "value": "19.0"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 2581,
+      "length": 8,
+      "value": "\"tdtimg\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 2924,
+      "length": 8,
+      "value": "\"tdttxt\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3629,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3673,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4068,
+      "length": 4,
+      "value": "4000"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "FloatLiteral",
+      "offset": 5418,
+      "length": 4,
+      "value": "10.0"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5442,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5475,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5727,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5862,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5930,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6060,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6102,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 6172,
+      "length": 17,
+      "value": "\"onClickGeometry\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7039,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7122,
+      "length": 3,
+      "value": "121"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7128,
+      "length": 3,
+      "value": "255"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7140,
+      "length": 2,
+      "value": "67"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7145,
+      "length": 3,
+      "value": "255"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7156,
+      "length": 2,
+      "value": "39"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7161,
+      "length": 3,
+      "value": "255"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "FloatLiteral",
+      "offset": 7173,
+      "length": 3,
+      "value": "0.7"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 7329,
+      "length": 4,
+      "value": "\"id\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 7367,
+      "length": 17,
+      "value": "\"onClickGeometry\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 7575,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7589,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 7624,
+      "length": 4,
+      "value": "\"id\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 7665,
+      "length": 17,
+      "value": "\"onClickGeometry\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7862,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8357,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 8639,
+      "length": 4,
+      "value": "\"id\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 8677,
+      "length": 17,
+      "value": "\"onClickGeometry\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 8822,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8853,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 8879,
+      "length": 101,
+      "value": "\"...\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8956,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 8979,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9092,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 9127,
+      "length": 4,
+      "value": "\"id\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 9168,
+      "length": 17,
+      "value": "\"onClickGeometry\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9368,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9760,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "FloatLiteral",
+      "offset": 9786,
+      "length": 4,
+      "value": "17.4"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 10193,
+      "length": 4,
+      "value": "\"id\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 10235,
+      "length": 17,
+      "value": "\"onClickGeometry\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "StringLiteral",
+      "offset": 10312,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10593,
+      "length": 3,
+      "value": "136"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10599,
+      "length": 3,
+      "value": "255"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10611,
+      "length": 3,
+      "value": "119"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10617,
+      "length": 3,
+      "value": "255"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10628,
+      "length": 3,
+      "value": "220"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10634,
+      "length": 3,
+      "value": "255"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10646,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/JCYMapView.swift",
+      "kind": "FloatLiteral",
+      "offset": 10806,
+      "length": 3,
+      "value": "0.5"
     }
   ]
 }

@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.1 clang-1403.0.22.11.100)
 // swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name JcyMapFramework
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import ArcGIS
@@ -8,6 +8,10 @@ import Foundation
 import Swift
 import _Concurrency
 import _StringProcessing
+extension Swift.String {
+  public func toParsePolygon() -> ArcGIS.AGSPolygon?
+  public func toDictionary() -> Foundation.NSDictionary?
+}
 @_hasMissingDesignatedInitializers public class TianDiTuLayerBuilder {
   public func setLayerType(layerType: JcyMapFramework.TianDiTuLayerTypes) -> JcyMapFramework.TianDiTuLayerBuilder
   public func setCachePath(cachePath: Swift.String) -> JcyMapFramework.TianDiTuLayerBuilder
@@ -58,15 +62,14 @@ extension JcyMapFramework.JCYMapView : ArcGIS.AGSGeoViewTouchDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func geoView(_ geoView: ArcGIS.AGSGeoView, didTapAtScreenPoint screenPoint: CoreFoundation.CGPoint, mapPoint: ArcGIS.AGSPoint)
 }
 extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
+  @_Concurrency.MainActor(unsafe) public func addAreaGeometry(geometryJson: Swift.String?, id: Swift.String?, showTag: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func addPictureAngle(arrowImage: UIKit.UIImage?, azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func clearGraphicsSelection()
   @_Concurrency.MainActor(unsafe) public func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
 }
-extension Swift.String {
-  public func toParsePolygon() -> ArcGIS.AGSPolygon?
-}
 public protocol JCYMapViewDelegate {
+  func addAreaGeometry(geometryJson: Swift.String?, id: Swift.String?, showTag: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   func addPictureAngle(arrowImage: UIKit.UIImage?, azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   func clearGraphicsSelection()
