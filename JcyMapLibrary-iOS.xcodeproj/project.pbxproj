@@ -207,9 +207,8 @@
 		81D7B0AD29B426B10074ED03 /* gis */ = {
 			isa = PBXGroup;
 			children = (
+				81E449E729F6220B002604C9 /* map */,
 				81D7B0B229B588550074ED03 /* tianditu */,
-				81D7B0AE29B427870074ED03 /* JCYMapView.swift */,
-				81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */,
 			);
 			path = gis;
 			sourceTree = "<group>";
@@ -298,6 +297,15 @@
 				81E449E129ED3018002604C9 /* Extensions.swift */,
 			);
 			path = comm;
+			sourceTree = "<group>";
+		};
+		81E449E729F6220B002604C9 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				81D7B0AE29B427870074ED03 /* JCYMapView.swift */,
+				81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */,
+			);
+			path = map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

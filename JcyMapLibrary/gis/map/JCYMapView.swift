@@ -292,4 +292,12 @@ extension JCYMapView : JCYMapViewDelegate {
         guard let id = id else { return }
         angleGeometryMap[id]?.isSelected = isSelected
     }
+    
+    public func clearAllGraphics() {
+        mGraphicsOverlay.graphics.removeAllObjects()
+        mGraphicsTxtOverlay.graphics.removeAllObjects()
+        mGraphicsScopeOverlay.graphics.removeAllObjects()
+        mOverlayPictureAngle.graphics.removeAllObjects()
+        mAreaGraphics.graphics.removeAllObjects()
+    }
 }

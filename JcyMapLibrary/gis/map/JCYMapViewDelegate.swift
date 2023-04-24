@@ -31,6 +31,11 @@ public protocol JCYMapViewDelegate {
     func clearGraphicsSelection()
     
     /**
+     清空所有图形
+     */
+    func clearAllGraphics()
+    
+    /**
      选中方向角
      */
     func selecteAngle(id: String?, isSelected: Bool)
