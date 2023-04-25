@@ -26,6 +26,21 @@ public protocol JCYMapViewDelegate {
     func addPictureAngle(arrowImage: UIImage?, azimuth: Float, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
     
     /**
+     添加轨迹线
+     */
+    func addGpsRouteLine(points: [AGSPoint], pindding: Double, isMoveToGeometry: Bool)
+    
+    /**
+     添加轨迹
+     */
+    func addGpsRoutePts(point: AGSPoint)
+    
+    /**
+     移除轨迹
+     */
+    func clearGpsRoutePts()
+    
+    /**
      清空图形选中状态
      */
     func clearGraphicsSelection()

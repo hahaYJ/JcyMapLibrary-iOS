@@ -41,6 +41,10 @@ public class JCYMapView: AGSMapView {
     private var mDrawGeometryExtent: AGSEnvelope?
     // 方向角缓存的图形
     private var angleGeometryMap: [String : AGSGraphic] = [:]
+    //GPS轨迹点集合，用户路线测量
+    private var mGpsRoutePts: AGSMutablePointCollection?
+    /** 轨迹线 **/
+    private var gpsRouteLine: AGSSimpleLineSymbol?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -183,7 +187,6 @@ extension JCYMapView : AGSGeoViewTouchDelegate {
  图形操作
  */
 extension JCYMapView : JCYMapViewDelegate {
-    
     /**
      * 添加绘制图形
      */
@@ -299,5 +302,49 @@ extension JCYMapView : JCYMapViewDelegate {
         mGraphicsScopeOverlay.graphics.removeAllObjects()
         mOverlayPictureAngle.graphics.removeAllObjects()
         mAreaGraphics.graphics.removeAllObjects()
+    }
+    
+    /**
+     添加轨迹线
+     */
+    public func addGpsRouteLine(points: [AGSPoint], pindding: Double, isMoveToGeometry: Bool) {
+        let gpsRoutePts = AGSMutablePointCollection(spatialReference: AGSSpatialReference(wkid: 4326))
+        let gpsRouteLine = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 68 / 255, green: 140 / 255, blue: 128 / 255, alpha: 1), width: 3)
+        points.forEach { point in
+            gpsRoutePts.add(point)
+        }
+        let lineGraphic = AGSGraphic(geometry: AGSPolyline(points: gpsRoutePts.array()), symbol: gpsRouteLine)
+        mGpsRouteGraphics.graphics.add(lineGraphic)
+        if (isMoveToGeometry) {
+            guard let geometry = lineGraphic.geometry else { return }
+            moveToGeometry(extent: geometry.extent, pindding: pindding, moveUp: false)
+        }
+    }
+    
+    /**
+     添加轨迹点，多点成线
+     */
+    public func addGpsRoutePts(point: AGSPoint) {
+        if (mGpsRoutePts == nil) {
+            mGpsRoutePts = AGSMutablePointCollection(spatialReference: AGSSpatialReference(wkid: 4326))
+        }
+        if (gpsRouteLine == nil) {
+            gpsRouteLine = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 68 / 255, green: 140 / 255, blue: 128 / 255, alpha: 1), width: 3)
+        }
+        guard let mGpsRoutePts = mGpsRoutePts else { return }
+        guard let gpsRouteLine = gpsRouteLine else { return }
+        mGpsRoutePts.add(point)
+        let lineGraphic = AGSGraphic(geometry: AGSPolyline(points: mGpsRoutePts.array()), symbol: gpsRouteLine)
+        mGpsRouteGraphics.graphics.add(lineGraphic)
+    }
+    
+    /**
+     移除轨迹
+     */
+    public func clearGpsRoutePts() {
+        guard let gpsRoutePts = mGpsRoutePts else { return }
+        gpsRoutePts.removeAllPoints()
+        mGpsRoutePts = AGSMutablePointCollection(spatialReference: AGSSpatialReference(wkid: 4326))
+        mGpsRouteGraphics.graphics.removeAllObjects()
     }
 }
