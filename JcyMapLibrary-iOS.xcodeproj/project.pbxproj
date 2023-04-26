@@ -37,6 +37,8 @@
 		81DC54C229B31E9F006488B4 /* JcyMapLibraryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC54C129B31E9F006488B4 /* JcyMapLibraryUITestsLaunchTests.swift */; };
 		81E449E229ED3018002604C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449E129ED3018002604C9 /* Extensions.swift */; };
 		81E449E329ED39A7002604C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449E129ED3018002604C9 /* Extensions.swift */; };
+		81E449E929F8054F002604C9 /* JCYMapView+Sketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449E829F8054F002604C9 /* JCYMapView+Sketch.swift */; };
+		81E449EA29F8054F002604C9 /* JCYMapView+Sketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449E829F8054F002604C9 /* JCYMapView+Sketch.swift */; };
 		96786A2B29C40053002410C3 /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 96786A2A29C40053002410C3 /* ArcGIS */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +122,7 @@
 		81DC54BF29B31E9F006488B4 /* JcyMapLibraryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcyMapLibraryUITests.swift; sourceTree = "<group>"; };
 		81DC54C129B31E9F006488B4 /* JcyMapLibraryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcyMapLibraryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		81E449E129ED3018002604C9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		81E449E829F8054F002604C9 /* JCYMapView+Sketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JCYMapView+Sketch.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +307,7 @@
 			children = (
 				81D7B0AE29B427870074ED03 /* JCYMapView.swift */,
 				81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */,
+				81E449E829F8054F002604C9 /* JCYMapView+Sketch.swift */,
 			);
 			path = map;
 			sourceTree = "<group>";
@@ -565,6 +569,7 @@
 				8182C43329C3D9A00040C3B2 /* TianDiTuLayer.swift in Sources */,
 				8182C43429C3D9A00040C3B2 /* JCYMapView.swift in Sources */,
 				8182C43529C3D9A00040C3B2 /* JCYMapViewDelegate.swift in Sources */,
+				81E449EA29F8054F002604C9 /* JCYMapView+Sketch.swift in Sources */,
 				8182C41429C3D96C0040C3B2 /* JcyMapFramework.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +589,7 @@
 				8163A40D29C7F412004C201A /* empty.swift in Sources */,
 				81D7B0AF29B427870074ED03 /* JCYMapView.swift in Sources */,
 				81D7B0B429B588AD0074ED03 /* TianDiTuLayerBuilder.swift in Sources */,
+				81E449E929F8054F002604C9 /* JCYMapView+Sketch.swift in Sources */,
 				81DC54A729B31E9E006488B4 /* ContentView.swift in Sources */,
 				814FD62729B5BF4100A54771 /* LayerInfoFactory.swift in Sources */,
 				81E449E229ED3018002604C9 /* Extensions.swift in Sources */,

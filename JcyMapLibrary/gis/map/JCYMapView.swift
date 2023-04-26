@@ -43,8 +43,10 @@ public class JCYMapView: AGSMapView {
     private var angleGeometryMap: [String : AGSGraphic] = [:]
     //GPS轨迹点集合，用户路线测量
     private var mGpsRoutePts: AGSMutablePointCollection?
-    /** 轨迹线 **/
+    // 轨迹线
     private var gpsRouteLine: AGSSimpleLineSymbol?
+    // 手绘工具
+    var mSketchEditor: AGSSketchEditor?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,6 +65,7 @@ public class JCYMapView: AGSMapView {
         self.map?.load { [weak self] _ in
             guard let self = self else { return }
             self.initMapOverlay()
+            self.initMapSketchEditor()
             self.setMapLocationDisplay()
             self.touchDelegate = self
             onLoad()
@@ -103,6 +106,14 @@ public class JCYMapView: AGSMapView {
         graphicsOverlays.add(mAreaGraphics)
         graphicsOverlays.add(mGpsRouteGraphics)
         graphicsOverlays.add(mOverlayPictureAngle)
+    }
+    
+    /**
+     * 初始化地图绘制编辑器
+     */
+    private func initMapSketchEditor() {
+        mSketchEditor = AGSSketchEditor()
+        self.sketchEditor = mSketchEditor
     }
     
     private func setMapLocationDisplay() {
@@ -195,23 +206,23 @@ extension JCYMapView : JCYMapViewDelegate {
         guard let geometryDictionary = geometryJson.toDictionary() else { return }
         guard let drawGeometry = (try? AGSGeometry.fromJSON(geometryDictionary) as? AGSGeometry) else { return  }
         statisticsAllDrawGeometryExtent(geometry: drawGeometry)
-
+        
         // 多边形边框、内部填充
         let lineSymbol = AGSSimpleLineSymbol(style: .solid, color: UIColor.white, width: 2)
         let fillSymbol = AGSSimpleFillSymbol(style: .solid, color: UIColor(red: 121 / 255, green: 67 / 255, blue: 39 / 255, alpha: 0.7), outline: lineSymbol)
-
+        
         // 添加图形
         let graphic = AGSGraphic(geometry: drawGeometry, symbol: fillSymbol)
         graphic.attributes["id"] = id
         graphic.attributes["onClickGeometry"] = onClickGeometry
         mGraphicsOverlay.graphics.add(graphic)
-
+        
         // 添加文字
         let txtGraphic = AGSGraphic(geometry: drawGeometry, symbol: getTextSymbol(text: showTag ?? "", textSize: 10))
         txtGraphic.attributes["id"] = id
         txtGraphic.attributes["onClickGeometry"] = onClickGeometry
         mGraphicsOverlay.graphics.add(txtGraphic)
-
+        
         if (isMoveToGeometry) {
             moveToGeometry(extent: drawGeometry, pindding: pindding, moveUp: false)
         }
