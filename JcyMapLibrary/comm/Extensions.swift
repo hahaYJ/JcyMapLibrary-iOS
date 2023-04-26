@@ -57,3 +57,10 @@ extension String {
         return dic
     }
 }
+
+extension NSDictionary {
+    public func toJson() -> String {
+        guard let data = try? JSONSerialization.data(withJSONObject: self) else { return "{}" }
+        return String(data: data, encoding: .utf8) ?? "{}"
+    }
+}

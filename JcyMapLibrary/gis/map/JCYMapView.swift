@@ -47,6 +47,8 @@ public class JCYMapView: AGSMapView {
     private var gpsRouteLine: AGSSimpleLineSymbol?
     // 手绘工具
     var mSketchEditor: AGSSketchEditor?
+    // 绘制的图斑数据
+    var onSketchGeometry: ((String) -> Void)?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

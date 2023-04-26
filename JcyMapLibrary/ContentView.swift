@@ -54,6 +54,19 @@ struct MapView: UIViewRepresentable {
             mapView.clearAllGraphics()
             addGraphics(mapView: mapView)
             break
+        case 1:
+            mapView.createModeFreehandPolygon { geometryJson in
+                print(geometryJson)
+            }
+            break
+        case 2:
+            mapView.createModePolygon { geometryJson in
+                print(geometryJson)
+            }
+            break
+        case 3:
+            mapView.drawingFinish()
+            break
         default:
             break
         }
@@ -70,6 +83,15 @@ struct ContentView: View {
             HStack(spacing: 10) {
                 Button("重载图斑") {
                     mapState = 0
+                }
+                Button("绘面") {
+                    mapState = 1
+                }
+                Button("点面") {
+                    mapState = 2
+                }
+                Button("结束绘图") {
+                    mapState = 3
                 }
             }.frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .bottom).background(Color.clear)
         }

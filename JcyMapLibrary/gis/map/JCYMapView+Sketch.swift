@@ -15,7 +15,8 @@ extension JCYMapView {
     /**
      * 绘面
      */
-    func createModeFreehandPolygon() {
+    func createModeFreehandPolygon(onSketchGeometry: ((String) -> Void)?) {
+        self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
         sketchEditor.start(with: nil, creationMode: .freehandPolygon)
     }
@@ -23,7 +24,8 @@ extension JCYMapView {
     /**
      * 点面
      */
-    func createModePolygon() {
+    func createModePolygon(onSketchGeometry: ((String) -> Void)?) {
+        self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
         sketchEditor.start(with: nil, creationMode: .polygon)
     }
@@ -32,21 +34,18 @@ extension JCYMapView {
      绘图完成
      */
     func drawingFinish() {
-//        if (mSketchEditor?.geometry == null || mSketchEditor?.geometry?.isEmpty == true) {
-//               toast("请绘制图斑")
-//               return@setOnClickListener
-//           }
-//           if (mSketchEditor?.isSketchValid == false) {
-//               toast("至少选择三个点")
-//               return@setOnClickListener
-//           }
-//           mSketchEditor?.geometry?.apply {
-//               val geometryJson = toJson() ?: ""
-//               lastSketchGeometryMd5 = geometryJson.md5()
-//               createGeometry?.let { it(geometryJson) }
-//               stopAndArea()
-//           }
         guard let sketchEditor = mSketchEditor else { return }
+        if (sketchEditor.geometry == nil || sketchEditor.geometry?.isEmpty == true) {
+            print("请绘制图斑")
+            return
+        }
+        if (sketchEditor.isSketchValid == false) {
+            print("至少选择三个点")
+            return
+        }
+        guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
+        if let onSketchGeometry = onSketchGeometry { onSketchGeometry(json.toJson()) }
+        clearSketch()
     }
     
     /**
@@ -56,5 +55,6 @@ extension JCYMapView {
         guard let sketchEditor = mSketchEditor else { return }
         sketchEditor.stop()
         sketchEditor.clearGeometry()
+        onSketchGeometry = nil
     }
 }
