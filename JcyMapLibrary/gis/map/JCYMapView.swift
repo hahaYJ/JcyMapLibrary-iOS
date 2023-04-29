@@ -17,8 +17,8 @@ public class JCYMapView: AGSMapView {
     private let ARCGIS_API_KEY = "AAPKc12108e2a01b43e9b649b408720b42b8w4N50bBdYUr1xocWZVfifdb9o2PNrz_Hs_uXC2UwrE1h0ZWZKiPk9Fv-8iO8aLQX"
     
     // 定位权限
-    let locationManager = CLLocationManager()
-    
+    var locationManager: CLLocationManager?
+
     // 测量图形
     private var mGraphicsOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 测量图形文字层
@@ -59,6 +59,8 @@ public class JCYMapView: AGSMapView {
     }
     
     public func initMapView(_ onLoad: @escaping () -> Void) {
+        // 获取定位
+        initLocation()
         // 关闭底部文字
         self.isAttributionTextVisible = false
         // 初始化底图
@@ -122,7 +124,6 @@ public class JCYMapView: AGSMapView {
         locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.recenter
         locationDisplay.showAccuracy = true
         locationDisplay.showLocation = true
-        locationDisplay.start()
         locationDisplay.locationChangedHandler = { [weak self] location in
             guard let mapView = self else { return }
             guard let position = location.position else { return }
@@ -132,6 +133,7 @@ public class JCYMapView: AGSMapView {
             }
             mapView.mCurrentLocationPoint = location.position
         }
+        locationDisplay.start()
     }
     
     /**
@@ -164,6 +166,27 @@ public class JCYMapView: AGSMapView {
         }
     }
     
+    /**
+     * 放大
+     */
+    public func mapZoomin() {
+        setViewpointScale(mapScale * 0.5)
+    }
+    
+    /**
+     * 缩小
+     */
+    public func mapZoomout() {
+        setViewpointScale(mapScale * 2)
+    }
+    
+    /**
+     * 跳转到当前位置
+    */
+    public func zoomToLocation() {
+        locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.recenter
+        locationDisplay.start()
+    }
 }
 
 
