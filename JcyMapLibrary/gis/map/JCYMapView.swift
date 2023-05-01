@@ -13,7 +13,6 @@ import ArcGIS
  */
 public class JCYMapView: AGSMapView {
     
-    private let TIANTITU_TOKEN = "323a1605e14a07ab30daf74e78c3e1ae"
     private let ARCGIS_API_KEY = "AAPKc12108e2a01b43e9b649b408720b42b8w4N50bBdYUr1xocWZVfifdb9o2PNrz_Hs_uXC2UwrE1h0ZWZKiPk9Fv-8iO8aLQX"
     
     // 定位权限
@@ -83,24 +82,10 @@ public class JCYMapView: AGSMapView {
         AGSArcGISRuntimeEnvironment.apiKey = ARCGIS_API_KEY
         let map = AGSMap()
         map.maxScale = 19.0
-        // 设置天地图国家2000坐标低图
-        if let tdtImage2000 = TianDiTuLayerBuilder()
-            .setLayerType(layerType: TianDiTuLayerTypes.TIANDITU_IMAGE_2000)
-            .setCachePath(cachePath: "tdtimg")
-            .setToken(token: TIANTITU_TOKEN)
-            .build() {
-            map.basemap.baseLayers.add(tdtImage2000)
-        }
-        
-        if let tdtImageChinese2000 = TianDiTuLayerBuilder()
-            .setLayerType(layerType: TianDiTuLayerTypes.TIANDITU_IMAGE_ANNOTATION_CHINESE_2000)
-            .setCachePath(cachePath: "tdttxt")
-            .setToken(token: TIANTITU_TOKEN)
-            .build() {
-            map.basemap.baseLayers.add(tdtImageChinese2000)
-        }
         // 关联mapview
         self.map = map
+        // 设置天地图国家2000坐标低图
+        TiandituBaseLayerStyle(basemapStyle: .TIANDITU_IMAGE).toggleBaseMapLayer(mapView: self)
     }
     
     private func initMapOverlay() {
@@ -186,6 +171,13 @@ public class JCYMapView: AGSMapView {
     public func zoomToLocation() {
         locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.recenter
         locationDisplay.start()
+    }
+    
+    /**
+     * 底图样式
+    */
+    public func baseMapLayerStyle(basemapStyle: BasemapStyleEnum) {
+        TiandituBaseLayerStyle(basemapStyle: basemapStyle).toggleBaseMapLayer(mapView: self)
     }
 }
 

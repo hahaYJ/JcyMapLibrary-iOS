@@ -77,6 +77,9 @@ struct MapView: UIViewRepresentable {
         case 6:
             mapView.zoomToLocation()
             break
+        case 7:
+            mapView.baseMapLayerStyle(basemapStyle: .TIANDITU_VECTOR)
+            break
         default:
             break
         }
@@ -119,6 +122,10 @@ struct ContentView: View {
                 Button("定位") {
                     time = Date().timeIntervalSince1970
                     mapState = 6
+                }
+                Button("样式") {
+                    time = Date().timeIntervalSince1970
+                    mapState = 7
                 }
             }.frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .bottom).background(Color.clear)
         }

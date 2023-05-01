@@ -76,8 +76,8 @@ extension JCYMapView: CLLocationManagerDelegate {
     
     // 代理方法，位置更新时回调
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last ?? CLLocation.init()
-        let coordinate = location.coordinate
+//        let location = locations.last ?? CLLocation.init()
+//        let coordinate = location.coordinate
     }
     
     // 代理方法，当定位授权更新时回调
