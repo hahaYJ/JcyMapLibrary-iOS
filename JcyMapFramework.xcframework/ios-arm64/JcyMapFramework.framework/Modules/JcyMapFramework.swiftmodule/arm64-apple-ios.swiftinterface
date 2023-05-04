@@ -8,14 +8,25 @@ import Foundation
 import Swift
 import _Concurrency
 import _StringProcessing
+public enum BasemapStyleEnum : Swift.Int {
+  case TIANDITU_IMAGE
+  case TIANDITU_VECTOR
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 extension Swift.String {
   public func toParsePolygon() -> ArcGIS.AGSPolygon?
   public func toDictionary() -> Foundation.NSDictionary?
 }
+extension Foundation.NSDictionary {
+  public func toJson() -> Swift.String
+}
 @_hasMissingDesignatedInitializers public class TianDiTuLayerBuilder {
   public func setLayerType(layerType: JcyMapFramework.TianDiTuLayerTypes) -> JcyMapFramework.TianDiTuLayerBuilder
   public func setCachePath(cachePath: Swift.String) -> JcyMapFramework.TianDiTuLayerBuilder
-  public func setToken(token: Swift.String) -> JcyMapFramework.TianDiTuLayerBuilder
   public func build() -> JcyMapFramework.TianDiTuLayer?
   @objc deinit
 }
@@ -56,6 +67,10 @@ public enum TianDiTuLayerTypes : Swift.Int {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) public func initMapView(_ onLoad: @escaping () -> Swift.Void)
   @_Concurrency.MainActor(unsafe) public func moveToGeometry(extent: ArcGIS.AGSGeometry, pindding: Swift.Double, moveUp: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func mapZoomin()
+  @_Concurrency.MainActor(unsafe) public func mapZoomout()
+  @_Concurrency.MainActor(unsafe) public func zoomToLocation()
+  @_Concurrency.MainActor(unsafe) public func baseMapLayerStyle(basemapStyle: JcyMapFramework.BasemapStyleEnum)
   @objc deinit
 }
 extension JcyMapFramework.JCYMapView : ArcGIS.AGSGeoViewTouchDelegate {
@@ -67,14 +82,31 @@ extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
   @_Concurrency.MainActor(unsafe) public func addPictureAngle(arrowImage: UIKit.UIImage?, azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func clearGraphicsSelection()
   @_Concurrency.MainActor(unsafe) public func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func clearAllGraphics()
+  @_Concurrency.MainActor(unsafe) public func addGpsRouteLine(points: [ArcGIS.AGSPoint], pindding: Swift.Double, isMoveToGeometry: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func addGpsRoutePts(point: ArcGIS.AGSPoint)
+  @_Concurrency.MainActor(unsafe) public func clearGpsRoutePts()
 }
 public protocol JCYMapViewDelegate {
   func addAreaGeometry(geometryJson: Swift.String?, id: Swift.String?, showTag: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   func addPictureAngle(arrowImage: UIKit.UIImage?, azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
+  func addGpsRouteLine(points: [ArcGIS.AGSPoint], pindding: Swift.Double, isMoveToGeometry: Swift.Bool)
+  func addGpsRoutePts(point: ArcGIS.AGSPoint)
+  func clearGpsRoutePts()
   func clearGraphicsSelection()
+  func clearAllGraphics()
   func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
 }
+extension JcyMapFramework.JCYMapView : CoreLocation.CLLocationManagerDelegate {
+  @_Concurrency.MainActor(unsafe) public func initLocation()
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didChangeAuthorization status: CoreLocation.CLAuthorizationStatus)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: any Swift.Error)
+}
+extension JcyMapFramework.BasemapStyleEnum : Swift.Equatable {}
+extension JcyMapFramework.BasemapStyleEnum : Swift.Hashable {}
+extension JcyMapFramework.BasemapStyleEnum : Swift.RawRepresentable {}
 extension JcyMapFramework.TianDiTuLayerTypes : Swift.Equatable {}
 extension JcyMapFramework.TianDiTuLayerTypes : Swift.Hashable {}
 extension JcyMapFramework.TianDiTuLayerTypes : Swift.RawRepresentable {}

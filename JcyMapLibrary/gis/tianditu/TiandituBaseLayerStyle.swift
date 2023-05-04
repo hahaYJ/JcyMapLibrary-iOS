@@ -30,11 +30,11 @@ struct TiandituBaseLayerStyle {
         case .TIANDITU_IMAGE:
             let vec_c = TianDiTuLayerBuilder()
                 .setLayerType(layerType: TianDiTuLayerTypes.TIANDITU_IMAGE_2000)
-                .setCachePath(cachePath: "tdtimg_i")
+                .setCachePath(cachePath: "tdtimg")
                 .build()
             let cva_c = TianDiTuLayerBuilder()
                 .setLayerType(layerType: TianDiTuLayerTypes.TIANDITU_IMAGE_ANNOTATION_CHINESE_2000)
-                .setCachePath(cachePath: "tdttxt_i")
+                .setCachePath(cachePath: "tdttxt")
                 .build()
             if let vec_c = vec_c { resLayers.append(vec_c) }
             if let cva_c = cva_c { resLayers.append(cva_c) }

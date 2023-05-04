@@ -262,6 +262,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 @import ArcGIS;
 @import CoreFoundation;
+@import CoreLocation;
+@import Foundation;
 #endif
 
 #endif
@@ -297,6 +299,17 @@ SWIFT_CLASS("_TtC15JcyMapFramework10JCYMapView")
 @interface JCYMapView (SWIFT_EXTENSION(JcyMapFramework)) <AGSGeoViewTouchDelegate>
 - (void)geoView:(AGSGeoView * _Nonnull)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint * _Nonnull)mapPoint;
 @end
+
+
+@class CLLocationManager;
+@class CLLocation;
+
+@interface JCYMapView (SWIFT_EXTENSION(JcyMapFramework)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+@end
+
 
 
 @class AGSTileInfo;
@@ -579,6 +592,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 @import ArcGIS;
 @import CoreFoundation;
+@import CoreLocation;
+@import Foundation;
 #endif
 
 #endif
@@ -614,6 +629,17 @@ SWIFT_CLASS("_TtC15JcyMapFramework10JCYMapView")
 @interface JCYMapView (SWIFT_EXTENSION(JcyMapFramework)) <AGSGeoViewTouchDelegate>
 - (void)geoView:(AGSGeoView * _Nonnull)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint * _Nonnull)mapPoint;
 @end
+
+
+@class CLLocationManager;
+@class CLLocation;
+
+@interface JCYMapView (SWIFT_EXTENSION(JcyMapFramework)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+@end
+
 
 
 @class AGSTileInfo;
