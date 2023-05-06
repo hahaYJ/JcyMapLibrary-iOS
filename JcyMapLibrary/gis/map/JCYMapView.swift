@@ -35,9 +35,9 @@ public class JCYMapView: AGSMapView {
     // 实时GPS定位点
     private var mCurrentLocationPoint: AGSPoint?
     // 所有多边形范围统计
-    private var mAllPolygonExtent: AGSEnvelope?
+    var mAllPolygonExtent: AGSEnvelope?
     // 所有绘图范围统计
-    private var mDrawGeometryExtent: AGSEnvelope?
+    var mDrawGeometryExtent: AGSEnvelope?
     // 方向角缓存的图形
     private var angleGeometryMap: [String : AGSGraphic] = [:]
     //GPS轨迹点集合，用户路线测量
@@ -140,6 +140,22 @@ public class JCYMapView: AGSMapView {
             mDrawGeometryExtent = geometry.extent
         } else {
             mDrawGeometryExtent = AGSGeometryEngine.union(ofGeometry1: mDrawGeometryExtent!, geometry2: geometry.extent)?.extent
+        }
+    }
+    
+    /**
+     * 移动到绘制图斑
+     */
+    public func moveToAllExtent(extent: AGSGeometry?, isMoveUp: Bool) {
+        guard let extent = extent else {
+            zoomToLocation()
+            return
+        }
+        setViewpointGeometry(extent, padding: 100.0) { [weak self] _ in
+            guard let self = self else { return }
+            if (isMoveUp) {
+                self.setViewpointCenter(self.screen(toLocation: CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 20 * 17)))
+            }
         }
     }
     
