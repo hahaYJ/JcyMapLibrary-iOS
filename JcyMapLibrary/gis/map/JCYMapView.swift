@@ -35,9 +35,9 @@ public class JCYMapView: AGSMapView {
     // 实时GPS定位点
     private var mCurrentLocationPoint: AGSPoint?
     // 所有多边形范围统计
-    var mAllPolygonExtent: AGSEnvelope?
+    public var mAllPolygonExtent: AGSEnvelope?
     // 所有绘图范围统计
-    var mDrawGeometryExtent: AGSEnvelope?
+    public var mDrawGeometryExtent: AGSEnvelope?
     // 方向角缓存的图形
     private var angleGeometryMap: [String : AGSGraphic] = [:]
     //GPS轨迹点集合，用户路线测量
