@@ -144,26 +144,18 @@ public class JCYMapView: AGSMapView {
     }
     
     /**
-     * 移动到绘制图斑
+     移动到图斑
      */
-    public func moveToAllExtent(extent: AGSGeometry?, isMoveUp: Bool) {
+    public func moveToGeometry(extent: AGSGeometry?, pindding: Double, moveUp: Bool) {
         guard let extent = extent else {
             zoomToLocation()
             return
         }
-        setViewpointGeometry(extent, padding: 100.0) { [weak self] _ in
+        setViewpointGeometry(extent, padding: pindding) { [weak self] _ in
             guard let self = self else { return }
-            if (isMoveUp) {
-                self.setViewpointCenter(self.screen(toLocation: CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 20 * 17)))
+            if (moveUp) {
+                self.setViewpointCenter(self.screen(toLocation: CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 20 * 13)))
             }
-        }
-    }
-    
-    /**
-     移动到图斑
-     */
-    public func moveToGeometry(extent: AGSGeometry, pindding: Double, moveUp: Bool) {
-        setViewpointGeometry(extent, padding: pindding) { _ in
         }
     }
     
