@@ -18,14 +18,14 @@ public class JCYMapView: AGSMapView {
     // 定位权限
     var locationManager: CLLocationManager?
 
-    // 测量图形
-    private var mGraphicsOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    // 多边形图形
+    private var mPolygonOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    // 绘制图形
+    private var mAreaOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 测量图形文字层
-    private var mGraphicsTxtOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
+//    private var mGraphicsTxtOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 范围层
     private var mGraphicsScopeOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
-    // 手绘层
-    private var mAreaGraphics: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // gsp轨迹层
     private var mGpsRouteGraphics: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 方向角层
@@ -89,10 +89,10 @@ public class JCYMapView: AGSMapView {
     }
     
     private func initMapOverlay() {
-        graphicsOverlays.add(mGraphicsOverlay)
-        graphicsOverlays.add(mGraphicsTxtOverlay)
+        graphicsOverlays.add(mAreaOverlay)
+        graphicsOverlays.add(mPolygonOverlay)
+//        graphicsOverlays.add(mGraphicsTxtOverlay)
         graphicsOverlays.add(mGraphicsScopeOverlay)
-        graphicsOverlays.add(mAreaGraphics)
         graphicsOverlays.add(mGpsRouteGraphics)
         graphicsOverlays.add(mOverlayPictureAngle)
     }
@@ -240,13 +240,13 @@ extension JCYMapView : JCYMapViewDelegate {
         let graphic = AGSGraphic(geometry: drawGeometry, symbol: fillSymbol)
         graphic.attributes["id"] = id
         graphic.attributes["onClickGeometry"] = onClickGeometry
-        mGraphicsOverlay.graphics.add(graphic)
+        mAreaOverlay.graphics.add(graphic)
         
         // 添加文字
         let txtGraphic = AGSGraphic(geometry: drawGeometry, symbol: getTextSymbol(text: showTag ?? "", textSize: 10))
         txtGraphic.attributes["id"] = id
         txtGraphic.attributes["onClickGeometry"] = onClickGeometry
-        mGraphicsOverlay.graphics.add(txtGraphic)
+        mAreaOverlay.graphics.add(txtGraphic)
         
         if (isMoveToGeometry) {
             moveToGeometry(extent: drawGeometry, pindding: pindding, moveUp: false)
@@ -268,7 +268,7 @@ extension JCYMapView : JCYMapViewDelegate {
         let graphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
         graphic.attributes["id"] = id
         graphic.attributes["onClickGeometry"] = onClickGeometry
-        mGraphicsOverlay.graphics.add(graphic)
+        mPolygonOverlay.graphics.add(graphic)
         
         // 添加文字
         var realId = (id ?? "")
@@ -278,7 +278,7 @@ extension JCYMapView : JCYMapViewDelegate {
         let txtGraphic = AGSGraphic(geometry: polygon, symbol: getTextSymbol(text: realId, textSize: 10))
         txtGraphic.attributes["id"] = id
         txtGraphic.attributes["onClickGeometry"] = onClickGeometry
-        mGraphicsOverlay.graphics.add(txtGraphic)
+        mPolygonOverlay.graphics.add(txtGraphic)
         
         if (isMoveToGeometry) {
             moveToGeometry(extent: polygon, pindding: pindding, moveUp: false)
@@ -320,11 +320,11 @@ extension JCYMapView : JCYMapViewDelegate {
      清空选中
      */
     public func clearGraphicsSelection() {
-        mGraphicsOverlay.clearSelection()
-        mGraphicsTxtOverlay.clearSelection()
+        mAreaOverlay.clearSelection()
+        mPolygonOverlay.clearSelection()
+//        mGraphicsTxtOverlay.clearSelection()
         mGraphicsScopeOverlay.clearSelection()
         mOverlayPictureAngle.clearSelection()
-        mAreaGraphics.clearSelection()
     }
     
     public func selecteAngle(id: String?, isSelected: Bool) {
@@ -333,11 +333,25 @@ extension JCYMapView : JCYMapViewDelegate {
     }
     
     public func clearAllGraphics() {
-        mGraphicsOverlay.graphics.removeAllObjects()
-        mGraphicsTxtOverlay.graphics.removeAllObjects()
+        mDrawGeometryExtent = nil
+        mAllPolygonExtent = nil
+        mAreaOverlay.graphics.removeAllObjects()
+        mPolygonOverlay.graphics.removeAllObjects()
+//        mGraphicsTxtOverlay.graphics.removeAllObjects()
         mGraphicsScopeOverlay.graphics.removeAllObjects()
         mOverlayPictureAngle.graphics.removeAllObjects()
-        mAreaGraphics.graphics.removeAllObjects()
+    }
+    
+    public func clearAllAreaGraphics() {
+        mDrawGeometryExtent = nil
+        mAreaOverlay.graphics.removeAllObjects()
+        mOverlayPictureAngle.graphics.removeAllObjects()
+    }
+    
+    public func clearAllPolygonGraphics() {
+        mAllPolygonExtent = nil
+        mPolygonOverlay.graphics.removeAllObjects()
+        mOverlayPictureAngle.graphics.removeAllObjects()
     }
     
     /**
