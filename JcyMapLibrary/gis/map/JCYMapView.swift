@@ -167,7 +167,7 @@ public class JCYMapView: AGSMapView {
         setViewpointGeometry(extent, padding: pindding) { [weak self] _ in
             guard let self = self else { return }
             if (moveUp) {
-                self.setViewpointCenter(self.screen(toLocation: CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 20 * 13)))
+                self.setViewpointCenter(self.screen(toLocation: CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 20 * 17)))
             }
         }
     }
