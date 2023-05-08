@@ -31,6 +31,16 @@ public protocol JCYMapViewDelegate {
     func addGpsRouteLine(points: [AGSPoint], pindding: Double, isMoveToGeometry: Bool)
     
     /**
+     显示范围多边形
+     */
+    func addScopePolygon(polygon: AGSPolygon?, id: String?, color: UIColor?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
+    
+    /**
+     添加图片图斑
+     */
+    func addPictureMarker(image: UIImage?, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
+    
+    /**
      添加轨迹
      */
     func addGpsRoutePts(point: AGSPoint)
@@ -59,6 +69,21 @@ public protocol JCYMapViewDelegate {
      清空多边形
      */
     func clearAllPolygonGraphics()
+    
+    /**
+     清空范围多边形
+     */
+    func clearAllScopePolygon()
+    
+    /**
+     清空图片图斑
+     */
+    func clearAllPictureMarker()
+    
+    /**
+     清空图片方向角
+     */
+    func clearAllPictureAngle()
     
     /**
      选中方向角

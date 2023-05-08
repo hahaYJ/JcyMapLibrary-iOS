@@ -26,10 +26,13 @@ public class JCYMapView: AGSMapView {
 //    private var mGraphicsTxtOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 范围层
     private var mGraphicsScopeOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
-    // gsp轨迹层
-    private var mGpsRouteGraphics: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    // 图片图斑层
+    private var mPictureOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 方向角层
     private var mOverlayPictureAngle: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    // gsp轨迹层
+    private var mGpsRouteGraphics: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    
     // 定位图层
     private var mLocationDisplay: AGSLocationDisplay?
     // 实时GPS定位点
@@ -38,8 +41,6 @@ public class JCYMapView: AGSMapView {
     public var mAllPolygonExtent: AGSEnvelope?
     // 所有绘图范围统计
     public var mDrawGeometryExtent: AGSEnvelope?
-    // 方向角缓存的图形
-    private var angleGeometryMap: [String : AGSGraphic] = [:]
     //GPS轨迹点集合，用户路线测量
     private var mGpsRoutePts: AGSMutablePointCollection?
     // 轨迹线
@@ -48,6 +49,17 @@ public class JCYMapView: AGSMapView {
     var mSketchEditor: AGSSketchEditor?
     // 绘制的图斑数据
     var onSketchGeometry: ((String) -> Void)?
+    
+    // 方向角缓存的图形
+    private var angleMap: [String : AGSGraphic] = [:]
+    // 多边形缓存的图形
+    private var polygonMap: [String : AGSGraphic] = [:]
+    // 绘制图形缓存的图形
+    private var areaMap: [String : AGSGraphic] = [:]
+    // 范围缓存的图形
+    private var scopeMap: [String : AGSGraphic] = [:]
+    // 图片图斑的图形
+    private var pictureMap: [String : AGSGraphic] = [:]
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -89,10 +101,11 @@ public class JCYMapView: AGSMapView {
     }
     
     private func initMapOverlay() {
+        graphicsOverlays.add(mGraphicsScopeOverlay)
         graphicsOverlays.add(mAreaOverlay)
         graphicsOverlays.add(mPolygonOverlay)
+        graphicsOverlays.add(mPictureOverlay)
 //        graphicsOverlays.add(mGraphicsTxtOverlay)
-        graphicsOverlays.add(mGraphicsScopeOverlay)
         graphicsOverlays.add(mGpsRouteGraphics)
         graphicsOverlays.add(mOverlayPictureAngle)
     }
@@ -241,7 +254,8 @@ extension JCYMapView : JCYMapViewDelegate {
         graphic.attributes["id"] = id
         graphic.attributes["onClickGeometry"] = onClickGeometry
         mAreaOverlay.graphics.add(graphic)
-        
+        if let id = id { areaMap[id] = graphic }
+
         // 添加文字
         let txtGraphic = AGSGraphic(geometry: drawGeometry, symbol: getTextSymbol(text: showTag ?? "", textSize: 10))
         txtGraphic.attributes["id"] = id
@@ -269,6 +283,7 @@ extension JCYMapView : JCYMapViewDelegate {
         graphic.attributes["id"] = id
         graphic.attributes["onClickGeometry"] = onClickGeometry
         mPolygonOverlay.graphics.add(graphic)
+        if let id = id { polygonMap[id] = graphic }
         
         // 添加文字
         var realId = (id ?? "")
@@ -301,8 +316,51 @@ extension JCYMapView : JCYMapViewDelegate {
             graphic.isSelected = isSelected
             graphic.attributes["id"] = id
             graphic.attributes["onClickGeometry"] = onClickGeometry
-            self.angleGeometryMap[id ?? ""] = graphic
+            if let id = id { angleMap[id] = graphic }
             self.mOverlayPictureAngle.graphics.add(graphic)
+        }
+    }
+    
+    /**
+     显示范围多边形
+     */
+    public func addScopePolygon(polygon: AGSPolygon?, id: String?, color: UIColor?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
+        guard let polygon = polygon else { return }
+        statisticsAllPolygonExtent(geometry: polygon)
+        
+        // 多边形边框、内部填充
+        let polygonLineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: color ?? UIColor.yellow, width: 0.5)
+        let polygonFillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.null, color: UIColor.clear, outline: polygonLineSymbol)
+        
+        // 添加图形
+        let graphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
+        graphic.attributes["id"] = id
+        graphic.attributes["onClickGeometry"] = onClickGeometry
+        mGraphicsScopeOverlay.graphics.add(graphic)
+        if let id = id { scopeMap[id] = graphic }
+        
+        if (isMoveToGeometry) {
+            moveToGeometry(extent: polygon, pindding: pindding, moveUp: false)
+        }
+    }
+    
+    /**
+     添加图片图斑
+     */
+    public func addPictureMarker(image: UIImage?, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
+        guard let arrowImage = image else { return }
+        let future = AGSPictureMarkerSymbol(image: arrowImage)
+        future.height = 30
+        future.width = 30
+        future.load { [weak self] _ in
+            guard let self = self else { return }
+            let graphicPoint = AGSPoint(clLocationCoordinate2D: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+            let graphic = AGSGraphic(geometry: graphicPoint, symbol: future)
+            graphic.isSelected = isSelected
+            graphic.attributes["id"] = id
+            graphic.attributes["onClickGeometry"] = onClickGeometry
+            if let id = id { pictureMap[id] = graphic }
+            self.mPictureOverlay.graphics.add(graphic)
         }
     }
     
@@ -325,33 +383,12 @@ extension JCYMapView : JCYMapViewDelegate {
 //        mGraphicsTxtOverlay.clearSelection()
         mGraphicsScopeOverlay.clearSelection()
         mOverlayPictureAngle.clearSelection()
+        mPictureOverlay.clearSelection()
     }
     
     public func selecteAngle(id: String?, isSelected: Bool) {
         guard let id = id else { return }
-        angleGeometryMap[id]?.isSelected = isSelected
-    }
-    
-    public func clearAllGraphics() {
-        mDrawGeometryExtent = nil
-        mAllPolygonExtent = nil
-        mAreaOverlay.graphics.removeAllObjects()
-        mPolygonOverlay.graphics.removeAllObjects()
-//        mGraphicsTxtOverlay.graphics.removeAllObjects()
-        mGraphicsScopeOverlay.graphics.removeAllObjects()
-        mOverlayPictureAngle.graphics.removeAllObjects()
-    }
-    
-    public func clearAllAreaGraphics() {
-        mDrawGeometryExtent = nil
-        mAreaOverlay.graphics.removeAllObjects()
-        mOverlayPictureAngle.graphics.removeAllObjects()
-    }
-    
-    public func clearAllPolygonGraphics() {
-        mAllPolygonExtent = nil
-        mPolygonOverlay.graphics.removeAllObjects()
-        mOverlayPictureAngle.graphics.removeAllObjects()
+        angleMap[id]?.isSelected = isSelected
     }
     
     /**
@@ -396,5 +433,63 @@ extension JCYMapView : JCYMapViewDelegate {
         gpsRoutePts.removeAllPoints()
         mGpsRoutePts = AGSMutablePointCollection(spatialReference: AGSSpatialReference(wkid: 4326))
         mGpsRouteGraphics.graphics.removeAllObjects()
+    }
+    
+    public func clearAllGraphics() {
+        mDrawGeometryExtent = nil
+        mAllPolygonExtent = nil
+        mAreaOverlay.graphics.removeAllObjects()
+        mPolygonOverlay.graphics.removeAllObjects()
+//        mGraphicsTxtOverlay.graphics.removeAllObjects()
+        mGraphicsScopeOverlay.graphics.removeAllObjects()
+        mOverlayPictureAngle.graphics.removeAllObjects()
+        mPictureOverlay.graphics.removeAllObjects()
+        pictureMap.removeAll()
+        areaMap.removeAll()
+        polygonMap.removeAll()
+        scopeMap.removeAll()
+        angleMap.removeAll()
+    }
+    
+    public func clearAllAreaGraphics() {
+        mDrawGeometryExtent = nil
+        mAreaOverlay.graphics.removeAllObjects()
+        mOverlayPictureAngle.graphics.removeAllObjects()
+        areaMap.removeAll()
+        angleMap.removeAll()
+    }
+    
+    public func clearAllPolygonGraphics() {
+        mAllPolygonExtent = nil
+        mPolygonOverlay.graphics.removeAllObjects()
+        mOverlayPictureAngle.graphics.removeAllObjects()
+        polygonMap.removeAll()
+        angleMap.removeAll()
+    }
+    
+    /**
+     清空范围多边形
+     */
+    public func clearAllScopePolygon() {
+        mAllPolygonExtent = nil
+        mGraphicsScopeOverlay.graphics.removeAllObjects()
+        scopeMap.removeAll()
+        angleMap.removeAll()
+    }
+    
+    /**
+     清空图片图斑
+     */
+    public func clearAllPictureMarker() {
+        mPictureOverlay.graphics.removeAllObjects()
+        pictureMap.removeAll()
+    }
+    
+    /**
+     清空方向角
+     */
+    public func clearAllPictureAngle() {
+        mOverlayPictureAngle.graphics.removeAllObjects()
+        angleMap.removeAll()
     }
 }
