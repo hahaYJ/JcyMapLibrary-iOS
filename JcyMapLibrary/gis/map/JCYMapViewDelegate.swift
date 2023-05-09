@@ -38,8 +38,8 @@ public protocol JCYMapViewDelegate {
     /**
      添加图片图斑
      */
-    func addPictureMarker(image: UIImage?, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
-    
+    func addPictureMarker(image: UIImage?, longitude: Double, latitude: Double, id: String?, isSelected: Bool, pindding: Double, isMoveToGeometry: Bool, isMoveUp: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
+
     /**
      添加轨迹
      */

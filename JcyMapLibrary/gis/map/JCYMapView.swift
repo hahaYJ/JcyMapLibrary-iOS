@@ -167,9 +167,13 @@ public class JCYMapView: AGSMapView {
         setViewpointGeometry(extent, padding: pindding) { [weak self] _ in
             guard let self = self else { return }
             if (moveUp) {
-                self.setViewpointCenter(self.screen(toLocation: CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 20 * 17)))
+                moveUpMap()
             }
         }
+    }
+    
+    public func moveUpMap() {
+        setViewpointCenter(self.screen(toLocation: CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 20 * 17)))
     }
     
     /**
@@ -347,11 +351,11 @@ extension JCYMapView : JCYMapViewDelegate {
     /**
      添加图片图斑
      */
-    public func addPictureMarker(image: UIImage?, longitude: Double, latitude: Double, id: String?, isSelected: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
+    public func addPictureMarker(image: UIImage?, longitude: Double, latitude: Double, id: String?, isSelected: Bool, pindding: Double, isMoveToGeometry: Bool, isMoveUp: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
         guard let arrowImage = image else { return }
         let future = AGSPictureMarkerSymbol(image: arrowImage)
-        future.height = 30
-        future.width = 30
+        future.height = 35
+        future.width = 35
         future.load { [weak self] _ in
             guard let self = self else { return }
             let graphicPoint = AGSPoint(clLocationCoordinate2D: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
@@ -361,6 +365,14 @@ extension JCYMapView : JCYMapViewDelegate {
             graphic.attributes["onClickGeometry"] = onClickGeometry
             if let id = id { pictureMap[id] = graphic }
             self.mPictureOverlay.graphics.add(graphic)
+            
+            if (isMoveToGeometry) {
+                setViewpointCenter(graphicPoint, scale: 7500) { finished in
+                    if (finished && isMoveUp) {
+                        self.moveUpMap()
+                    }
+                }
+            }
         }
     }
     
