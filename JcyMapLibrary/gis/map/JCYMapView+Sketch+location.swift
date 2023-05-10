@@ -71,13 +71,15 @@ extension JCYMapView: CLLocationManagerDelegate {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.distanceFilter = 5.0
+            locationManager.allowsBackgroundLocationUpdates = true
         }
     }
     
     // 代理方法，位置更新时回调
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let location = locations.last ?? CLLocation.init()
-//        let coordinate = location.coordinate
+        let location = locations.last ?? CLLocation.init()
+        let coordinate = location.coordinate
+        print("\(coordinate.longitude)  \(coordinate.latitude)")
     }
     
     // 代理方法，当定位授权更新时回调
