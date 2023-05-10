@@ -291,6 +291,7 @@ SWIFT_CLASS("_TtC15JcyMapFramework10JCYMapView")
 @interface JCYMapView : AGSMapView
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)removeFromSuperview;
 @end
 
 @class AGSGeoView;
@@ -621,6 +622,7 @@ SWIFT_CLASS("_TtC15JcyMapFramework10JCYMapView")
 @interface JCYMapView : AGSMapView
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)removeFromSuperview;
 @end
 
 @class AGSGeoView;
