@@ -25,11 +25,10 @@
 		8182C43329C3D9A00040C3B2 /* TianDiTuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62829B5E27A00A54771 /* TianDiTuLayer.swift */; };
 		8182C43429C3D9A00040C3B2 /* JCYMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0AE29B427870074ED03 /* JCYMapView.swift */; };
 		8182C43529C3D9A00040C3B2 /* JCYMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */; };
+		81A6E9442A0B2E4200DA5115 /* JcyMapFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */; };
 		81D7B0AF29B427870074ED03 /* JCYMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0AE29B427870074ED03 /* JCYMapView.swift */; };
 		81D7B0B129B4293B0074ED03 /* JCYMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */; };
 		81D7B0B429B588AD0074ED03 /* TianDiTuLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */; };
-		81DA874A2A0B263B00871DF6 /* JcyMapFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */; platformFilter = ios; settings = {ATTRIBUTES = (Required, ); }; };
-		81DA874B2A0B263B00871DF6 /* JcyMapFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81DC54A529B31E9E006488B4 /* JcyMapLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC54A429B31E9E006488B4 /* JcyMapLibraryApp.swift */; };
 		81DC54A729B31E9E006488B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC54A629B31E9E006488B4 /* ContentView.swift */; };
 		81DC54A929B31E9F006488B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81DC54A829B31E9F006488B4 /* Assets.xcassets */; };
@@ -41,7 +40,6 @@
 		81E449E329ED39A7002604C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449E129ED3018002604C9 /* Extensions.swift */; };
 		81E449E929F8054F002604C9 /* JCYMapView+Sketch+location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449E829F8054F002604C9 /* JCYMapView+Sketch+location.swift */; };
 		81E449EA29F8054F002604C9 /* JCYMapView+Sketch+location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449E829F8054F002604C9 /* JCYMapView+Sketch+location.swift */; };
-		9675327B2A0B2CF000391CCB /* JcyMapFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */; };
 		9675327F2A0B2D9300391CCB /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 9675327E2A0B2D9300391CCB /* ArcGIS */; };
 		96786A2B29C40053002410C3 /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 96786A2A29C40053002410C3 /* ArcGIS */; };
 /* End PBXBuildFile section */
@@ -83,20 +81,6 @@
 			remoteInfo = JcyMapLibrary;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		81DA874C2A0B263B00871DF6 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				81DA874B2A0B263B00871DF6 /* JcyMapFramework.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		81080AC429FD154E0068A66D /* JcyMapLibrary- iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "JcyMapLibrary- iOS.entitlements"; sourceTree = "<group>"; };
@@ -159,8 +143,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9675327B2A0B2CF000391CCB /* JcyMapFramework.framework in Frameworks */,
 				9675327F2A0B2D9300391CCB /* ArcGIS in Frameworks */,
+				81A6E9442A0B2E4200DA5115 /* JcyMapFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +393,6 @@
 				81DC549D29B31E9E006488B4 /* Sources */,
 				81DC549E29B31E9E006488B4 /* Frameworks */,
 				81DC549F29B31E9E006488B4 /* Resources */,
-				81DA874C2A0B263B00871DF6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

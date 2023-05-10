@@ -41,7 +41,7 @@ public class JCYMapView: AGSMapView {
     public var mAllPolygonExtent: AGSEnvelope?
     // 所有绘图范围统计
     public var mDrawGeometryExtent: AGSEnvelope?
-    //GPS轨迹点集合，用户路线测量
+    // GPS轨迹点集合，用户路线测量
     private var mGpsRoutePts: AGSMutablePointCollection?
     // 轨迹线
     private var gpsRouteLine: AGSSimpleLineSymbol?
@@ -60,6 +60,8 @@ public class JCYMapView: AGSMapView {
     private var scopeMap: [String : AGSGraphic] = [:]
     // 图片图斑的图形
     private var pictureMap: [String : AGSGraphic] = [:]
+    // 定位数据监听
+    var onUpdatingLocation: ((CLLocation) -> Void)?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,9 +71,13 @@ public class JCYMapView: AGSMapView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public override func removeFromSuperview() {
+        onUpdatingLocation = nil
+        onSketchGeometry = nil
+        stopUpdatingLocation()
+    }
+    
     public func initMapView(_ onLoad: @escaping () -> Void) {
-        // 获取定位
-        initLocation()
         // 关闭底部文字
         self.isAttributionTextVisible = false
         // 初始化底图

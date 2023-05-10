@@ -50,6 +50,9 @@ struct MapView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> UIView {
         let mapView = JCYMapView()
         mapView.initMapView {
+            mapView.startUpdatingLocation { location in
+                print("\(location.coordinate.longitude)  \(location.coordinate.latitude)")
+            }
             addGraphics(mapView: mapView)
         }
         return mapView

@@ -64,13 +64,14 @@ extension JCYMapView {
  定位相关
  */
 extension JCYMapView: CLLocationManagerDelegate {
-    // 调用此方法初始化定位功能
-    public func initLocation() {
+    // 开打持续定位
+    public func startUpdatingLocation(onUpdatingLocation: ((CLLocation) -> Void)?) {
+        self.onUpdatingLocation = onUpdatingLocation
         locationManager = CLLocationManager()
         if let locationManager = self.locationManager {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.distanceFilter = 5.0
+            locationManager.distanceFilter = 8.0
             locationManager.allowsBackgroundLocationUpdates = true
         }
     }
@@ -79,7 +80,7 @@ extension JCYMapView: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last ?? CLLocation.init()
         let coordinate = location.coordinate
-        print("\(coordinate.longitude)  \(coordinate.latitude)")
+        onUpdatingLocation?(location)
     }
     
     // 代理方法，当定位授权更新时回调
@@ -98,7 +99,10 @@ extension JCYMapView: CLLocationManagerDelegate {
     
     // 当获取定位出错时调用
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // 这里应该停止调用api
+        self.locationManager?.stopUpdatingLocation()
+    }
+    
+    public func stopUpdatingLocation() {
         self.locationManager?.stopUpdatingLocation()
     }
 }
