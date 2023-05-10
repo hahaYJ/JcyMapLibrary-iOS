@@ -18,8 +18,6 @@
 		8182C41A29C3D96C0040C3B2 /* JcyMapFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */; };
 		8182C42129C3D96C0040C3B2 /* JcyMapFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8182C42029C3D96C0040C3B2 /* JcyMapFrameworkTests.swift */; };
 		8182C42229C3D96C0040C3B2 /* JcyMapFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 8182C41229C3D96C0040C3B2 /* JcyMapFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8182C42529C3D96C0040C3B2 /* JcyMapFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */; platformFilter = ios; };
-		8182C42629C3D96C0040C3B2 /* JcyMapFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8182C42F29C3D98F0040C3B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81DC54A829B31E9F006488B4 /* Assets.xcassets */; };
 		8182C43029C3D9A00040C3B2 /* TianDiTuLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */; };
 		8182C43129C3D9A00040C3B2 /* TianDiTuLayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814FD62429B5B3EF00A54771 /* TianDiTuLayerInfo.swift */; };
@@ -41,6 +39,8 @@
 		81E449E329ED39A7002604C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449E129ED3018002604C9 /* Extensions.swift */; };
 		81E449E929F8054F002604C9 /* JCYMapView+Sketch+location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449E829F8054F002604C9 /* JCYMapView+Sketch+location.swift */; };
 		81E449EA29F8054F002604C9 /* JCYMapView+Sketch+location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449E829F8054F002604C9 /* JCYMapView+Sketch+location.swift */; };
+		9675327B2A0B2CF000391CCB /* JcyMapFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */; };
+		9675327F2A0B2D9300391CCB /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 9675327E2A0B2D9300391CCB /* ArcGIS */; };
 		96786A2B29C40053002410C3 /* ArcGIS in Frameworks */ = {isa = PBXBuildFile; productRef = 96786A2A29C40053002410C3 /* ArcGIS */; };
 /* End PBXBuildFile section */
 
@@ -81,20 +81,6 @@
 			remoteInfo = JcyMapLibrary;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		8123A9DE29C30FC80040983C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8182C42629C3D96C0040C3B2 /* JcyMapFramework.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		81080AC429FD154E0068A66D /* JcyMapLibrary- iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "JcyMapLibrary- iOS.entitlements"; sourceTree = "<group>"; };
@@ -157,7 +143,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8182C42529C3D96C0040C3B2 /* JcyMapFramework.framework in Frameworks */,
+				9675327B2A0B2CF000391CCB /* JcyMapFramework.framework in Frameworks */,
+				9675327F2A0B2D9300391CCB /* ArcGIS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +232,7 @@
 				8182C41129C3D96C0040C3B2 /* JcyMapFramework */,
 				8182C41F29C3D96C0040C3B2 /* JcyMapFrameworkTests */,
 				81DC54A229B31E9E006488B4 /* Products */,
+				9675327A2A0B2CF000391CCB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -316,6 +304,13 @@
 				81E449E829F8054F002604C9 /* JCYMapView+Sketch+location.swift */,
 			);
 			path = map;
+			sourceTree = "<group>";
+		};
+		9675327A2A0B2CF000391CCB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,7 +393,6 @@
 				81DC549D29B31E9E006488B4 /* Sources */,
 				81DC549E29B31E9E006488B4 /* Frameworks */,
 				81DC549F29B31E9E006488B4 /* Resources */,
-				8123A9DE29C30FC80040983C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -406,6 +400,7 @@
 			);
 			name = "JcyMapLibrary- iOS";
 			packageProductDependencies = (
+				9675327E2A0B2D9300391CCB /* ArcGIS */,
 			);
 			productName = JcyMapLibrary;
 			productReference = 81DC54A129B31E9E006488B4 /* JcyMapLibrary- iOS.app */;
@@ -921,7 +916,6 @@
 		81DC54C629B31E9F006488B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "JcyMapLibrary- iOS.entitlements";
@@ -958,7 +952,6 @@
 		81DC54C729B31E9F006488B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "JcyMapLibrary- iOS.entitlements";
@@ -1156,6 +1149,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9675327E2A0B2D9300391CCB /* ArcGIS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 96786A2929C40053002410C3 /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */;
+			productName = ArcGIS;
+		};
 		96786A2729C3FEAC002410C3 /* ArcGIS */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 811EBF4929C2AF4F00E54BDB /* XCRemoteSwiftPackageReference "arcgis-runtime-ios" */;
