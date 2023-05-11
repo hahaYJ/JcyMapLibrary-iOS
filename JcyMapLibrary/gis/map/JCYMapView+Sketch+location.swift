@@ -16,7 +16,7 @@ extension JCYMapView {
     /**
      * 绘面
      */
-    func createModeFreehandPolygon(onSketchGeometry: ((String) -> Void)?) {
+    public func createModeFreehandPolygon(onSketchGeometry: ((String) -> Void)?) {
         self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
         sketchEditor.start(with: nil, creationMode: .freehandPolygon)
@@ -25,7 +25,7 @@ extension JCYMapView {
     /**
      * 点面
      */
-    func createModePolygon(onSketchGeometry: ((String) -> Void)?) {
+    public func createModePolygon(onSketchGeometry: ((String) -> Void)?) {
         self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
         sketchEditor.start(with: nil, creationMode: .polygon)
@@ -34,7 +34,7 @@ extension JCYMapView {
     /**
      绘图完成
      */
-    func drawingFinish() {
+    public func drawingFinish() {
         guard let sketchEditor = mSketchEditor else { return }
         if (sketchEditor.geometry == nil || sketchEditor.geometry?.isEmpty == true) {
             print("请绘制图斑")
@@ -52,7 +52,7 @@ extension JCYMapView {
     /**
      * 删除绘制
      */
-    func clearSketch() {
+    public func clearSketch() {
         guard let sketchEditor = mSketchEditor else { return }
         sketchEditor.stop()
         sketchEditor.clearGeometry()
@@ -79,7 +79,6 @@ extension JCYMapView: CLLocationManagerDelegate {
     // 代理方法，位置更新时回调
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last ?? CLLocation.init()
-        let coordinate = location.coordinate
         onUpdatingLocation?(location)
     }
     

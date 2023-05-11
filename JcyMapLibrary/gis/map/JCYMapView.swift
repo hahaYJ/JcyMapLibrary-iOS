@@ -438,6 +438,9 @@ extension JCYMapView : JCYMapViewDelegate {
         }
         guard let mGpsRoutePts = mGpsRoutePts else { return }
         guard let gpsRouteLine = gpsRouteLine else { return }
+        if (mGpsRoutePts.isEmpty) {
+            zoomToLocation()
+        }
         mGpsRoutePts.add(point)
         let lineGraphic = AGSGraphic(geometry: AGSPolyline(points: mGpsRoutePts.array()), symbol: gpsRouteLine)
         mGpsRouteGraphics.graphics.add(lineGraphic)

@@ -116,6 +116,12 @@ public protocol JCYMapViewDelegate {
   func clearAllPictureAngle()
   func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
 }
+extension JcyMapFramework.JCYMapView {
+  @_Concurrency.MainActor(unsafe) public func createModeFreehandPolygon(onSketchGeometry: ((Swift.String) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) public func createModePolygon(onSketchGeometry: ((Swift.String) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) public func drawingFinish()
+  @_Concurrency.MainActor(unsafe) public func clearSketch()
+}
 extension JcyMapFramework.JCYMapView : CoreLocation.CLLocationManagerDelegate {
   @_Concurrency.MainActor(unsafe) public func startUpdatingLocation(onUpdatingLocation: ((CoreLocation.CLLocation) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
