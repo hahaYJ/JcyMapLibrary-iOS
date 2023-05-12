@@ -271,7 +271,8 @@ extension JCYMapView : JCYMapViewDelegate {
         txtGraphic.attributes["id"] = id
         txtGraphic.attributes["onClickGeometry"] = onClickGeometry
         mAreaOverlay.graphics.add(txtGraphic)
-        
+        if let id = id { areaMap["\(id)_txt"] = txtGraphic }
+
         if (isMoveToGeometry) {
             moveToGeometry(extent: drawGeometry, pindding: pindding, moveUp: false)
         }
@@ -444,6 +445,22 @@ extension JCYMapView : JCYMapViewDelegate {
         mGpsRoutePts.add(point)
         let lineGraphic = AGSGraphic(geometry: AGSPolyline(points: mGpsRoutePts.array()), symbol: gpsRouteLine)
         mGpsRouteGraphics.graphics.add(lineGraphic)
+    }
+    
+    /**
+     通过ID删除图斑
+     */
+    public func deleteAreaGeometryFromID(id: String?) {
+        guard let id = id else { return }
+        let tempGeometry = areaMap[id]
+        guard let tempGeometry = tempGeometry else { return }
+        mAreaOverlay.graphics.remove(tempGeometry)
+        areaMap.removeValue(forKey: id)
+        
+        let tempTxtGeometry = areaMap["\(id)_txt"]
+        guard let tempTxtGeometry = tempTxtGeometry else { return }
+        mAreaOverlay.graphics.remove(tempTxtGeometry)
+        areaMap.removeValue(forKey: "\(id)_txt")
     }
     
     /**

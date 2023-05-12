@@ -89,4 +89,9 @@ public protocol JCYMapViewDelegate {
      选中方向角
      */
     func selecteAngle(id: String?, isSelected: Bool)
+    
+    /**
+     通过ID删除画图图斑
+     */
+    func deleteAreaGeometryFromID(id: String?)
 }

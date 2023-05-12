@@ -90,6 +90,7 @@ extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
   @_Concurrency.MainActor(unsafe) public func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
   @_Concurrency.MainActor(unsafe) public func addGpsRouteLine(points: [ArcGIS.AGSPoint], pindding: Swift.Double, isMoveToGeometry: Swift.Bool)
   @_Concurrency.MainActor(unsafe) public func addGpsRoutePts(point: ArcGIS.AGSPoint)
+  @_Concurrency.MainActor(unsafe) public func deleteAreaGeometryFromID(id: Swift.String?)
   @_Concurrency.MainActor(unsafe) public func clearGpsRoutePts()
   @_Concurrency.MainActor(unsafe) public func clearAllGraphics()
   @_Concurrency.MainActor(unsafe) public func clearAllAreaGraphics()
@@ -115,6 +116,7 @@ public protocol JCYMapViewDelegate {
   func clearAllPictureMarker()
   func clearAllPictureAngle()
   func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
+  func deleteAreaGeometryFromID(id: Swift.String?)
 }
 extension JcyMapFramework.JCYMapView {
   @_Concurrency.MainActor(unsafe) public func createModeFreehandPolygon(onSketchGeometry: ((Swift.String) -> Swift.Void)?)
