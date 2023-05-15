@@ -119,8 +119,8 @@ public protocol JCYMapViewDelegate {
   func deleteAreaGeometryFromID(id: Swift.String?)
 }
 extension JcyMapFramework.JCYMapView {
-  @_Concurrency.MainActor(unsafe) public func createModeFreehandPolygon(onSketchGeometry: ((Swift.String) -> Swift.Void)?)
-  @_Concurrency.MainActor(unsafe) public func createModePolygon(onSketchGeometry: ((Swift.String) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) public func createModeFreehandPolygon(onSketchGeometry: ((_ code: Swift.Int, _ area: Swift.Double, _ geometryJson: Swift.String, _ msg: Swift.String) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) public func createModePolygon(onSketchGeometry: ((_ code: Swift.Int, _ area: Swift.Double, _ geometryJson: Swift.String, _ msg: Swift.String) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func drawingFinish()
   @_Concurrency.MainActor(unsafe) public func clearSketch()
 }

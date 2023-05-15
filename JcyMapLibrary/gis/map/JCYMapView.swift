@@ -48,7 +48,7 @@ public class JCYMapView: AGSMapView {
     // 手绘工具
     var mSketchEditor: AGSSketchEditor?
     // 绘制的图斑数据
-    var onSketchGeometry: ((String) -> Void)?
+    var onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?
     
     // 方向角缓存的图形
     private var angleMap: [String : AGSGraphic] = [:]

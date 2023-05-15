@@ -16,18 +16,28 @@ extension JCYMapView {
     /**
      * 绘面
      */
-    public func createModeFreehandPolygon(onSketchGeometry: ((String) -> Void)?) {
+    public func createModeFreehandPolygon(onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?) {
         self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
+//        let notificationCenter = NotificationCenter.default
+//        notificationCenter.addObserver(self, selector: #selector(handleSketchEditorGeometryDidChange(notification:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
         sketchEditor.start(with: nil, creationMode: .freehandPolygon)
     }
+    
+//    @objc func handleSketchEditorGeometryDidChange(notification: Notification) {
+//        guard let sketchEditor = mSketchEditor else { return }
+//        guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
+//        print(json)
+//    }
 
     /**
      * 点面
      */
-    public func createModePolygon(onSketchGeometry: ((String) -> Void)?) {
+    public func createModePolygon(onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?) {
         self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
+//        let notificationCenter = NotificationCenter.default
+//        notificationCenter.addObserver(self, selector: #selector(handleSketchEditorGeometryDidChange(notification:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
         sketchEditor.start(with: nil, creationMode: .polygon)
     }
     
@@ -37,16 +47,22 @@ extension JCYMapView {
     public func drawingFinish() {
         guard let sketchEditor = mSketchEditor else { return }
         if (sketchEditor.geometry == nil || sketchEditor.geometry?.isEmpty == true) {
-            print("请绘制图斑")
+            if let onSketchGeometry = onSketchGeometry { onSketchGeometry(-1, 0, "", "请绘制图斑") }
             return
         }
         if (sketchEditor.isSketchValid == false) {
-            print("至少选择三个点")
+            if let onSketchGeometry = onSketchGeometry { onSketchGeometry(-1, 0, "", "至少选择三个点") }
             return
         }
+
         guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
-        if let onSketchGeometry = onSketchGeometry { onSketchGeometry(json.toJson()) }
+        guard let geometry = try? AGSGeometry.fromJSON(json) as? AGSGeometry else { return }
+        guard let spatialReference = AGSSpatialReference(wkid: 4524) else { return }
+        guard let geometry = AGSGeometryEngine.projectGeometry(geometry, to: spatialReference) as? AGSPolygon else { return }
+        
+        if let onSketchGeometry = onSketchGeometry { onSketchGeometry(0, abs(AGSGeometryEngine.area(of: geometry)).roundTo(places: 2), json.toJson(), "绘图完成") }
         clearSketch()
+        onSketchGeometry = nil
     }
     
     /**

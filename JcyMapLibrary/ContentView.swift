@@ -66,13 +66,13 @@ struct MapView: UIViewRepresentable {
             addGraphics(mapView: mapView)
             break
         case 1:
-            mapView.createModeFreehandPolygon { geometryJson in
-                print(geometryJson)
+            mapView.createModeFreehandPolygon { code, area, geometryJson, msg in
+                print("\(area)   \(geometryJson)")
             }
             break
         case 2:
-            mapView.createModePolygon { geometryJson in
-                print(geometryJson)
+            mapView.createModePolygon { code, area, geometryJson, msg in
+                print("\(area)   \(geometryJson)")
             }
             break
         case 3:
