@@ -13,7 +13,7 @@ public protocol JCYMapViewDelegate {
     /**
      * 添加绘制图形
      */
-    func addAreaGeometry(geometryJson: String?, id: String?, showTag: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
+    func addAreaGeometry(geometryJson: String?, id: String?, showTag: String?, pindding: Double, isMoveToGeometry: Bool, isMoveUp: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
     
     /**
      添加图斑

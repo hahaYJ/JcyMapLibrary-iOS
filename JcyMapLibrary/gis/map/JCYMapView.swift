@@ -249,7 +249,7 @@ extension JCYMapView : JCYMapViewDelegate {
     /**
      * 添加绘制图形
      */
-    public func addAreaGeometry(geometryJson: String?, id: String?, showTag: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
+    public func addAreaGeometry(geometryJson: String?, id: String?, showTag: String?, pindding: Double, isMoveToGeometry: Bool, isMoveUp: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
         guard let geometryJson = geometryJson else { return }
         guard let geometryDictionary = geometryJson.toDictionary() else { return }
         guard let drawGeometry = (try? AGSGeometry.fromJSON(geometryDictionary) as? AGSGeometry) else { return  }
@@ -274,7 +274,7 @@ extension JCYMapView : JCYMapViewDelegate {
         if let id = id { areaMap["\(id)_txt"] = txtGraphic }
 
         if (isMoveToGeometry) {
-            moveToGeometry(extent: drawGeometry, pindding: pindding, moveUp: false)
+            moveToGeometry(extent: drawGeometry, pindding: pindding, moveUp: isMoveUp)
         }
     }
     
