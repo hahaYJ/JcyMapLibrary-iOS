@@ -74,6 +74,11 @@ extension JCYMapView {
         sketchEditor.clearGeometry()
         onSketchGeometry = nil
     }
+    
+    public func clearGeometry() {
+        guard let sketchEditor = mSketchEditor else { return }
+        sketchEditor.clearGeometry()
+    }
 }
 
 /**
