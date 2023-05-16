@@ -2900,8 +2900,8 @@
           },
           {
             "kind": "Function",
-            "name": "clearGeometry",
-            "printedName": "clearGeometry()",
+            "name": "clearSketchGeometry",
+            "printedName": "clearSketchGeometry()",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -2910,8 +2910,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:15JcyMapFramework10JCYMapViewC13clearGeometryyyF",
-            "mangledName": "$s15JcyMapFramework10JCYMapViewC13clearGeometryyyF",
+            "usr": "s:15JcyMapFramework10JCYMapViewC19clearSketchGeometryyyF",
+            "mangledName": "$s15JcyMapFramework10JCYMapViewC19clearSketchGeometryyyF",
             "moduleName": "JcyMapFramework",
             "declAttributes": [
               "Custom",
@@ -7626,14 +7626,14 @@
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView+Sketch+location.swift",
       "kind": "FloatLiteral",
-      "offset": 3704,
+      "offset": 3710,
       "length": 3,
       "value": "8.0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView+Sketch+location.swift",
       "kind": "BooleanLiteral",
-      "offset": 3770,
+      "offset": 3776,
       "length": 4,
       "value": "true"
     }

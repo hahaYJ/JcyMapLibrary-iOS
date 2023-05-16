@@ -123,7 +123,7 @@ extension JcyMapFramework.JCYMapView {
   @_Concurrency.MainActor(unsafe) public func createModePolygon(onSketchGeometry: ((_ code: Swift.Int, _ area: Swift.Double, _ geometryJson: Swift.String, _ msg: Swift.String) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func drawingFinish()
   @_Concurrency.MainActor(unsafe) public func clearSketch()
-  @_Concurrency.MainActor(unsafe) public func clearGeometry()
+  @_Concurrency.MainActor(unsafe) public func clearSketchGeometry()
 }
 extension JcyMapFramework.JCYMapView : CoreLocation.CLLocationManagerDelegate {
   @_Concurrency.MainActor(unsafe) public func startUpdatingLocation(onUpdatingLocation: ((CoreLocation.CLLocation) -> Swift.Void)?)

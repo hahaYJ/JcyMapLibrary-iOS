@@ -75,7 +75,7 @@ extension JCYMapView {
         onSketchGeometry = nil
     }
     
-    public func clearGeometry() {
+    public func clearSketchGeometry() {
         guard let sketchEditor = mSketchEditor else { return }
         sketchEditor.clearGeometry()
     }
