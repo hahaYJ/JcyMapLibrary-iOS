@@ -14,7 +14,7 @@ let package = Package(
             targets: ["JcyMapFramework", "JcyMapEmpty"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/Esri/arcgis-runtime-ios.git", revision: "100.15.1")
+        .package(url: "https://github.com/Esri/arcgis-runtime-ios.git", from: "100.15.1")
     ],
     targets: [
         .binaryTarget(name: "JcyMapFramework",

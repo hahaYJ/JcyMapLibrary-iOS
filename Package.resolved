@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Esri/arcgis-runtime-ios.git",
       "state" : {
-        "branch" : "100.15.1",
-        "revision" : "cf8338c283184808fb05d3bd26abc7187bc1cb1e"
+        "revision" : "815ff3ee731905a76cdf734a29bae98c3b074913",
+        "version" : "100.15.2"
       }
     }
   ],
