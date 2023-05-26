@@ -66,6 +66,11 @@ public enum TianDiTuLayerTypes : Swift.Int {
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class JCYMapView : ArcGIS.AGSMapView {
   @_Concurrency.MainActor(unsafe) public var mAllPolygonExtent: ArcGIS.AGSEnvelope?
   @_Concurrency.MainActor(unsafe) public var mDrawGeometryExtent: ArcGIS.AGSEnvelope?
+  @_Concurrency.MainActor(unsafe) public var angleMap: [Swift.String : ArcGIS.AGSGraphic]
+  @_Concurrency.MainActor(unsafe) public var polygonMap: [Swift.String : ArcGIS.AGSGraphic]
+  @_Concurrency.MainActor(unsafe) public var areaMap: [Swift.String : ArcGIS.AGSGraphic]
+  @_Concurrency.MainActor(unsafe) public var scopeMap: [Swift.String : ArcGIS.AGSGraphic]
+  @_Concurrency.MainActor(unsafe) public var pictureMap: [Swift.String : ArcGIS.AGSGraphic]
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func removeFromSuperview()
   @_Concurrency.MainActor(unsafe) public func initMapView(_ onLoad: @escaping () -> Swift.Void)
