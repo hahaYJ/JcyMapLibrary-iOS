@@ -51,15 +51,15 @@ public class JCYMapView: AGSMapView {
     var onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?
     
     // 方向角缓存的图形
-    private var angleMap: [String : AGSGraphic] = [:]
+    public var angleMap: [String : AGSGraphic] = [:]
     // 多边形缓存的图形
-    private var polygonMap: [String : AGSGraphic] = [:]
+    public var polygonMap: [String : AGSGraphic] = [:]
     // 绘制图形缓存的图形
-    private var areaMap: [String : AGSGraphic] = [:]
+    public var areaMap: [String : AGSGraphic] = [:]
     // 范围缓存的图形
-    private var scopeMap: [String : AGSGraphic] = [:]
+    public var scopeMap: [String : AGSGraphic] = [:]
     // 图片图斑的图形
-    private var pictureMap: [String : AGSGraphic] = [:]
+    public var pictureMap: [String : AGSGraphic] = [:]
     // 定位数据监听
     var onUpdatingLocation: ((CLLocation) -> Void)?
     
@@ -337,7 +337,6 @@ extension JCYMapView : JCYMapViewDelegate {
      */
     public func addScopePolygon(polygon: AGSPolygon?, id: String?, color: UIColor?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
         guard let polygon = polygon else { return }
-        statisticsAllPolygonExtent(geometry: polygon)
         
         // 多边形边框、内部填充
         let polygonLineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: color ?? UIColor.yellow, width: 0.5)
@@ -509,10 +508,8 @@ extension JCYMapView : JCYMapViewDelegate {
      清空范围多边形
      */
     public func clearAllScopePolygon() {
-        mAllPolygonExtent = nil
         mGraphicsScopeOverlay.graphics.removeAllObjects()
         scopeMap.removeAll()
-        angleMap.removeAll()
     }
     
     /**
