@@ -19,19 +19,19 @@ public class JCYMapView: AGSMapView {
     var locationManager: CLLocationManager?
 
     // 多边形图形
-    private var mPolygonOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    public var mPolygonOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 绘制图形
-    private var mAreaOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    public var mAreaOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 测量图形文字层
 //    private var mGraphicsTxtOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 范围层
-    private var mGraphicsScopeOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    public var mGraphicsScopeOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 图片图斑层
-    private var mPictureOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    public var mPictureOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 方向角层
-    private var mOverlayPictureAngle: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    public var mOverlayPictureAngle: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // gsp轨迹层
-    private var mGpsRouteGraphics: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    public var mGpsRouteGraphics: AGSGraphicsOverlay = AGSGraphicsOverlay()
     
     // 定位图层
     private var mLocationDisplay: AGSLocationDisplay?

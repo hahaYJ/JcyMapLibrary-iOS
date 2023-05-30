@@ -64,6 +64,12 @@ public enum TianDiTuLayerTypes : Swift.Int {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class JCYMapView : ArcGIS.AGSMapView {
+  @_Concurrency.MainActor(unsafe) public var mPolygonOverlay: ArcGIS.AGSGraphicsOverlay
+  @_Concurrency.MainActor(unsafe) public var mAreaOverlay: ArcGIS.AGSGraphicsOverlay
+  @_Concurrency.MainActor(unsafe) public var mGraphicsScopeOverlay: ArcGIS.AGSGraphicsOverlay
+  @_Concurrency.MainActor(unsafe) public var mPictureOverlay: ArcGIS.AGSGraphicsOverlay
+  @_Concurrency.MainActor(unsafe) public var mOverlayPictureAngle: ArcGIS.AGSGraphicsOverlay
+  @_Concurrency.MainActor(unsafe) public var mGpsRouteGraphics: ArcGIS.AGSGraphicsOverlay
   @_Concurrency.MainActor(unsafe) public var mAllPolygonExtent: ArcGIS.AGSEnvelope?
   @_Concurrency.MainActor(unsafe) public var mDrawGeometryExtent: ArcGIS.AGSEnvelope?
   @_Concurrency.MainActor(unsafe) public var angleMap: [Swift.String : ArcGIS.AGSGraphic]
