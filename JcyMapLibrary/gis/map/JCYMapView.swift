@@ -478,13 +478,11 @@ extension JCYMapView : JCYMapViewDelegate {
         mAreaOverlay.graphics.removeAllObjects()
         mPolygonOverlay.graphics.removeAllObjects()
 //        mGraphicsTxtOverlay.graphics.removeAllObjects()
-        mGraphicsScopeOverlay.graphics.removeAllObjects()
         mOverlayPictureAngle.graphics.removeAllObjects()
         mPictureOverlay.graphics.removeAllObjects()
         pictureMap.removeAll()
         areaMap.removeAll()
         polygonMap.removeAll()
-        scopeMap.removeAll()
         angleMap.removeAll()
     }
     
