@@ -93,7 +93,7 @@ extension JcyMapFramework.JCYMapView : ArcGIS.AGSGeoViewTouchDelegate {
 }
 extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
   @_Concurrency.MainActor(unsafe) public func addAreaGeometry(geometryJson: Swift.String?, id: Swift.String?, showTag: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, isMoveUp: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
-  @_Concurrency.MainActor(unsafe) public func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) public func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, color: UIKit.UIColor?, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func addPictureAngle(arrowImage: UIKit.UIImage?, azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func addScopePolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, color: UIKit.UIColor?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func addPictureMarker(image: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, isMoveUp: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
@@ -112,7 +112,7 @@ extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
 }
 public protocol JCYMapViewDelegate {
   func addAreaGeometry(geometryJson: Swift.String?, id: Swift.String?, showTag: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, isMoveUp: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
-  func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
+  func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, pindding: Swift.Double, color: UIKit.UIColor?, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   func addPictureAngle(arrowImage: UIKit.UIImage?, azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   func addGpsRouteLine(points: [ArcGIS.AGSPoint], pindding: Swift.Double, isMoveToGeometry: Swift.Bool)
   func addScopePolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, color: UIKit.UIColor?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)

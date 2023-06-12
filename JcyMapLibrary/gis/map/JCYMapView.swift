@@ -281,12 +281,12 @@ extension JCYMapView : JCYMapViewDelegate {
     /**
      添加多边形
      */
-    public func addProjectPolygon(polygon: AGSPolygon?, id: String?, pindding: Double, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
+    public func addProjectPolygon(polygon: AGSPolygon?, id: String?, pindding: Double, color: UIColor?, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
         guard let polygon = polygon else { return }
         statisticsAllPolygonExtent(geometry: polygon)
         
         // 多边形边框、内部填充
-        let polygonLineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: UIColor.red, width: 2)
+        let polygonLineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: color ?? UIColor.red, width: 2)
         let polygonFillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.null, color: UIColor.clear, outline: polygonLineSymbol)
         
         // 添加图形
