@@ -19,8 +19,8 @@ extension JCYMapView {
     public func createModeFreehandPolygon(onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?) {
         self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
-//        let notificationCenter = NotificationCenter.default
-//        notificationCenter.addObserver(self, selector: #selector(handleSketchEditorGeometryDidChange(notification:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleSketchEditorGeometryDidChange(notification:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
         let configuration = AGSSketchEditConfiguration()
         configuration.allowPartSelection = false
         configuration.allowVertexEditing = false
@@ -28,11 +28,27 @@ extension JCYMapView {
         sketchEditor.start(with: nil, creationMode: .freehandPolygon, editConfiguration: configuration)
     }
     
-//    @objc func handleSketchEditorGeometryDidChange(notification: Notification) {
-//        guard let sketchEditor = mSketchEditor else { return }
-//        guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
-//        print(json)
-//    }
+    @objc func handleSketchEditorGeometryDidChange(notification: Notification) {
+        guard let sketchEditor = mSketchEditor else { return }
+        if (sketchEditor.creationMode != .freehandPolygon) { return }
+        guard let jsonDic = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
+        guard let rings = jsonDic["rings"] as? NSArray else { return }
+        if (rings.count == 0) { return }
+        if (rings.count > 1) {
+            sketchEditor.stop()
+            sketchEditor.clearGeometry()
+
+            let newJsonDic = NSMutableDictionary(dictionary: jsonDic)
+            newJsonDic["rings"] = [rings.lastObject]
+            guard let drawGeometry = (try? AGSGeometry.fromJSON(newJsonDic) as? AGSGeometry) else { return  }
+
+            let configuration = AGSSketchEditConfiguration()
+            configuration.allowPartSelection = false
+            configuration.allowVertexEditing = false
+            configuration.allowRotate = false
+            sketchEditor.start(with: drawGeometry, creationMode: .freehandPolygon, editConfiguration: configuration)
+        }
+    }
 
     /**
      * 点面
@@ -40,8 +56,8 @@ extension JCYMapView {
     public func createModePolygon(onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?) {
         self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
-//        let notificationCenter = NotificationCenter.default
-//        notificationCenter.addObserver(self, selector: #selector(handleSketchEditorGeometryDidChange(notification:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(handleSketchEditorGeometryDidChange(notification:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
         sketchEditor.start(with: nil, creationMode: .polygon)
     }
     

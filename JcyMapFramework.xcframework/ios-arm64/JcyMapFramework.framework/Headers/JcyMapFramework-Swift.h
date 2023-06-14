@@ -301,7 +301,6 @@ SWIFT_CLASS("_TtC15JcyMapFramework10JCYMapView")
 - (void)geoView:(AGSGeoView * _Nonnull)geoView didTapAtScreenPoint:(CGPoint)screenPoint mapPoint:(AGSPoint * _Nonnull)mapPoint;
 @end
 
-
 @class CLLocationManager;
 @class CLLocation;
 
@@ -310,6 +309,7 @@ SWIFT_CLASS("_TtC15JcyMapFramework10JCYMapView")
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
 - (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
 @end
+
 
 
 
