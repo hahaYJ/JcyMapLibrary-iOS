@@ -412,7 +412,7 @@ extension JCYMapView : JCYMapViewDelegate {
     /**
      添加轨迹线
      */
-    public func addGpsRouteLine(points: [AGSPoint], pindding: Double, isMoveToGeometry: Bool) {
+    public func addGpsRouteLine(points: [AGSPoint], pindding: Double, isMoveToGeometry: Bool, isMoveUp: Bool) {
         let gpsRoutePts = AGSMutablePointCollection(spatialReference: AGSSpatialReference(wkid: 4326))
         let gpsRouteLine = AGSSimpleLineSymbol(style: .solid, color: UIColor(red: 68 / 255, green: 140 / 255, blue: 128 / 255, alpha: 1), width: 3)
         points.forEach { point in
@@ -422,7 +422,7 @@ extension JCYMapView : JCYMapViewDelegate {
         mGpsRouteGraphics.graphics.add(lineGraphic)
         if (isMoveToGeometry) {
             guard let geometry = lineGraphic.geometry else { return }
-            moveToGeometry(extent: geometry.extent, pindding: pindding, moveUp: false)
+            moveToGeometry(extent: geometry.extent, pindding: pindding, moveUp: isMoveUp)
         }
     }
     

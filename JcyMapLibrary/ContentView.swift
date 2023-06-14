@@ -30,7 +30,7 @@ struct MapView: UIViewRepresentable {
         
 //        // 画线
         let points = [AGSPoint(x: 108.4356464, y: 23.778678, spatialReference: nil), AGSPoint(x: 108.567378, y: 23.789065, spatialReference: nil), AGSPoint(x: 108.123469, y: 23.863097, spatialReference: nil)]
-        mapView.addGpsRouteLine(points: points, pindding: 135, isMoveToGeometry: true)
+        mapView.addGpsRouteLine(points: points, pindding: 135, isMoveToGeometry: true, isMoveUp: false)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             mapView.selecteAngle(id: "Angle2", isSelected: true)

@@ -28,7 +28,7 @@ public protocol JCYMapViewDelegate {
     /**
      添加轨迹线
      */
-    func addGpsRouteLine(points: [AGSPoint], pindding: Double, isMoveToGeometry: Bool)
+    func addGpsRouteLine(points: [AGSPoint], pindding: Double, isMoveToGeometry: Bool, isMoveUp: Bool)
     
     /**
      显示范围多边形
