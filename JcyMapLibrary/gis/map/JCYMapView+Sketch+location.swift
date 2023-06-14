@@ -21,7 +21,11 @@ extension JCYMapView {
         guard let sketchEditor = mSketchEditor else { return }
 //        let notificationCenter = NotificationCenter.default
 //        notificationCenter.addObserver(self, selector: #selector(handleSketchEditorGeometryDidChange(notification:)), name: .AGSSketchEditorGeometryDidChange, object: nil)
-        sketchEditor.start(with: nil, creationMode: .freehandPolygon)
+        let configuration = AGSSketchEditConfiguration()
+        configuration.allowPartSelection = false
+        configuration.allowVertexEditing = false
+        configuration.allowRotate = false
+        sketchEditor.start(with: nil, creationMode: .freehandPolygon, editConfiguration: configuration)
     }
     
 //    @objc func handleSketchEditorGeometryDidChange(notification: Notification) {
