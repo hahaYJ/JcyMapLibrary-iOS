@@ -65,6 +65,9 @@ public class JCYMapView: AGSMapView {
     // 定位数据监听
     var onUpdatingLocation: ((CLLocation) -> Void)?
     
+    // 自动设置地图定位
+    public var autoSetMapLocation = true
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -89,9 +92,11 @@ public class JCYMapView: AGSMapView {
             guard let self = self else { return }
             self.initMapOverlay()
             self.initMapSketchEditor()
-            self.setMapLocationDisplay()
             self.touchDelegate = self
             onLoad()
+            if (autoSetMapLocation) {
+                self.setMapLocationDisplay()
+            }
         }
     }
     
@@ -127,7 +132,7 @@ public class JCYMapView: AGSMapView {
         self.sketchEditor = mSketchEditor
     }
     
-    private func setMapLocationDisplay() {
+    public func setMapLocationDisplay() {
         locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.recenter
         locationDisplay.showAccuracy = true
         locationDisplay.showLocation = true

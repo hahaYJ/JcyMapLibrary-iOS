@@ -78,9 +78,11 @@ public enum TianDiTuLayerTypes : Swift.Int {
   @_Concurrency.MainActor(unsafe) public var areaMap: [Swift.String : ArcGIS.AGSGraphic]
   @_Concurrency.MainActor(unsafe) public var scopeMap: [Swift.String : ArcGIS.AGSGraphic]
   @_Concurrency.MainActor(unsafe) public var pictureMap: [Swift.String : ArcGIS.AGSGraphic]
+  @_Concurrency.MainActor(unsafe) public var autoSetMapLocation: Swift.Bool
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func removeFromSuperview()
   @_Concurrency.MainActor(unsafe) public func initMapView(_ onLoad: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public func setMapLocationDisplay()
   @_Concurrency.MainActor(unsafe) public func moveToGeometry(extent: ArcGIS.AGSGeometry?, pindding: Swift.Double, moveUp: Swift.Bool)
   @_Concurrency.MainActor(unsafe) public func moveUpMap()
   @_Concurrency.MainActor(unsafe) public func mapZoomin()
