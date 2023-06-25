@@ -272,14 +272,14 @@ extension JCYMapView : JCYMapViewDelegate {
         graphic.attributes["id"] = id
         graphic.attributes["onClickGeometry"] = onClickGeometry
         mAreaOverlay.graphics.add(graphic)
-//        if let id = id { areaMap[id] = graphic }
+        if let id = id { areaMap[id] = graphic }
 
         // 添加文字
         let txtGraphic = AGSGraphic(geometry: drawGeometry, symbol: getTextSymbol(text: showTag ?? "", textSize: 10))
         txtGraphic.attributes["id"] = id
         txtGraphic.attributes["onClickGeometry"] = onClickGeometry
         mAreaOverlay.graphics.add(txtGraphic)
-//        if let id = id { areaMap["\(id)_txt"] = txtGraphic }
+        if let id = id { areaMap["\(id)_txt"] = txtGraphic }
 
         if (isMoveToGeometry) {
             moveToGeometry(extent: drawGeometry, pindding: pindding, moveUp: isMoveUp)
@@ -302,7 +302,7 @@ extension JCYMapView : JCYMapViewDelegate {
         graphic.attributes["id"] = id
         graphic.attributes["onClickGeometry"] = onClickGeometry
         mPolygonOverlay.graphics.add(graphic)
-//        if let id = id { polygonMap[id] = graphic }
+        if let id = id { polygonMap[id] = graphic }
         
         // 添加文字
         var realId = (id ?? "")
