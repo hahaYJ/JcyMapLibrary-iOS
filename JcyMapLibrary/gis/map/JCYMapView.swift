@@ -289,7 +289,7 @@ extension JCYMapView : JCYMapViewDelegate {
     /**
      添加多边形
      */
-    public func addProjectPolygon(polygon: AGSPolygon?, id: String?, pindding: Double, color: UIColor?, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
+    public func addProjectPolygon(polygon: AGSPolygon?, id: String?, showTag: String?, pindding: Double, color: UIColor?, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
         guard let polygon = polygon else { return }
         statisticsAllPolygonExtent(geometry: polygon)
         
@@ -305,7 +305,7 @@ extension JCYMapView : JCYMapViewDelegate {
         if let id = id { polygonMap[id] = graphic }
         
         // 添加文字
-        var realId = (id ?? "")
+        var realId = (showTag ?? "")
         if (realId.count > 5) {
             realId = "...\(String(realId[realId.index(realId.startIndex, offsetBy: realId.count - 4)..<realId.endIndex]))"
         }

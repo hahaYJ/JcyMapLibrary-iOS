@@ -18,7 +18,7 @@ public protocol JCYMapViewDelegate {
     /**
      添加图斑
      */
-    func addProjectPolygon(polygon: AGSPolygon?, id: String?, pindding: Double, color: UIColor?, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
+    func addProjectPolygon(polygon: AGSPolygon?, id: String?, showTag: String?, pindding: Double, color: UIColor?, isMoveToGeometry: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)
     
     /**
      添加方向角
