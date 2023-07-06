@@ -41,6 +41,11 @@ public protocol JCYMapViewDelegate {
     func addThematicDataPolygon(polygon: AGSPolygon?, id: String?, color: UIColor?, pindding: Double)
     
     /**
+     显示边界
+     */
+    func addBorderPolygon(polygon: AGSPolygon?, id: String?, color: UIColor?, pindding: Double)
+    
+    /**
      添加图片图斑
      */
     func addPictureMarker(image: UIImage?, longitude: Double, latitude: Double, id: String?, isSelected: Bool, pindding: Double, isMoveToGeometry: Bool, isMoveUp: Bool, onClickGeometry: ((AGSGraphic) -> Void)?)

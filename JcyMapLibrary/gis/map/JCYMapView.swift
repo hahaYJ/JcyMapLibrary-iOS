@@ -28,6 +28,8 @@ public class JCYMapView: AGSMapView {
     public var mGraphicsScopeOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 专题数据层
     public var mThematicDataOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    // 边界
+    public var mBorderOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 图片图斑层
     public var mPictureOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 方向角层
@@ -116,6 +118,7 @@ public class JCYMapView: AGSMapView {
     private func initMapOverlay() {
         graphicsOverlays.add(mGraphicsScopeOverlay)
         graphicsOverlays.add(mThematicDataOverlay)
+        graphicsOverlays.add(mBorderOverlay)
         graphicsOverlays.add(mAreaOverlay)
         graphicsOverlays.add(mPolygonOverlay)
         graphicsOverlays.add(mPictureOverlay)
@@ -379,6 +382,22 @@ extension JCYMapView : JCYMapViewDelegate {
     }
     
     /**
+     显示边界
+     */
+    public func addBorderPolygon(polygon: AGSPolygon?, id: String?, color: UIColor?, pindding: Double) {
+        guard let polygon = polygon else { return }
+        
+        // 多边形边框、内部填充
+        let polygonLineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: color ?? UIColor.red, width: 0.5)
+        let polygonFillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.null, color: UIColor.clear, outline: polygonLineSymbol)
+        
+        // 添加图形
+        let graphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
+        graphic.attributes["id"] = id
+        mBorderOverlay.graphics.add(graphic)
+    }
+    
+    /**
      添加图片图斑
      */
     public func addPictureMarker(image: UIImage?, longitude: Double, latitude: Double, id: String?, isSelected: Bool, pindding: Double, isMoveToGeometry: Bool, isMoveUp: Bool, onClickGeometry: ((AGSGraphic) -> Void)?) {
@@ -539,6 +558,13 @@ extension JCYMapView : JCYMapViewDelegate {
      */
     public func clearThematicDataPolygon() {
         mThematicDataOverlay.graphics.removeAllObjects()
+    }
+    
+    /**
+     清空边界
+     */
+    public func clearBorderPolygon() {
+        mBorderOverlay.graphics.removeAllObjects()
     }
     
     /**

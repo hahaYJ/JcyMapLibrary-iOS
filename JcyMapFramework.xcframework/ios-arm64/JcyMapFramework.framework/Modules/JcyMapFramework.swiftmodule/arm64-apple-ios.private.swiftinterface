@@ -68,6 +68,7 @@ public enum TianDiTuLayerTypes : Swift.Int {
   @_Concurrency.MainActor(unsafe) public var mAreaOverlay: ArcGIS.AGSGraphicsOverlay
   @_Concurrency.MainActor(unsafe) public var mGraphicsScopeOverlay: ArcGIS.AGSGraphicsOverlay
   @_Concurrency.MainActor(unsafe) public var mThematicDataOverlay: ArcGIS.AGSGraphicsOverlay
+  @_Concurrency.MainActor(unsafe) public var mBorderOverlay: ArcGIS.AGSGraphicsOverlay
   @_Concurrency.MainActor(unsafe) public var mPictureOverlay: ArcGIS.AGSGraphicsOverlay
   @_Concurrency.MainActor(unsafe) public var mOverlayPictureAngle: ArcGIS.AGSGraphicsOverlay
   @_Concurrency.MainActor(unsafe) public var mGpsRouteGraphics: ArcGIS.AGSGraphicsOverlay
@@ -100,6 +101,7 @@ extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
   @_Concurrency.MainActor(unsafe) public func addPictureAngle(arrowImage: UIKit.UIImage?, azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func addScopePolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, color: UIKit.UIColor?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func addThematicDataPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, color: UIKit.UIColor?, pindding: Swift.Double)
+  @_Concurrency.MainActor(unsafe) public func addBorderPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, color: UIKit.UIColor?, pindding: Swift.Double)
   @_Concurrency.MainActor(unsafe) public func addPictureMarker(image: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, isMoveUp: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func clearGraphicsSelection()
   @_Concurrency.MainActor(unsafe) public func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
@@ -112,6 +114,7 @@ extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
   @_Concurrency.MainActor(unsafe) public func clearAllPolygonGraphics()
   @_Concurrency.MainActor(unsafe) public func clearAllScopePolygon()
   @_Concurrency.MainActor(unsafe) public func clearThematicDataPolygon()
+  @_Concurrency.MainActor(unsafe) public func clearBorderPolygon()
   @_Concurrency.MainActor(unsafe) public func clearAllPictureMarker()
   @_Concurrency.MainActor(unsafe) public func clearAllPictureAngle()
 }
@@ -122,6 +125,7 @@ public protocol JCYMapViewDelegate {
   func addGpsRouteLine(points: [ArcGIS.AGSPoint], pindding: Swift.Double, isMoveToGeometry: Swift.Bool, isMoveUp: Swift.Bool)
   func addScopePolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, color: UIKit.UIColor?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   func addThematicDataPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, color: UIKit.UIColor?, pindding: Swift.Double)
+  func addBorderPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, color: UIKit.UIColor?, pindding: Swift.Double)
   func addPictureMarker(image: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, isMoveUp: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   func addGpsRoutePts(point: ArcGIS.AGSPoint)
   func clearGpsRoutePts()
