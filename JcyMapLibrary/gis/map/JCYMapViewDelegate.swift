@@ -104,4 +104,9 @@ public protocol JCYMapViewDelegate {
      通过ID删除画图图斑
      */
     func deleteAreaGeometryFromID(id: String?)
+    
+    /**
+     * 显示定位方向角
+     */
+    func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float)
 }

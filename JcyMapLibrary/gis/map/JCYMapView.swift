@@ -36,6 +36,8 @@ public class JCYMapView: AGSMapView {
     public var mOverlayPictureAngle: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // gsp轨迹层
     public var mGpsRouteGraphics: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    // 定位层
+    var mLocationOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     
     // 定位图层
     private var mLocationDisplay: AGSLocationDisplay?
@@ -125,6 +127,7 @@ public class JCYMapView: AGSMapView {
 //        graphicsOverlays.add(mGraphicsTxtOverlay)
         graphicsOverlays.add(mGpsRouteGraphics)
         graphicsOverlays.add(mOverlayPictureAngle)
+        graphicsOverlays.add(mLocationOverlay)
     }
     
     /**
@@ -276,14 +279,14 @@ extension JCYMapView : JCYMapViewDelegate {
         graphic.attributes["onClickGeometry"] = onClickGeometry
         mAreaOverlay.graphics.add(graphic)
         if let id = id { areaMap[id] = graphic }
-
+        
         // 添加文字
         let txtGraphic = AGSGraphic(geometry: drawGeometry, symbol: getTextSymbol(text: showTag ?? "", textSize: 10))
         txtGraphic.attributes["id"] = id
         txtGraphic.attributes["onClickGeometry"] = onClickGeometry
         mAreaOverlay.graphics.add(txtGraphic)
         if let id = id { areaMap["\(id)_txt"] = txtGraphic }
-
+        
         if (isMoveToGeometry) {
             moveToGeometry(extent: drawGeometry, pindding: pindding, moveUp: isMoveUp)
         }
@@ -441,7 +444,7 @@ extension JCYMapView : JCYMapViewDelegate {
     public func clearGraphicsSelection() {
         mAreaOverlay.clearSelection()
         mPolygonOverlay.clearSelection()
-//        mGraphicsTxtOverlay.clearSelection()
+        //        mGraphicsTxtOverlay.clearSelection()
         mGraphicsScopeOverlay.clearSelection()
         mOverlayPictureAngle.clearSelection()
         mPictureOverlay.clearSelection()
@@ -520,7 +523,7 @@ extension JCYMapView : JCYMapViewDelegate {
         mAllPolygonExtent = nil
         mAreaOverlay.graphics.removeAllObjects()
         mPolygonOverlay.graphics.removeAllObjects()
-//        mGraphicsTxtOverlay.graphics.removeAllObjects()
+        //        mGraphicsTxtOverlay.graphics.removeAllObjects()
         mOverlayPictureAngle.graphics.removeAllObjects()
         mPictureOverlay.graphics.removeAllObjects()
         pictureMap.removeAll()
@@ -581,5 +584,33 @@ extension JCYMapView : JCYMapViewDelegate {
     public func clearAllPictureAngle() {
         mOverlayPictureAngle.graphics.removeAllObjects()
         angleMap.removeAll()
+    }
+    
+    /**
+     * 显示定位方向角
+     */
+    public func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float) {
+        guard let imageLocation = imageLocation else { return }
+        let point = AGSPoint(x: longitude, y: latitude, spatialReference: AGSSpatialReference.wgs84())
+        if (mLocationOverlay.graphics.count == 0) {
+            let future = AGSPictureMarkerSymbol(image: imageLocation)
+            future.height = 45
+            future.width = 23.6
+            future.angle = azimuth
+            future.load { [weak self] _ in
+                self?.mLocationOverlay.graphics.add(AGSGraphic(geometry: point, symbol: future))
+            }
+        } else {
+            if (mLocationOverlay.graphics.count > 1) {
+                guard let temp = mLocationOverlay.graphics.firstObject else { return }
+                mLocationOverlay.graphics.removeAllObjects()
+                mLocationOverlay.graphics.add(temp)
+            }
+            guard let graphic = mLocationOverlay.graphics.firstObject as? AGSGraphic else { return }
+            graphic.geometry = point
+            guard let symbol = graphic.symbol as? AGSPictureMarkerSymbol else { return }
+            symbol.angle = azimuth
+            graphic.symbol = symbol
+        }
     }
 }
