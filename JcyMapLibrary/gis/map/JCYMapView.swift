@@ -599,6 +599,7 @@ extension JCYMapView : JCYMapViewDelegate {
             future.angle = azimuth
             future.load { [weak self] _ in
                 self?.mLocationOverlay.graphics.add(AGSGraphic(geometry: point, symbol: future))
+                self?.setViewpointCenter(point, scale: 4000)
             }
         } else {
             if (mLocationOverlay.graphics.count > 1) {
