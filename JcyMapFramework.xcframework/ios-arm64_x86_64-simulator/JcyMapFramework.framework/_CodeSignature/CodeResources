@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		+75uwAj2wUWA0xkENodqkz4WCQ4=
+		Q3Wth5w4hyj/Qe06A+Hhu0paRJY=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		+75uwAj2wUWA0xkENodqkz4WCQ4=
+		Q3Wth5w4hyj/Qe06A+Hhu0paRJY=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -104,11 +104,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+75uwAj2wUWA0xkENodqkz4WCQ4=
+			Q3Wth5w4hyj/Qe06A+Hhu0paRJY=
 			</data>
 			<key>hash2</key>
 			<data>
-			jhyRFLSnlQHr7kVO8R7V+80xUilWCTz75wU2ljsVNxc=
+			5Pu5SRtqo7km6GzU/MfyXOASjdRC+pVLhggjWiuYaS0=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -159,11 +159,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+75uwAj2wUWA0xkENodqkz4WCQ4=
+			Q3Wth5w4hyj/Qe06A+Hhu0paRJY=
 			</data>
 			<key>hash2</key>
 			<data>
-			jhyRFLSnlQHr7kVO8R7V+80xUilWCTz75wU2ljsVNxc=
+			5Pu5SRtqo7km6GzU/MfyXOASjdRC+pVLhggjWiuYaS0=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>

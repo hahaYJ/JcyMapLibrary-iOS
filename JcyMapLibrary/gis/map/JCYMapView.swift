@@ -591,6 +591,8 @@ extension JCYMapView : JCYMapViewDelegate {
      */
     public func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float) {
         guard let imageLocation = imageLocation else { return }
+        if longitude <= 0 || latitude <= 0 { return }
+        if abs(longitude) <= 1e-6 || abs(latitude) <= 1e-6 { return }
         let point = AGSPoint(x: longitude, y: latitude, spatialReference: AGSSpatialReference.wgs84())
         if (mLocationOverlay.graphics.count == 0) {
             let future = AGSPictureMarkerSymbol(image: imageLocation)
