@@ -14,9 +14,6 @@ import ArcGIS
 public class JCYMapView: AGSMapView {
     
     private let ARCGIS_API_KEY = "AAPKc12108e2a01b43e9b649b408720b42b8w4N50bBdYUr1xocWZVfifdb9o2PNrz_Hs_uXC2UwrE1h0ZWZKiPk9Fv-8iO8aLQX"
-    
-    // 定位权限
-    var locationManager: CLLocationManager?
 
     // 多边形图形
     public var mPolygonOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
@@ -66,8 +63,11 @@ public class JCYMapView: AGSMapView {
     public var scopeMap: [String : AGSGraphic] = [:]
     // 图片图斑的图形
     public var pictureMap: [String : AGSGraphic] = [:]
-    // 定位数据监听
-    var onUpdatingLocation: ((CLLocation) -> Void)?
+    
+    /// 定位服务
+    lazy var locationService: JCYLocationService = {
+        return JCYLocationService()
+    }()
     
     // 自动设置地图定位
     public var autoSetMapLocation = true
@@ -81,9 +81,8 @@ public class JCYMapView: AGSMapView {
     }
     
     public override func removeFromSuperview() {
-        onUpdatingLocation = nil
         onSketchGeometry = nil
-        stopUpdatingLocation()
+        locationService.stopUpdatingLocation()
     }
     
     public func initMapView(_ onLoad: @escaping () -> Void) {

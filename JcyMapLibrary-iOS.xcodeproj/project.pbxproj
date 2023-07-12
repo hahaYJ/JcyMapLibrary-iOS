@@ -26,6 +26,8 @@
 		8182C43429C3D9A00040C3B2 /* JCYMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0AE29B427870074ED03 /* JCYMapView.swift */; };
 		8182C43529C3D9A00040C3B2 /* JCYMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */; };
 		81A6E9442A0B2E4200DA5115 /* JcyMapFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8182C41029C3D96B0040C3B2 /* JcyMapFramework.framework */; };
+		81C7838E2A5E3DB8002E346D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C7838D2A5E3DB8002E346D /* LocationService.swift */; };
+		81C7838F2A5E3DB8002E346D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C7838D2A5E3DB8002E346D /* LocationService.swift */; };
 		81D7B0AF29B427870074ED03 /* JCYMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0AE29B427870074ED03 /* JCYMapView.swift */; };
 		81D7B0B129B4293B0074ED03 /* JCYMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */; };
 		81D7B0B429B588AD0074ED03 /* TianDiTuLayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */; };
@@ -98,6 +100,7 @@
 		8182C41329C3D96C0040C3B2 /* JcyMapFramework.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = JcyMapFramework.docc; sourceTree = "<group>"; };
 		8182C41929C3D96C0040C3B2 /* JcyMapFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JcyMapFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8182C42029C3D96C0040C3B2 /* JcyMapFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JcyMapFrameworkTests.swift; sourceTree = "<group>"; };
+		81C7838D2A5E3DB8002E346D /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		81D7B0AE29B427870074ED03 /* JCYMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCYMapView.swift; sourceTree = "<group>"; };
 		81D7B0B029B4293B0074ED03 /* JCYMapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCYMapViewDelegate.swift; sourceTree = "<group>"; };
 		81D7B0B329B588AD0074ED03 /* TianDiTuLayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TianDiTuLayerBuilder.swift; sourceTree = "<group>"; };
@@ -292,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				81E449E129ED3018002604C9 /* Extensions.swift */,
+				81C7838D2A5E3DB8002E346D /* LocationService.swift */,
 			);
 			path = comm;
 			sourceTree = "<group>";
@@ -569,6 +573,7 @@
 				8182C43129C3D9A00040C3B2 /* TianDiTuLayerInfo.swift in Sources */,
 				8182C43229C3D9A00040C3B2 /* LayerInfoFactory.swift in Sources */,
 				8182C43329C3D9A00040C3B2 /* TianDiTuLayer.swift in Sources */,
+				81C7838F2A5E3DB8002E346D /* LocationService.swift in Sources */,
 				8182C43429C3D9A00040C3B2 /* JCYMapView.swift in Sources */,
 				8182C43529C3D9A00040C3B2 /* JCYMapViewDelegate.swift in Sources */,
 				81E449EA29F8054F002604C9 /* JCYMapView+Sketch+location.swift in Sources */,
@@ -597,6 +602,7 @@
 				81E449E229ED3018002604C9 /* Extensions.swift in Sources */,
 				814FD62529B5B3EF00A54771 /* TianDiTuLayerInfo.swift in Sources */,
 				814FD62929B5E27A00A54771 /* TianDiTuLayer.swift in Sources */,
+				81C7838E2A5E3DB8002E346D /* LocationService.swift in Sources */,
 				81D7B0B129B4293B0074ED03 /* JCYMapViewDelegate.swift in Sources */,
 				81080AC629FDDB810068A66D /* TiandituBaseLayerStyle.swift in Sources */,
 				81DC54A529B31E9E006488B4 /* JcyMapLibraryApp.swift in Sources */,

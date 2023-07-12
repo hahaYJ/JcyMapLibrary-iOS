@@ -46,7 +46,7 @@ struct MapView: UIViewRepresentable {
         let mapView = JCYMapView()
         mapView.autoSetMapLocation = false
         mapView.initMapView {
-            mapView.startUpdatingLocation { location in
+            mapView.locationService.startUpdatingLocation(allowsBackgroundLocationUpdates: true) { location in
                 print("\(location.horizontalAccuracy) \(location.coordinate.longitude)  \(location.coordinate.latitude)")
             }
             addGraphics(mapView: mapView)

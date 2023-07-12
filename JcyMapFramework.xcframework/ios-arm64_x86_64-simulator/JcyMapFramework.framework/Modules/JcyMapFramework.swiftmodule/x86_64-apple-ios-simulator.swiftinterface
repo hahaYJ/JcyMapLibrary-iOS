@@ -3,6 +3,7 @@
 // swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name JcyMapFramework
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import ArcGIS
+import CoreLocation
 import Foundation
 @_exported import JcyMapFramework
 import Swift
@@ -147,13 +148,6 @@ extension JcyMapFramework.JCYMapView {
   @_Concurrency.MainActor(unsafe) public func drawingFinish()
   @_Concurrency.MainActor(unsafe) public func clearSketch()
   @_Concurrency.MainActor(unsafe) public func clearSketchGeometry()
-}
-extension JcyMapFramework.JCYMapView : CoreLocation.CLLocationManagerDelegate {
-  @_Concurrency.MainActor(unsafe) public func startUpdatingLocation(onUpdatingLocation: ((CoreLocation.CLLocation) -> Swift.Void)?)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didChangeAuthorization status: CoreLocation.CLAuthorizationStatus)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: any Swift.Error)
-  @_Concurrency.MainActor(unsafe) public func stopUpdatingLocation()
 }
 extension JcyMapFramework.BasemapStyleEnum : Swift.Equatable {}
 extension JcyMapFramework.BasemapStyleEnum : Swift.Hashable {}
