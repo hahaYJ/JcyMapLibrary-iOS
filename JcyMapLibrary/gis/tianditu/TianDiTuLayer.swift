@@ -8,7 +8,7 @@
 import Foundation
 import ArcGIS
 
-public class TianDiTuLayer : AGSImageTiledLayer {
+class TianDiTuLayer : AGSImageTiledLayer {
     
     var layerType: TianDiTuLayerTypes = TianDiTuLayerTypes.TIANDITU_VECTOR_MERCATOR
     var layerInfo: TianDiTuLayerInfo?

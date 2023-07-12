@@ -10,7 +10,7 @@ import Foundation
 /**
  天地图构造器
  */
-public class TianDiTuLayerBuilder {
+class TianDiTuLayerBuilder {
     
     private let TIANTITU_TOKEN = "323a1605e14a07ab30daf74e78c3e1ae"
     private var layerType: TianDiTuLayerTypes = TianDiTuLayerTypes.TIANDITU_VECTOR_MERCATOR

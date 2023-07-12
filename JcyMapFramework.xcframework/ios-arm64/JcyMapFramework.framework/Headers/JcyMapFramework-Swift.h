@@ -262,6 +262,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 @import ArcGIS;
 @import CoreFoundation;
+@import CoreLocation;
+@import Foundation;
+@import ObjectiveC;
 #endif
 
 #endif
@@ -282,6 +285,17 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+@class CLLocationManager;
+@class CLLocation;
+
+SWIFT_CLASS("_TtC15JcyMapFramework18JCYLocationService")
+@interface JCYLocationService : NSObject <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class NSCoder;
 
 /// gis包装类，初始化、天地图相关
@@ -301,14 +315,6 @@ SWIFT_CLASS("_TtC15JcyMapFramework10JCYMapView")
 
 
 
-
-@class AGSTileInfo;
-@class AGSEnvelope;
-
-SWIFT_CLASS("_TtC15JcyMapFramework13TianDiTuLayer")
-@interface TianDiTuLayer : AGSImageTiledLayer
-- (nonnull instancetype)initWithTileInfo:(AGSTileInfo * _Nonnull)tileInfo fullExtent:(AGSEnvelope * _Nonnull)fullExtent SWIFT_UNAVAILABLE;
-@end
 
 #endif
 #if defined(__cplusplus)

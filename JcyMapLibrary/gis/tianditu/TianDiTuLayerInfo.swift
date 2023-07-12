@@ -11,7 +11,7 @@ import ArcGIS
 /**
  瓦片数据
  */
-public class TianDiTuLayerInfo {
+class TianDiTuLayerInfo {
     var url: String = ""
     var layerName: String = ""
     

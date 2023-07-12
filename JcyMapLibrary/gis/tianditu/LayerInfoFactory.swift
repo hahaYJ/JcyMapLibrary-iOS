@@ -8,7 +8,7 @@
 import Foundation
 import ArcGIS
 
-public class LayerInfoFactory {
+class LayerInfoFactory {
     
     private static let URL_VECTOR_2000: String = "http://t0.tianditu.com/vec_c/wmts"
     private static let URL_VECTOR_ANNOTATION_CHINESE_2000 : String = "http://t0.tianditu.com/cva_c/wmts"

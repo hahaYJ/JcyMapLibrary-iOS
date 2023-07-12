@@ -25,12 +25,6 @@ extension Swift.String {
 extension Foundation.NSDictionary {
   public func toJson() -> Swift.String
 }
-@_hasMissingDesignatedInitializers public class TianDiTuLayerBuilder {
-  public func setLayerType(layerType: JcyMapFramework.TianDiTuLayerTypes) -> JcyMapFramework.TianDiTuLayerBuilder
-  public func setCachePath(cachePath: Swift.String) -> JcyMapFramework.TianDiTuLayerBuilder
-  public func build() -> JcyMapFramework.TianDiTuLayer?
-  @objc deinit
-}
 public enum TianDiTuLayerTypes : Swift.Int {
   case TIANDITU_VECTOR_MERCATOR
   case TIANDITU_VECTOR_ANNOTATION_CHINESE_MERCATOR
@@ -54,14 +48,13 @@ public enum TianDiTuLayerTypes : Swift.Int {
     get
   }
 }
-@_hasMissingDesignatedInitializers public class TianDiTuLayerInfo {
-  @objc deinit
-}
-@_hasMissingDesignatedInitializers public class LayerInfoFactory {
-  public static func getLayerInfo(layerType: JcyMapFramework.TianDiTuLayerTypes) -> JcyMapFramework.TianDiTuLayerInfo
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TianDiTuLayer : ArcGIS.AGSImageTiledLayer {
+@objc @_inheritsConvenienceInitializers public class JCYLocationService : ObjectiveC.NSObject, CoreLocation.CLLocationManagerDelegate {
+  public func startUpdatingLocation(allowsBackgroundLocationUpdates: Swift.Bool, onUpdatingLocation: ((CoreLocation.CLLocation) -> Swift.Void)?)
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didChangeAuthorization status: CoreLocation.CLAuthorizationStatus)
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: any Swift.Error)
+  public func stopUpdatingLocation()
+  @objc override dynamic public init()
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class JCYMapView : ArcGIS.AGSMapView {

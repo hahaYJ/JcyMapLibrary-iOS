@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-class JCYLocationService: NSObject, CLLocationManagerDelegate {
+public class JCYLocationService: NSObject, CLLocationManagerDelegate {
     // 定位权限
     lazy var locationManager: CLLocationManager = {
         return CLLocationManager()
