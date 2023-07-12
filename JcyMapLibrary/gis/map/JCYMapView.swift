@@ -64,11 +64,6 @@ public class JCYMapView: AGSMapView {
     // 图片图斑的图形
     public var pictureMap: [String : AGSGraphic] = [:]
     
-    /// 定位服务
-    lazy var locationService: JCYLocationService = {
-        return JCYLocationService()
-    }()
-    
     // 自动设置地图定位
     public var autoSetMapLocation = true
     
@@ -82,7 +77,6 @@ public class JCYMapView: AGSMapView {
     
     public override func removeFromSuperview() {
         onSketchGeometry = nil
-        locationService.stopUpdatingLocation()
     }
     
     public func initMapView(_ onLoad: @escaping () -> Void) {
