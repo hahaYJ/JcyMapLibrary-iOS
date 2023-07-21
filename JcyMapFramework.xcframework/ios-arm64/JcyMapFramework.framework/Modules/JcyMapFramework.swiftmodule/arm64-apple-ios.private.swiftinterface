@@ -73,6 +73,10 @@ public enum TianDiTuLayerTypes : Swift.Int {
   @_Concurrency.MainActor(unsafe) public var areaMap: [Swift.String : ArcGIS.AGSGraphic]
   @_Concurrency.MainActor(unsafe) public var scopeMap: [Swift.String : ArcGIS.AGSGraphic]
   @_Concurrency.MainActor(unsafe) public var pictureMap: [Swift.String : ArcGIS.AGSGraphic]
+  @_Concurrency.MainActor(unsafe) public var rasterLayerMap: [Swift.String : ArcGIS.AGSRasterLayer] {
+    get
+    set
+  }
   @_Concurrency.MainActor(unsafe) public var autoSetMapLocation: Swift.Bool
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func removeFromSuperview()
@@ -112,6 +116,7 @@ extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
   @_Concurrency.MainActor(unsafe) public func clearAllPictureMarker()
   @_Concurrency.MainActor(unsafe) public func clearAllPictureAngle()
   @_Concurrency.MainActor(unsafe) public func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float)
+  @_Concurrency.MainActor(unsafe) public func addTimePhasesRaster(fileURL: Foundation.URL, id: Swift.String?)
 }
 public protocol JCYMapViewDelegate {
   func addAreaGeometry(geometryJson: Swift.String?, id: Swift.String?, showTag: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, isMoveUp: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
@@ -134,6 +139,7 @@ public protocol JCYMapViewDelegate {
   func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
   func deleteAreaGeometryFromID(id: Swift.String?)
   func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float)
+  func addTimePhasesRaster(fileURL: Foundation.URL, id: Swift.String?)
 }
 extension JcyMapFramework.JCYMapView {
   @_Concurrency.MainActor(unsafe) public func createModeFreehandPolygon(onSketchGeometry: ((_ code: Swift.Int, _ area: Swift.Double, _ geometryJson: Swift.String, _ msg: Swift.String) -> Swift.Void)?)

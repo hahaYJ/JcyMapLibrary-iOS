@@ -63,6 +63,10 @@ public class JCYMapView: AGSMapView {
     public var scopeMap: [String : AGSGraphic] = [:]
     // 图片图斑的图形
     public var pictureMap: [String : AGSGraphic] = [:]
+    // 图片图斑的图形
+    public lazy var rasterLayerMap: [String : AGSRasterLayer] = {
+        return [:]
+    }()
     
     // 自动设置地图定位
     public var autoSetMapLocation = true
@@ -111,9 +115,9 @@ public class JCYMapView: AGSMapView {
     }
     
     private func initMapOverlay() {
-        graphicsOverlays.add(mGraphicsScopeOverlay)
-        graphicsOverlays.add(mThematicDataOverlay)
         graphicsOverlays.add(mBorderOverlay)
+        graphicsOverlays.add(mThematicDataOverlay)
+        graphicsOverlays.add(mGraphicsScopeOverlay)
         graphicsOverlays.add(mAreaOverlay)
         graphicsOverlays.add(mPolygonOverlay)
         graphicsOverlays.add(mPictureOverlay)
@@ -253,6 +257,7 @@ extension JCYMapView : AGSGeoViewTouchDelegate {
  图形操作
  */
 extension JCYMapView : JCYMapViewDelegate {
+    
     /**
      * 添加绘制图形
      */
@@ -608,5 +613,16 @@ extension JCYMapView : JCYMapViewDelegate {
             symbol.angle = azimuth
             graphic.symbol = symbol
         }
+    }
+    
+    public func addTimePhasesRaster(fileURL: URL, id: String?) {
+        let raster = AGSRaster(fileURL: fileURL)
+        let sxLayer = AGSRasterLayer(raster: raster)
+        if let id = id { rasterLayerMap[id] = sxLayer }
+        sxLayer.load { [weak self] _ in
+            guard let fullExtent = sxLayer.fullExtent else { return }
+            self?.setViewpointGeometry(fullExtent, padding: 50.0)
+        }
+        self.map?.operationalLayers.add(sxLayer)
     }
 }
