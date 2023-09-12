@@ -587,15 +587,15 @@ extension JCYMapView : JCYMapViewDelegate {
     /**
      * 显示定位方向角
      */
-    public func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float) {
+    public func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float, height: Float, width: Float) {
         guard let imageLocation = imageLocation else { return }
         if longitude <= 0 || latitude <= 0 { return }
         if abs(longitude) <= 1e-6 || abs(latitude) <= 1e-6 { return }
         let point = AGSPoint(x: longitude, y: latitude, spatialReference: AGSSpatialReference.wgs84())
         if (mLocationOverlay.graphics.count == 0) {
             let future = AGSPictureMarkerSymbol(image: imageLocation)
-            future.height = 45
-            future.width = 23.6
+            future.height = CGFloat(height)
+            future.width = CGFloat(width)
             future.angle = azimuth
             future.load { [weak self] _ in
                 self?.mLocationOverlay.graphics.add(AGSGraphic(geometry: point, symbol: future))

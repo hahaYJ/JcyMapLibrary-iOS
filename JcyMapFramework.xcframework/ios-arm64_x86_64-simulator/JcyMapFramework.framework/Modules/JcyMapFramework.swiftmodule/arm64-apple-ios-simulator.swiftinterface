@@ -115,7 +115,7 @@ extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
   @_Concurrency.MainActor(unsafe) public func clearBorderPolygon()
   @_Concurrency.MainActor(unsafe) public func clearAllPictureMarker()
   @_Concurrency.MainActor(unsafe) public func clearAllPictureAngle()
-  @_Concurrency.MainActor(unsafe) public func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float)
+  @_Concurrency.MainActor(unsafe) public func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float, height: Swift.Float, width: Swift.Float)
   @_Concurrency.MainActor(unsafe) public func addTimePhasesRaster(fileURL: Foundation.URL, id: Swift.String?)
 }
 public protocol JCYMapViewDelegate {
@@ -138,7 +138,7 @@ public protocol JCYMapViewDelegate {
   func clearAllPictureAngle()
   func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
   func deleteAreaGeometryFromID(id: Swift.String?)
-  func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float)
+  func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float, height: Swift.Float, width: Swift.Float)
   func addTimePhasesRaster(fileURL: Foundation.URL, id: Swift.String?)
 }
 extension JcyMapFramework.JCYMapView {

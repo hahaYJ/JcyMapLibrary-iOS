@@ -17,7 +17,7 @@ struct MapView: UIViewRepresentable {
 //            print(g)
 //        }
         
-        mapView.showLocationAndOrientationOnMap(imageLocation: UIImage(named: "jcy_map_location_arrow"), longitude: 108.11, latitude: 23.44, azimuth: 90)
+        mapView.showLocationAndOrientationOnMap(imageLocation: UIImage(named: "jcy_map_location_arrow"), longitude: 108.11, latitude: 23.44, azimuth: 90, height: 40, width: 23.5)
 //
 //        let arrowImg = UIImage(named: "map_arrow")
 //        // 添加方向角
