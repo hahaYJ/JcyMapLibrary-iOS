@@ -56,6 +56,30 @@ extension String {
         guard let dic = d as? NSDictionary else { return nil }
         return dic
     }
+    
+    func hexStringToColor() -> UIColor? {
+        let hexString = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // 检查字符串长度是否正确
+        guard hexString.count == 9 else {
+            return nil
+        }
+        
+        // 移除首个字符（#）并将剩余的字符串转换为十六进制表示的整数
+        if let hexValue = UInt32(hexString.dropFirst(), radix: 16) {
+            // 从整数中提取各个颜色分量
+            let red = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
+            let green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
+            let blue = CGFloat((hexValue & 0x0000FF00) >> 8) / 255.0
+            let alpha = CGFloat(hexValue & 0x000000FF) / 255.0
+            
+            // 创建颜色对象
+            let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+            return color
+        } else {
+            return nil
+        }
+    }
 }
 
 extension NSDictionary {

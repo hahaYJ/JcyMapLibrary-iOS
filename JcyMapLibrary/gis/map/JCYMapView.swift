@@ -35,6 +35,8 @@ public class JCYMapView: AGSMapView {
     public var mGpsRouteGraphics: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 定位层
     var mLocationOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    // 定位范围圈层
+    var mCircleOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     
     // 定位图层
     private var mLocationDisplay: AGSLocationDisplay?
@@ -115,6 +117,7 @@ public class JCYMapView: AGSMapView {
     }
     
     private func initMapOverlay() {
+        graphicsOverlays.add(mCircleOverlay)
         graphicsOverlays.add(mBorderOverlay)
         graphicsOverlays.add(mThematicDataOverlay)
         graphicsOverlays.add(mGraphicsScopeOverlay)
@@ -257,6 +260,36 @@ extension JCYMapView : AGSGeoViewTouchDelegate {
  图形操作
  */
 extension JCYMapView : JCYMapViewDelegate {
+    
+    // 画圆
+    public func addCircle(point: AGSPoint, radius: Double) {
+        mCircleOverlay.graphics.removeAllObjects()
+        let points = getPoints(center: point, radius: radius)
+        let polygon = AGSPolygon(points: points)
+        let color = UIColor(red: 0, green: 144 / 255, blue: 1, alpha: 0.157)
+        let lineSymbol = AGSSimpleLineSymbol(style: .null, color: color, width: 0)
+        let simpleFillSymbol = AGSSimpleFillSymbol(style: .solid, color: color, outline: lineSymbol)
+        let graphic = AGSGraphic(geometry: polygon, symbol: simpleFillSymbol)
+        mCircleOverlay.graphics.add(graphic)
+    }
+    
+    private func getPoints(center: AGSPoint, radius: Double) -> [AGSPoint] {
+        var points: [AGSPoint] = []
+        points.reserveCapacity(50)
+        var sinV: Double
+        var cosV: Double
+        var x: Double
+        var y: Double
+        
+        for i in 0..<50 {
+            sinV = sin(Double.pi * 2 * Double(i) / 50)
+            cosV = cos(Double.pi * 2 * Double(i) / 50)
+            x = center.x + radius * sinV
+            y = center.y + radius * cosV
+            points.append(AGSPoint(x: x, y: y, spatialReference: AGSSpatialReference(wkid: 4326)))
+        }
+        return points
+    }
     
     /**
      * 添加绘制图形

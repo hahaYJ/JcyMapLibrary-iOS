@@ -18,6 +18,7 @@ struct MapView: UIViewRepresentable {
 //        }
         
         mapView.showLocationAndOrientationOnMap(imageLocation: UIImage(named: "jcy_map_location_arrow"), longitude: 108.11, latitude: 23.44, azimuth: 90, height: 40, width: 23.5)
+        mapView.addCircle(point: AGSPointMakeWGS84(23.44, 108.11), radius: 1 / 1000.0)
 //
 //        let arrowImg = UIImage(named: "map_arrow")
 //        // 添加方向角
@@ -47,7 +48,7 @@ struct MapView: UIViewRepresentable {
         mapView.autoSetMapLocation = false
         mapView.initMapView {
             JCYLocationService().startUpdatingLocation(allowsBackgroundLocationUpdates: true) { location in
-                print("\(location.horizontalAccuracy) \(location.coordinate.longitude)  \(location.coordinate.latitude)")
+                mapView.addCircle(point: AGSPointMakeWGS84(location.coordinate.latitude, location.coordinate.longitude), radius: 1 / 1000.0)
             }
             addGraphics(mapView: mapView)
         }

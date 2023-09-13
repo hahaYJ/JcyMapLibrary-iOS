@@ -94,6 +94,7 @@ extension JcyMapFramework.JCYMapView : ArcGIS.AGSGeoViewTouchDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func geoView(_ geoView: ArcGIS.AGSGeoView, didTapAtScreenPoint screenPoint: CoreFoundation.CGPoint, mapPoint: ArcGIS.AGSPoint)
 }
 extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
+  @_Concurrency.MainActor(unsafe) public func addCircle(point: ArcGIS.AGSPoint, radius: Swift.Double)
   @_Concurrency.MainActor(unsafe) public func addAreaGeometry(geometryJson: Swift.String?, id: Swift.String?, showTag: Swift.String?, pindding: Swift.Double, isMoveToGeometry: Swift.Bool, isMoveUp: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func addProjectPolygon(polygon: ArcGIS.AGSPolygon?, id: Swift.String?, showTag: Swift.String?, pindding: Swift.Double, color: UIKit.UIColor?, isMoveToGeometry: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func addPictureAngle(arrowImage: UIKit.UIImage?, azimuth: Swift.Float, longitude: Swift.Double, latitude: Swift.Double, id: Swift.String?, isSelected: Swift.Bool, onClickGeometry: ((ArcGIS.AGSGraphic) -> Swift.Void)?)
@@ -140,6 +141,7 @@ public protocol JCYMapViewDelegate {
   func deleteAreaGeometryFromID(id: Swift.String?)
   func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float, height: Swift.Float, width: Swift.Float)
   func addTimePhasesRaster(fileURL: Foundation.URL, id: Swift.String?)
+  func addCircle(point: ArcGIS.AGSPoint, radius: Swift.Double)
 }
 extension JcyMapFramework.JCYMapView {
   @_Concurrency.MainActor(unsafe) public func createModeFreehandPolygon(onSketchGeometry: ((_ code: Swift.Int, _ area: Swift.Double, _ geometryJson: Swift.String, _ msg: Swift.String) -> Swift.Void)?)
