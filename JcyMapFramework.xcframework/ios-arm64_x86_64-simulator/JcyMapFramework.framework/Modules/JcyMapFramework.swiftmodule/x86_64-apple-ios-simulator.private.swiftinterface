@@ -66,6 +66,7 @@ public enum TianDiTuLayerTypes : Swift.Int {
   @_Concurrency.MainActor(unsafe) public var mPictureOverlay: ArcGIS.AGSGraphicsOverlay
   @_Concurrency.MainActor(unsafe) public var mOverlayPictureAngle: ArcGIS.AGSGraphicsOverlay
   @_Concurrency.MainActor(unsafe) public var mGpsRouteGraphics: ArcGIS.AGSGraphicsOverlay
+  @_Concurrency.MainActor(unsafe) public var mCircleOverlay: ArcGIS.AGSGraphicsOverlay
   @_Concurrency.MainActor(unsafe) public var mAllPolygonExtent: ArcGIS.AGSEnvelope?
   @_Concurrency.MainActor(unsafe) public var mDrawGeometryExtent: ArcGIS.AGSEnvelope?
   @_Concurrency.MainActor(unsafe) public var angleMap: [Swift.String : ArcGIS.AGSGraphic]

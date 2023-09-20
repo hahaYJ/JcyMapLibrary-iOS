@@ -36,7 +36,7 @@ public class JCYMapView: AGSMapView {
     // 定位层
     var mLocationOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     // 定位范围圈层
-    var mCircleOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
+    public var mCircleOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     
     // 定位图层
     private var mLocationDisplay: AGSLocationDisplay?
