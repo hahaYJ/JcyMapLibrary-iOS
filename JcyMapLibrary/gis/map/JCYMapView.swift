@@ -490,6 +490,8 @@ extension JCYMapView : JCYMapViewDelegate {
         mGraphicsScopeOverlay.clearSelection()
         mOverlayPictureAngle.clearSelection()
         mPictureOverlay.clearSelection()
+        mThematicDataOverlay.clearSelection()
+        mFarmlandOverlay.clearSelection()
     }
     
     public func selecteAngle(id: String?, isSelected: Bool) {
@@ -596,6 +598,9 @@ extension JCYMapView : JCYMapViewDelegate {
         //        mGraphicsTxtOverlay.graphics.removeAllObjects()
         mOverlayPictureAngle.graphics.removeAllObjects()
         mPictureOverlay.graphics.removeAllObjects()
+        mFarmlandOverlay.graphics.removeAllObjects()
+        mConstructionLandOverlay.graphics.removeAllObjects()
+        
         pictureMap.removeAll()
         areaMap.removeAll()
         polygonMap.removeAll()
