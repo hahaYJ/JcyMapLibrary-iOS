@@ -38,6 +38,12 @@ public class JCYMapView: AGSMapView {
     // 定位范围圈层
     public var mCircleOverlay: AGSGraphicsOverlay = AGSGraphicsOverlay()
     
+    // 加图层 耕地保护目标
+    public var mFarmlandOverlay = AGSGraphicsOverlay()
+    
+    // 加图层 建设用地
+    public var mConstructionLandOverlay = AGSGraphicsOverlay()
+    
     // 定位图层
     private var mLocationDisplay: AGSLocationDisplay?
     // 实时GPS定位点
@@ -128,6 +134,11 @@ public class JCYMapView: AGSMapView {
         graphicsOverlays.add(mGpsRouteGraphics)
         graphicsOverlays.add(mOverlayPictureAngle)
         graphicsOverlays.add(mLocationOverlay)
+        
+        // 加图层
+        graphicsOverlays.add(mFarmlandOverlay)
+        // 加图层
+        graphicsOverlays.add(mConstructionLandOverlay)
     }
     
     /**
@@ -523,6 +534,34 @@ extension JCYMapView : JCYMapViewDelegate {
         mGpsRouteGraphics.graphics.add(lineGraphic)
     }
     
+    // 加图层
+    public func addFarmlandOverlay(polygon: AGSPolygon?, id: String?, color: UIColor?, pindding: Double) {
+        guard let polygon = polygon else { return }
+        
+        // 多边形边框、内部填充
+        let polygonLineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: color ?? UIColor.gray, width: 0.5)
+        let polygonFillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.null, color: UIColor.clear, outline: polygonLineSymbol)
+        
+        // 添加图形
+        let graphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
+        graphic.attributes["id"] = id
+        mFarmlandOverlay.graphics.add(graphic)
+    }
+    
+    // 加图层
+    public func addConstructionLandOverlay(polygon: AGSPolygon?, id: String?, color: UIColor?, pindding: Double) {
+        guard let polygon = polygon else { return }
+        
+        // 多边形边框、内部填充
+        let polygonLineSymbol = AGSSimpleLineSymbol(style: AGSSimpleLineSymbolStyle.solid, color: color ?? UIColor.gray, width: 0.5)
+        let polygonFillSymbol = AGSSimpleFillSymbol(style: AGSSimpleFillSymbolStyle.null, color: UIColor.clear, outline: polygonLineSymbol)
+        
+        // 添加图形
+        let graphic = AGSGraphic(geometry: polygon, symbol: polygonFillSymbol)
+        graphic.attributes["id"] = id
+        mConstructionLandOverlay.graphics.add(graphic)
+    }
+    
     /**
      通过ID删除图斑
      */
@@ -615,6 +654,16 @@ extension JCYMapView : JCYMapViewDelegate {
     public func clearAllPictureAngle() {
         mOverlayPictureAngle.graphics.removeAllObjects()
         angleMap.removeAll()
+    }
+    
+    // 加图层
+    public func clearFarmlandOverlay() {
+        mFarmlandOverlay.graphics.removeAllObjects()
+    }
+    
+    // 加图层
+    public func clearConstructionLandOverlay() {
+        mConstructionLandOverlay.graphics.removeAllObjects()
     }
     
     /**
