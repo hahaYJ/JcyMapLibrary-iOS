@@ -77,7 +77,7 @@ public class JCYMapView: AGSMapView {
     }()
     
     // 自动设置地图定位
-    public var autoSetMapLocation = true
+//    public var autoSetMapLocation = true
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -103,9 +103,9 @@ public class JCYMapView: AGSMapView {
             self.initMapSketchEditor()
             self.touchDelegate = self
             onLoad()
-            if (autoSetMapLocation) {
-                self.setMapLocationDisplay()
-            }
+//            if (autoSetMapLocation) {
+//                self.setMapLocationDisplay()
+//            }
         }
     }
     
@@ -149,21 +149,21 @@ public class JCYMapView: AGSMapView {
         self.sketchEditor = mSketchEditor
     }
     
-    public func setMapLocationDisplay() {
-        locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.recenter
-        locationDisplay.showAccuracy = true
-        locationDisplay.showLocation = true
-        locationDisplay.locationChangedHandler = { [weak self] location in
-            guard let mapView = self else { return }
-            guard let position = location.position else { return }
-            // 第一次 跳转到当前位置
-            if (mapView.mCurrentLocationPoint == nil) {
-                mapView.setViewpointCenter(position, scale: 4000)
-            }
-            mapView.mCurrentLocationPoint = location.position
-        }
-        locationDisplay.start()
-    }
+//    public func setMapLocationDisplay() {
+//        locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.recenter
+//        locationDisplay.showAccuracy = true
+//        locationDisplay.showLocation = true
+//        locationDisplay.locationChangedHandler = { [weak self] location in
+//            guard let mapView = self else { return }
+//            guard let position = location.position else { return }
+//            // 第一次 跳转到当前位置
+//            if (mapView.mCurrentLocationPoint == nil) {
+//                mapView.setViewpointCenter(position, scale: 4000)
+//            }
+//            mapView.mCurrentLocationPoint = location.position
+//        }
+//        locationDisplay.start()
+//    }
     
     /**
      统计所有图斑范围
