@@ -125,6 +125,8 @@ public class JCYMapView: AGSMapView {
     private func initMapOverlay() {
         graphicsOverlays.add(mCircleOverlay)
         graphicsOverlays.add(mBorderOverlay)
+        graphicsOverlays.add(mFarmlandOverlay) // 加图层
+        graphicsOverlays.add(mConstructionLandOverlay) // 加图层
         graphicsOverlays.add(mThematicDataOverlay)
         graphicsOverlays.add(mGraphicsScopeOverlay)
         graphicsOverlays.add(mAreaOverlay)
@@ -134,11 +136,6 @@ public class JCYMapView: AGSMapView {
         graphicsOverlays.add(mGpsRouteGraphics)
         graphicsOverlays.add(mOverlayPictureAngle)
         graphicsOverlays.add(mLocationOverlay)
-        
-        // 加图层
-        graphicsOverlays.add(mFarmlandOverlay)
-        // 加图层
-        graphicsOverlays.add(mConstructionLandOverlay)
     }
     
     /**
