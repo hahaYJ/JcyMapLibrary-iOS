@@ -91,7 +91,7 @@ public enum TianDiTuLayerTypes : Swift.Int {
   @_Concurrency.MainActor(unsafe) public func moveUpMap()
   @_Concurrency.MainActor(unsafe) public func mapZoomin()
   @_Concurrency.MainActor(unsafe) public func mapZoomout()
-  @_Concurrency.MainActor(unsafe) public func zoomToLocation()
+  @_Concurrency.MainActor(unsafe) public func zoomToLocation(curLocation: CoreLocation.CLLocation?)
   @_Concurrency.MainActor(unsafe) public func baseMapLayerStyle(basemapStyle: JcyMapFramework.BasemapStyleEnum)
   @objc deinit
 }

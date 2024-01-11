@@ -45,7 +45,7 @@ public class JCYMapView: AGSMapView {
     public var mConstructionLandOverlay = AGSGraphicsOverlay()
     
     // 定位图层
-    private var mLocationDisplay: AGSLocationDisplay?
+//    private var mLocationDisplay: AGSLocationDisplay?
     // 实时GPS定位点
     private var mCurrentLocationPoint: AGSPoint?
     // 所有多边形范围统计
@@ -189,7 +189,6 @@ public class JCYMapView: AGSMapView {
      */
     public func moveToGeometry(extent: AGSGeometry?, pindding: Double, moveUp: Bool) {
         guard let extent = extent else {
-            zoomToLocation()
             return
         }
         setViewpointGeometry(extent, padding: pindding) { [weak self] _ in
@@ -221,9 +220,9 @@ public class JCYMapView: AGSMapView {
     /**
      * 跳转到当前位置
     */
-    public func zoomToLocation() {
-        locationDisplay.autoPanMode = AGSLocationDisplayAutoPanMode.recenter
-        locationDisplay.start()
+    public func zoomToLocation(curLocation: CLLocation?) {
+        guard let curLocation = curLocation else { return }
+        setViewpointCenter(AGSPoint(x: curLocation.coordinate.longitude, y: curLocation.coordinate.latitude, spatialReference: AGSSpatialReference(wkid: 4326)), scale: 4000)
     }
     
     /**
@@ -526,7 +525,7 @@ extension JCYMapView : JCYMapViewDelegate {
         guard let mGpsRoutePts = mGpsRoutePts else { return }
         guard let gpsRouteLine = gpsRouteLine else { return }
         if (mGpsRoutePts.isEmpty) {
-            zoomToLocation()
+            return
         }
         mGpsRoutePts.add(point)
         let lineGraphic = AGSGraphic(geometry: AGSPolyline(points: mGpsRoutePts.array()), symbol: gpsRouteLine)

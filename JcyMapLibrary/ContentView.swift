@@ -45,7 +45,6 @@ struct MapView: UIViewRepresentable {
 
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> UIView {
         let mapView = JCYMapView()
-        mapView.autoSetMapLocation = false
         mapView.initMapView {
             JCYLocationService().startUpdatingLocation(allowsBackgroundLocationUpdates: true) { location in
                 mapView.addCircle(point: AGSPointMakeWGS84(location.coordinate.latitude, location.coordinate.longitude), radius: 1 / 1000.0)
@@ -82,7 +81,7 @@ struct MapView: UIViewRepresentable {
             mapView.mapZoomout()
             break
         case 6:
-            mapView.zoomToLocation()
+//            mapView.zoomToLocation()
             break
         case 7:
             mapView.baseMapLayerStyle(basemapStyle: .TIANDITU_VECTOR)
