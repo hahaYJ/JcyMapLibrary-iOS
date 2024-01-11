@@ -53,7 +53,7 @@ public protocol JCYMapViewDelegate {
     /**
      添加轨迹
      */
-    func addGpsRoutePts(point: AGSPoint)
+    func addGpsRoutePts(point: AGSPoint, curLocation: CLLocation?)
     
     /**
      移除轨迹

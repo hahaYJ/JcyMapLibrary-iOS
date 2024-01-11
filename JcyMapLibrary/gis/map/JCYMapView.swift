@@ -515,7 +515,7 @@ extension JCYMapView : JCYMapViewDelegate {
     /**
      添加轨迹点，多点成线
      */
-    public func addGpsRoutePts(point: AGSPoint) {
+    public func addGpsRoutePts(point: AGSPoint, curLocation: CLLocation? = nil) {
         if (mGpsRoutePts == nil) {
             mGpsRoutePts = AGSMutablePointCollection(spatialReference: AGSSpatialReference(wkid: 4326))
         }
@@ -525,7 +525,7 @@ extension JCYMapView : JCYMapViewDelegate {
         guard let mGpsRoutePts = mGpsRoutePts else { return }
         guard let gpsRouteLine = gpsRouteLine else { return }
         if (mGpsRoutePts.isEmpty) {
-            return
+            zoomToLocation(curLocation: curLocation)
         }
         mGpsRoutePts.add(point)
         let lineGraphic = AGSGraphic(geometry: AGSPolyline(points: mGpsRoutePts.array()), symbol: gpsRouteLine)
