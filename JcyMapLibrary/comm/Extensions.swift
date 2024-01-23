@@ -12,6 +12,119 @@ import ArcGIS
  json数据转多边形
  */
 extension String {
+    
+    func toParsePolygon2(setWkid: @escaping (Int) -> Void = {_ in }) -> AGSPolygon? {
+        guard let jsonObject = try? JSONSerialization.jsonObject(with: Data(self.utf8), options: []) as? [String: Any] else {
+            return nil
+        }
+        
+        let coordinates: [[[[Double]]]]
+        
+        if jsonObject.description.range(of: "geometry", options: .caseInsensitive) != nil {
+            guard let geometry = (jsonObject["geometry"] as? [String: Any?])?["coordinates"] as? [[[[Double]]]] else {
+                return nil
+            }
+            // 田长的图斑
+            coordinates = geometry
+        } else if jsonObject.description.range(of: "coordinates", options: .caseInsensitive) != nil {
+            guard let tempCoordinates = jsonObject["coordinates"] as? [[[[Double]]]] else { return nil }
+            // 综合监测的图斑
+            coordinates = tempCoordinates
+        } else {
+            // 未测试到
+            guard let temp = jsonObject["rings"] as? [[[[Double]]]] else { return nil }
+            coordinates = temp
+        }
+        var degree = "\(Int(coordinates.first?.first?.first?.first ?? 3600))"
+        degree.replaceSubrange(degree.index(degree.startIndex, offsetBy: 2)..<degree.endIndex, with: "")
+        
+//        let bigDecimal = BigDecimal(string: str[str.startIndex..<str.firstIndex(of: ",")!])
+//        let coord = String(bigDecimal.description[bigDecimal.description.startIndex..<bigDecimal.description.index(bigDecimal.description.startIndex, offsetBy: 2)])
+        let spatialReference: AGSSpatialReference?
+        let wkid: Int
+        
+        switch degree {
+        case "35":
+            spatialReference = AGSSpatialReference(wkid: 4523)
+            wkid = 4523
+        case "36":
+            spatialReference = AGSSpatialReference(wkid: 4524)
+            wkid = 4524
+        case "37":
+            spatialReference = AGSSpatialReference(wkid: 4525)
+            wkid = 4525
+        case "38":
+            spatialReference = AGSSpatialReference(wkid: 4526)
+            wkid = 4526
+        default:
+            spatialReference = AGSSpatialReference(wkid: 4326)
+            wkid = 4326
+        }
+        
+        setWkid(wkid)
+        
+        var union: AGSGeometry?
+        var multiPolygon: [AGSGeometry] = []
+        
+        if coordinates.description.contains("[[[[[") {
+            for l in 0..<coordinates.count {
+                let patterns = coordinates[l]
+//                let partCollection = AGSMutablePartCollection(spatialReference: spatialReference)
+                let pointCollection = AGSMutablePointCollection(spatialReference: spatialReference)
+                for i in 0..<patterns.count {
+                    let rings = patterns[i]
+                    for j in 0..<rings.count {
+                        let points = rings[j]
+                        pointCollection.addPointWith(x: points[0], y: points[1])
+//                        pointCollection.add(AGSSegment(x: points[0], y: points[1], spatialReference: spatialReference))
+                    }
+//                    partCollection.add(pointCollection)
+                }
+                multiPolygon.append(AGSPolygon(points: pointCollection.array()))
+//                append(AGSPolygon(partCollection: partCollection, spatialReference: spatialReference))
+            }
+            union = AGSGeometryEngine.unionGeometries(multiPolygon)
+        } else if coordinates.description.contains("[[[[") {
+            for i in 0..<coordinates.count {
+                let rings = coordinates[i]
+//                let partCollection = AGSPartCollection(spatialReference: spatialReference)
+                let pointCollection = AGSMutablePointCollection(spatialReference: spatialReference)
+                for j in 0..<rings.count {
+                    let points = rings[j]
+                    for k in 0..<points.count {
+                        let pt = points[k]
+                        pointCollection.add(AGSPoint(x: pt[0], y: pt[1], spatialReference: spatialReference))
+                    }
+//                    partCollection.add(pointCollection)
+                }
+                multiPolygon.append(AGSPolygon(points: pointCollection.array()))
+//                multiPolygon.append(AGSPolygon(partCollection: partCollection, spatialReference: spatialReference))
+            }
+            union = AGSGeometryEngine.unionGeometries(multiPolygon)
+//            union = AGSGeometryEngine.union(ofGeometries: multiPolygon)
+        } else {
+            // 田长的图斑
+//            let partCollection = AGSPartCollection(spatialReference: spatialReference)
+            let pointCollection = AGSMutablePointCollection(spatialReference: spatialReference)
+            for j in 0..<coordinates.count {
+                let points = coordinates[j]
+                for j in 0..<points.count {
+                    let temp = points[j]
+                    for k in 0..<temp.count {
+                        let pt = temp[k]
+                        pointCollection.add(AGSPoint(x: pt[0], y: pt[1], spatialReference: spatialReference))
+                    }
+                }
+//                partCollection.add(pointCollection)
+            }
+            multiPolygon.append(AGSPolygon(points: pointCollection.array()))
+            union = AGSGeometryEngine.unionGeometries(multiPolygon)
+//            multiPolygon.append(AGSPolygon(partCollection: partCollection, spatialReference: spatialReference))
+//            union = AGSGeometryEngine.union(ofGeometries: multiPolygon)
+        }
+        return union as? AGSPolygon
+    }
+    
     /**
      转为多边形对象
      */

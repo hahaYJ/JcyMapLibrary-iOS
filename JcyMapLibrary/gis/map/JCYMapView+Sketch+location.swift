@@ -64,26 +64,81 @@ extension JCYMapView {
     /**
      绘图完成
      */
-    public func drawingFinish() {
-        guard let sketchEditor = mSketchEditor else { return }
-        if (sketchEditor.geometry == nil || sketchEditor.geometry?.isEmpty == true) {
-            if let onSketchGeometry = onSketchGeometry { onSketchGeometry(-1, 0, "", "请绘制图斑") }
-            return
-        }
-        if (sketchEditor.isSketchValid == false) {
-            if let onSketchGeometry = onSketchGeometry { onSketchGeometry(-1, 0, "", "至少选择三个点") }
-            return
-        }
-
-        guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
-        guard let geometry = try? AGSGeometry.fromJSON(json) as? AGSGeometry else { return }
-        guard let spatialReference = AGSSpatialReference(wkid: 4524) else { return }
-        guard let geometry = AGSGeometryEngine.projectGeometry(geometry, to: spatialReference) as? AGSPolygon else { return }
+    public func drawingFinish(isDrawLine: Bool) {
         
-        if let onSketchGeometry = onSketchGeometry { onSketchGeometry(0, abs(AGSGeometryEngine.area(of: geometry)).roundTo(places: 2), json.toJson(), "绘图完成") }
+        guard let sketchEditor = mSketchEditor else { return }
+        
+        if isDrawLine {
+            if (sketchEditor.geometry == nil || sketchEditor.geometry?.isEmpty == true) {
+                onSketchGeometry?(-1, 0, "", "请打点画线")
+                return
+            }
+            if (sketchEditor.isSketchValid == false) {
+                onSketchGeometry?(-1, 0, "", "两个及以上数量的点才能构成线")
+                clearSketch()
+                onSketchGeometry = nil
+                return
+            }
+            
+            guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
+            guard let geometry = try? AGSGeometry.fromJSON(json) as? AGSGeometry else { return }
+            guard let spatialReference = AGSSpatialReference(wkid: 4524) else { return }
+            guard let geometry = AGSGeometryEngine.projectGeometry(geometry, to: spatialReference) as? AGSPolyline else { return }
+            
+            onSketchGeometry?(0, abs(AGSGeometryEngine.length(of: geometry)).roundTo(places: 2), json.toJson(), "绘图完成")
+            
+        } else {
+            
+            if (sketchEditor.geometry == nil || sketchEditor.geometry?.isEmpty == true) {
+                onSketchGeometry?(-1, 0, "", "请绘制图斑")
+                return
+            }
+            if (sketchEditor.isSketchValid == false) {
+                onSketchGeometry?(-1, 0, "", "至少选择三个点")
+                return
+            }
+
+            guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
+            guard let geometry = try? AGSGeometry.fromJSON(json) as? AGSGeometry else { return }
+            guard let spatialReference = AGSSpatialReference(wkid: 4524) else { return }
+            guard let geometry = AGSGeometryEngine.projectGeometry(geometry, to: spatialReference) as? AGSPolygon else { return }
+            
+            onSketchGeometry?(0, abs(AGSGeometryEngine.area(of: geometry)).roundTo(places: 2), json.toJson(), "绘图完成")
+        }
         clearSketch()
         onSketchGeometry = nil
     }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///                                                     线
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    /// 打点画线
+    /// - Parameter onSketchGeometry: 绘制回调
+    public func createModePolyline(onSketchGeometry: ((_ code: Int, _ length: Double, _ geometryJson: String, _ msg: String) -> Void)?) {
+        guard let sketchEditor = mSketchEditor else { return }
+        
+        self.onSketchGeometry = onSketchGeometry
+        
+        sketchEditor.start(with: nil, creationMode: .polyline)
+    }
+    
+    /// 打点
+    /// - Parameter onSketchGeometry: 打点回调
+    public func createModePoint(onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?) {
+        self.onSketchGeometry = onSketchGeometry
+        guard let sketchEditor = mSketchEditor else { return }
+        
+        NotificationCenter
+            .default
+            .addObserver(self,
+                         selector: #selector(handleSketchEditorGeometryDidChange(notification:)),
+                         name: .AGSSketchEditorGeometryDidChange,
+                         object: nil)
+        sketchEditor.start(with: nil, creationMode: .point)
+    }
+    
     
     /**
      * 删除绘制
