@@ -13,7 +13,7 @@ import ArcGIS
  */
 extension String {
     
-    func toParsePolygon(setWkid: @escaping (Int) -> Void = {_ in }) -> AGSPolygon? {
+    public func toParsePolygon(setWkid: @escaping (Int) -> Void = {_ in }) -> AGSPolygon? {
         guard let jsonObject = try? JSONSerialization.jsonObject(with: Data(self.utf8), options: []) as? [String: Any] else {
             return nil
         }

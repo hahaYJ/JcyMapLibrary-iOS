@@ -6861,6 +6861,55 @@
         "children": [
           {
             "kind": "Function",
+            "name": "toParsePolygon",
+            "printedName": "toParsePolygon(setWkid:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ArcGIS.AGSPolygon?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AGSPolygon",
+                    "printedName": "ArcGIS.AGSPolygon",
+                    "usr": "c:objc(cs)AGSPolygon"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Int) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "hasDefaultArg": true
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:SS15JcyMapFrameworkE14toParsePolygon7setWkidSo10AGSPolygonCSgySic_tF",
+            "mangledName": "$sSS15JcyMapFrameworkE14toParsePolygon7setWkidSo10AGSPolygonCSgySic_tF",
+            "moduleName": "JcyMapFramework",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "toDictionary",
             "printedName": "toDictionary()",
             "children": [
@@ -7701,420 +7750,420 @@
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "Array",
-      "offset": 361,
+      "offset": 368,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 525,
+      "offset": 532,
       "length": 10,
       "value": "\"geometry\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 618,
+      "offset": 625,
       "length": 10,
       "value": "\"geometry\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 651,
+      "offset": 658,
       "length": 13,
       "value": "\"coordinates\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 850,
+      "offset": 857,
       "length": 13,
       "value": "\"coordinates\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 952,
+      "offset": 959,
       "length": 13,
       "value": "\"coordinates\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 1170,
+      "offset": 1177,
       "length": 7,
       "value": "\"rings\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 1280,
+      "offset": 1287,
       "length": 56,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 1329,
+      "offset": 1336,
       "length": 4,
       "value": "3600"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 1335,
+      "offset": 1342,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 1410,
+      "offset": 1417,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 1438,
+      "offset": 1445,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 1831,
+      "offset": 1838,
       "length": 4,
       "value": "\"35\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 1894,
+      "offset": 1901,
       "length": 4,
       "value": "4523"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 1919,
+      "offset": 1926,
       "length": 4,
       "value": "4523"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 1937,
+      "offset": 1944,
       "length": 4,
       "value": "\"36\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2000,
+      "offset": 2007,
       "length": 4,
       "value": "4524"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2025,
+      "offset": 2032,
       "length": 4,
       "value": "4524"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 2043,
+      "offset": 2050,
       "length": 4,
       "value": "\"37\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2106,
+      "offset": 2113,
       "length": 4,
       "value": "4525"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2131,
+      "offset": 2138,
       "length": 4,
       "value": "4525"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 2149,
+      "offset": 2156,
       "length": 4,
       "value": "\"38\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2212,
+      "offset": 2219,
       "length": 4,
       "value": "4526"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2237,
+      "offset": 2244,
       "length": 4,
       "value": "4526"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2316,
+      "offset": 2323,
       "length": 4,
       "value": "4326"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2341,
+      "offset": 2348,
       "length": 4,
       "value": "4326"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "Array",
-      "offset": 2470,
+      "offset": 2477,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 2526,
+      "offset": 2533,
       "length": 7,
       "value": "\"[[[[[\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2558,
+      "offset": 2565,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2853,
+      "offset": 2860,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 2947,
+      "offset": 2954,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 3074,
+      "offset": 3081,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 3088,
+      "offset": 3095,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 3631,
+      "offset": 3638,
       "length": 6,
       "value": "\"[[[[\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 3662,
+      "offset": 3669,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 3947,
+      "offset": 3954,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 4036,
+      "offset": 4043,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 4157,
+      "offset": 4164,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 4167,
+      "offset": 4174,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 4915,
+      "offset": 4922,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 5008,
+      "offset": 5015,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 5097,
+      "offset": 5104,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 5214,
+      "offset": 5221,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 5224,
+      "offset": 5231,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 8113,
+      "offset": 8120,
       "length": 1,
       "value": "9"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 8324,
+      "offset": 8331,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 8424,
+      "offset": 8431,
       "length": 10,
       "value": "0xFF000000"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 8439,
+      "offset": 8446,
       "length": 2,
       "value": "24"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "FloatLiteral",
-      "offset": 8445,
+      "offset": 8452,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 8495,
+      "offset": 8502,
       "length": 10,
       "value": "0x00FF0000"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 8510,
+      "offset": 8517,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "FloatLiteral",
-      "offset": 8516,
+      "offset": 8523,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 8565,
+      "offset": 8572,
       "length": 10,
       "value": "0x0000FF00"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 8580,
+      "offset": 8587,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "FloatLiteral",
-      "offset": 8585,
+      "offset": 8592,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "IntegerLiteral",
-      "offset": 8634,
+      "offset": 8641,
       "length": 10,
       "value": "0x000000FF"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "FloatLiteral",
-      "offset": 8648,
+      "offset": 8655,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 9018,
+      "offset": 9025,
       "length": 4,
       "value": "\"{}\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "StringLiteral",
-      "offset": 9079,
+      "offset": 9086,
       "length": 4,
       "value": "\"{}\""
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/comm\/Extensions.swift",
       "kind": "FloatLiteral",
-      "offset": 9179,
+      "offset": 9186,
       "length": 4,
       "value": "10.0"
     },

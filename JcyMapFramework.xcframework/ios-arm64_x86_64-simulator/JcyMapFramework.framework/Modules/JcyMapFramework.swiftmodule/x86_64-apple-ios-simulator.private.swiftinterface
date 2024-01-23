@@ -23,6 +23,7 @@ public enum BasemapStyleEnum : Swift.Int {
   }
 }
 extension Swift.String {
+  public func toParsePolygon(setWkid: @escaping (Swift.Int) -> Swift.Void = {_ in }) -> ArcGIS.AGSPolygon?
   public func toDictionary() -> Foundation.NSDictionary?
 }
 extension Foundation.NSDictionary {
