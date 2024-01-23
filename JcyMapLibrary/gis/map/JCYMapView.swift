@@ -136,6 +136,11 @@ public class JCYMapView: AGSMapView {
         graphicsOverlays.add(mGpsRouteGraphics)
         graphicsOverlays.add(mOverlayPictureAngle)
         graphicsOverlays.add(mLocationOverlay)
+        
+        // 加图层
+        graphicsOverlays.add(mFarmlandOverlay)
+        // 加图层
+        graphicsOverlays.add(mConstructionLandOverlay)
     }
     
     /**
