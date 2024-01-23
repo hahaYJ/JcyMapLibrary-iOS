@@ -27,7 +27,7 @@ struct MapView: UIViewRepresentable {
         
 //        let testJSON = "{ \"type\": \"MultiPolygon\", \"coordinates\": [ [ [ [ 36579700.205519430339336, 2565073.856913287658244, 0.0 ], [ 36579678.06610631942749, 2565073.106441479176283, 0.0 ], [ 36579659.303912833333015, 2565086.99044510954991, 0.0 ], [ 36579760.61966211348772, 2565095.245816130191088, 0.0 ], [ 36579737.354528248310089, 2565077.2341178515926, 0.0 ], [ 36579722.720069952309132, 2565073.106446203310043, 0.0 ], [ 36579700.205519430339336, 2565073.856913287658244, 0.0 ] ] ] ] }"
         
-        mapView.addProjectPolygon(polygon: testJSON.toParsePolygon2(), id: "id", showTag: "showTag", pindding: 135, color: UIColor.red, isMoveToGeometry: true) { g in
+        mapView.addProjectPolygon(polygon: testJSON.toParsePolygon(), id: "id", showTag: "showTag", pindding: 135, color: UIColor.red, isMoveToGeometry: true) { g in
             print(g)
         }
         

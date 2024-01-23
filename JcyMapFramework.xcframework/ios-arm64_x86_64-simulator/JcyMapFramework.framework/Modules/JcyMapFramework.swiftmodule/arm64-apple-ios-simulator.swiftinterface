@@ -23,7 +23,6 @@ public enum BasemapStyleEnum : Swift.Int {
   }
 }
 extension Swift.String {
-  public func toParsePolygon() -> ArcGIS.AGSPolygon?
   public func toDictionary() -> Foundation.NSDictionary?
 }
 extension Foundation.NSDictionary {
@@ -155,7 +154,9 @@ public protocol JCYMapViewDelegate {
 extension JcyMapFramework.JCYMapView {
   @_Concurrency.MainActor(unsafe) public func createModeFreehandPolygon(onSketchGeometry: ((_ code: Swift.Int, _ area: Swift.Double, _ geometryJson: Swift.String, _ msg: Swift.String) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func createModePolygon(onSketchGeometry: ((_ code: Swift.Int, _ area: Swift.Double, _ geometryJson: Swift.String, _ msg: Swift.String) -> Swift.Void)?)
-  @_Concurrency.MainActor(unsafe) public func drawingFinish()
+  @_Concurrency.MainActor(unsafe) public func drawingFinish(isDrawLine: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func createModePolyline(onSketchGeometry: ((_ code: Swift.Int, _ length: Swift.Double, _ geometryJson: Swift.String, _ msg: Swift.String) -> Swift.Void)?)
+  @_Concurrency.MainActor(unsafe) public func createModePoint(onSketchGeometry: ((_ code: Swift.Int, _ area: Swift.Double, _ geometryJson: Swift.String, _ msg: Swift.String) -> Swift.Void)?)
   @_Concurrency.MainActor(unsafe) public func clearSketch()
   @_Concurrency.MainActor(unsafe) public func clearSketchGeometry()
 }
