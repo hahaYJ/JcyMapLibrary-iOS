@@ -96,7 +96,7 @@ struct MapView: UIViewRepresentable {
             mapView.mapZoomout()
             break
         case 6:
-//            mapView.zoomToLocation()
+            mapView.zoomToLocation(curLocation: CLLocation(latitude: 23.44, longitude: 108.11), isMoveUp: true)
             break
         case 7:
             mapView.baseMapLayerStyle(basemapStyle: .TIANDITU_VECTOR)

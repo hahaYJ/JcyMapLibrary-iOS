@@ -204,8 +204,8 @@ public class JCYMapView: AGSMapView {
         }
     }
     
-    public func moveUpMap() {
-        setViewpointCenter(self.screen(toLocation: CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 20 * 17)))
+    public func moveUpMap(cellSize: Float = 17) {
+        setViewpointCenter(self.screen(toLocation: CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 20 * CGFloat(cellSize))))
     }
     
     /**
@@ -225,9 +225,13 @@ public class JCYMapView: AGSMapView {
     /**
      * 跳转到当前位置
     */
-    public func zoomToLocation(curLocation: CLLocation?) {
+    public func zoomToLocation(curLocation: CLLocation?, isMoveUp: Bool = false, moveUpCellSize: Float = 19) {
         guard let curLocation = curLocation else { return }
-        setViewpointCenter(AGSPoint(x: curLocation.coordinate.longitude, y: curLocation.coordinate.latitude, spatialReference: AGSSpatialReference(wkid: 4326)), scale: 4000)
+        setViewpointCenter(AGSPoint(x: curLocation.coordinate.longitude, y: curLocation.coordinate.latitude, spatialReference: AGSSpatialReference(wkid: 4326)), scale: 4000) { [weak self] finished in
+            if (finished && isMoveUp) {
+                self?.moveUpMap(cellSize: moveUpCellSize)
+            }
+        }
     }
     
     /**
