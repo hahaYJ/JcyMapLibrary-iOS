@@ -116,4 +116,5 @@ public protocol JCYMapViewDelegate {
      显示范围
      */
     func addCircle(point: AGSPoint, radius: Double)
+    
 }

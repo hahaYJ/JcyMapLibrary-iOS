@@ -8,6 +8,8 @@
 import Foundation
 import ArcGIS
 
+public typealias onSketchGeometryCallBack = (_ code: Int, _ length: Double, _ area: Double, _ geometryJson: String, _ msg: String) -> Void
+
 /**
  gis包装类，初始化、天地图相关
  */
@@ -59,7 +61,7 @@ public class JCYMapView: AGSMapView {
     // 手绘工具
     var mSketchEditor: AGSSketchEditor?
     // 绘制的图斑数据
-    var onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?
+    var onSketchGeometry: onSketchGeometryCallBack?
     
     // 方向角缓存的图形
     public var angleMap: [String : AGSGraphic] = [:]
@@ -246,7 +248,7 @@ public class JCYMapView: AGSMapView {
 
 
 /**
- 点击代理
+ 点击代理 ⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
  */
 extension JCYMapView : AGSGeoViewTouchDelegate {
     public func geoView(_ geoView: AGSGeoView, didTapAtScreenPoint screenPoint: CGPoint, mapPoint: AGSPoint) {
@@ -268,12 +270,13 @@ extension JCYMapView : AGSGeoViewTouchDelegate {
         }
     }
 }
-
-
+/**
+ 点击代理 ⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️ ⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️ ⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️ ⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️ ⬆️⬆️⬆️⬆️⬆️ ⬆️⬆️
+ */
 
 
 /**
- 图形操作
+ 图形操作 ⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
  */
 extension JCYMapView : JCYMapViewDelegate {
     
@@ -718,3 +721,6 @@ extension JCYMapView : JCYMapViewDelegate {
         self.map?.operationalLayers.add(sxLayer)
     }
 }
+/**
+ 图形操作 ⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️ ⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️ ⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️ ⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️⬆️ ⬆️⬆️⬆️⬆️⬆️ ⬆️⬆️
+ */

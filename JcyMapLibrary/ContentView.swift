@@ -76,18 +76,17 @@ struct MapView: UIViewRepresentable {
             addGraphics(mapView: mapView)
             break
         case 1:
-            mapView.createModeFreehandPolygon { code, area, geometryJson, msg in
+            mapView.createModeFreehandPolygon { code, length, area, geometryJson, msg in
                 print("\(area)   \(geometryJson)")
             }
             break
         case 2:
-            mapView.createModePolygon { code, area, geometryJson, msg in
+            mapView.createModePolygon { code, length, area, geometryJson, msg in
                 print("\(area)   \(geometryJson)")
             }
             break
         case 3:
-            guard let drawType = drawType else { return }
-            mapView.drawingFinish(isDrawLine: drawType == .drawPolyline)
+            mapView.drawingFinish()
             break
         case 4:
             mapView.mapZoomin()
@@ -102,7 +101,7 @@ struct MapView: UIViewRepresentable {
             mapView.baseMapLayerStyle(basemapStyle: .TIANDITU_VECTOR)
             break
         case 8:
-            mapView.createModePolyline { code, length, geometryJson, msg in
+            mapView.createModePolyline { code, length, area, geometryJson, msg in
                 print("\(length)   \(geometryJson)")
             }
         default:
@@ -159,6 +158,10 @@ struct ContentView: View {
                 Button("样式") {
                     time = Date().timeIntervalSince1970
                     mapState = 7
+                }
+                Button("测量") {
+                    time = Date().timeIntervalSince1970
+                    mapState = 8
                 }
             }.frame(maxWidth:.infinity, maxHeight: .infinity, alignment: .bottom).background(Color.clear)
         }

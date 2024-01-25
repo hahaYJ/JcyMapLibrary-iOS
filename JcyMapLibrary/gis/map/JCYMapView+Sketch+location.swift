@@ -16,7 +16,7 @@ extension JCYMapView {
     /**
      * 绘面
      */
-    public func createModeFreehandPolygon(onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?) {
+    public func createModeFreehandPolygon(onSketchGeometry: onSketchGeometryCallBack?) {
         self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
         let notificationCenter = NotificationCenter.default
@@ -53,7 +53,7 @@ extension JCYMapView {
     /**
      * 点面
      */
-    public func createModePolygon(onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?) {
+    public func createModePolygon(onSketchGeometry: onSketchGeometryCallBack?) {
         self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
         let notificationCenter = NotificationCenter.default
@@ -64,47 +64,43 @@ extension JCYMapView {
     /**
      绘图完成
      */
-    public func drawingFinish(isDrawLine: Bool) {
-        
+    public func drawingFinish() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name: .AGSSketchEditorGeometryDidChange, object: nil)
         guard let sketchEditor = mSketchEditor else { return }
         
-        if isDrawLine {
-            if (sketchEditor.geometry == nil || sketchEditor.geometry?.isEmpty == true) {
-                onSketchGeometry?(-1, 0, "", "请打点画线")
-                return
-            }
-            if (sketchEditor.isSketchValid == false) {
-                onSketchGeometry?(-1, 0, "", "两个及以上数量的点才能构成线")
-                clearSketch()
-                onSketchGeometry = nil
-                return
-            }
-            
-            guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
-            guard let geometry = try? AGSGeometry.fromJSON(json) as? AGSGeometry else { return }
-            guard let spatialReference = AGSSpatialReference(wkid: 4524) else { return }
-            guard let geometry = AGSGeometryEngine.projectGeometry(geometry, to: spatialReference) as? AGSPolyline else { return }
-            
-            onSketchGeometry?(0, abs(AGSGeometryEngine.length(of: geometry)).roundTo(places: 2), json.toJson(), "绘图完成")
-            
-        } else {
-            
-            if (sketchEditor.geometry == nil || sketchEditor.geometry?.isEmpty == true) {
-                onSketchGeometry?(-1, 0, "", "请绘制图斑")
-                return
-            }
-            if (sketchEditor.isSketchValid == false) {
-                onSketchGeometry?(-1, 0, "", "至少选择三个点")
-                return
-            }
-
-            guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
-            guard let geometry = try? AGSGeometry.fromJSON(json) as? AGSGeometry else { return }
-            guard let spatialReference = AGSSpatialReference(wkid: 4524) else { return }
-            guard let geometry = AGSGeometryEngine.projectGeometry(geometry, to: spatialReference) as? AGSPolygon else { return }
-            
-            onSketchGeometry?(0, abs(AGSGeometryEngine.area(of: geometry)).roundTo(places: 2), json.toJson(), "绘图完成")
+        if sketchEditor.geometry == nil || sketchEditor.geometry?.isEmpty == true {
+            onSketchGeometry?(-1, 0, 0, "", "请绘制图斑")
+            return
         }
+        if sketchEditor.isSketchValid == false {
+            if sketchEditor.creationMode == .polygon || sketchEditor.creationMode == .freehandPolygon {
+                onSketchGeometry?(-1, 0, 0, "", "三个及以上的点才能构成面")
+            } else if sketchEditor.creationMode == .polygon || sketchEditor.creationMode == .freehandPolyline {
+                onSketchGeometry?(-1, 0, 0, "", "两个及以上数量的点才能构成线")
+            } else if sketchEditor.creationMode == .point {
+                onSketchGeometry?(-1, 0, 0, "", "点需要X、Y坐标")
+            } else {
+                onSketchGeometry?(-1, 0, 0, "", "请先选择绘制工具并在图中绘制")
+            }
+            return
+        }
+
+        guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
+        guard let geometry = try? AGSGeometry.fromJSON(json) as? AGSGeometry else { return }
+        guard let spatialReference = AGSSpatialReference(wkid: 4524) else { return }
+        var projectGeometry = AGSGeometryEngine.projectGeometry(geometry, to: spatialReference)
+        if projectGeometry is AGSPolygon {
+            onSketchGeometry?(0, 0, abs(AGSGeometryEngine.area(of: geometry)).roundTo(places: 2), json.toJson(), "绘图完成")
+        } else if projectGeometry is AGSPolygon {
+            onSketchGeometry?(0, abs(AGSGeometryEngine.area(of: geometry)).roundTo(places: 2), 0, json.toJson(), "绘图完成")
+        } else if projectGeometry is AGSPoint {
+            onSketchGeometry?(0, 0, 0, json.toJson(), "绘图完成")
+        } else {
+            onSketchGeometry?(0, 0, 0, "", "绘图完成")
+        }
+        
+        onSketchGeometry?(0, 0, abs(AGSGeometryEngine.area(of: geometry)).roundTo(places: 2), json.toJson(), "绘图完成")
         clearSketch()
         onSketchGeometry = nil
     }
@@ -114,9 +110,19 @@ extension JCYMapView {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
+    /// 画线
+    /// - Parameter onSketchGeometry: 绘制回调
+    public func createModeFreehandLine(onSketchGeometry: onSketchGeometryCallBack?) {
+        guard let sketchEditor = mSketchEditor else { return }
+        
+        self.onSketchGeometry = onSketchGeometry
+
+        sketchEditor.start(with: nil, creationMode: .freehandPolyline)
+    }
+    
     /// 打点画线
     /// - Parameter onSketchGeometry: 绘制回调
-    public func createModePolyline(onSketchGeometry: ((_ code: Int, _ length: Double, _ geometryJson: String, _ msg: String) -> Void)?) {
+    public func createModePolyline(onSketchGeometry: onSketchGeometryCallBack?) {
         guard let sketchEditor = mSketchEditor else { return }
         
         self.onSketchGeometry = onSketchGeometry
@@ -126,7 +132,7 @@ extension JCYMapView {
     
     /// 打点
     /// - Parameter onSketchGeometry: 打点回调
-    public func createModePoint(onSketchGeometry: ((_ code: Int, _ area: Double, _ geometryJson: String, _ msg: String) -> Void)?) {
+    public func createModePoint(onSketchGeometry: onSketchGeometryCallBack?) {
         self.onSketchGeometry = onSketchGeometry
         guard let sketchEditor = mSketchEditor else { return }
         
