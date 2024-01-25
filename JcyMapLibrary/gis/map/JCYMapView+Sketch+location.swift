@@ -92,7 +92,7 @@ extension JCYMapView {
         var projectGeometry = AGSGeometryEngine.projectGeometry(geometry, to: spatialReference)
         if projectGeometry is AGSPolygon {
             onSketchGeometry?(0, 0, abs(AGSGeometryEngine.area(of: geometry)).roundTo(places: 2), json.toJson(), "绘图完成")
-        } else if projectGeometry is AGSPolygon {
+        } else if projectGeometry is AGSPolyline {
             onSketchGeometry?(0, abs(AGSGeometryEngine.length(of: geometry)).roundTo(places: 2), 0, json.toJson(), "绘图完成")
         } else if projectGeometry is AGSPoint {
             onSketchGeometry?(0, 0, 0, json.toJson(), "绘图完成")
