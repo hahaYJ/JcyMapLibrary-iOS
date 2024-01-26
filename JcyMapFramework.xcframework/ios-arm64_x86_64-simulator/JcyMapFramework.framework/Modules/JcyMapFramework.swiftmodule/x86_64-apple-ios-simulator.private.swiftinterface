@@ -89,10 +89,10 @@ public typealias onSketchGeometryCallBack = (_ code: Swift.Int, _ length: Swift.
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func removeFromSuperview()
   @_Concurrency.MainActor(unsafe) public func initMapView(_ onLoad: @escaping () -> Swift.Void)
   @_Concurrency.MainActor(unsafe) public func moveToGeometry(extent: ArcGIS.AGSGeometry?, pindding: Swift.Double, moveUp: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) public func moveUpMap(cellSize: Swift.Float = 17)
+  @_Concurrency.MainActor(unsafe) public func moveUpMap(cellSize: Swift.Float = 19)
   @_Concurrency.MainActor(unsafe) public func mapZoomin()
   @_Concurrency.MainActor(unsafe) public func mapZoomout()
-  @_Concurrency.MainActor(unsafe) public func zoomToLocation(curLocation: CoreLocation.CLLocation?, isMoveUp: Swift.Bool = false, moveUpCellSize: Swift.Float = 17)
+  @_Concurrency.MainActor(unsafe) public func zoomToLocation(curLocation: CoreLocation.CLLocation?, isMoveUp: Swift.Bool = false, moveUpCellSize: Swift.Float = 19)
   @_Concurrency.MainActor(unsafe) public func baseMapLayerStyle(basemapStyle: JcyMapFramework.BasemapStyleEnum)
   @objc deinit
 }
@@ -126,7 +126,7 @@ extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
   @_Concurrency.MainActor(unsafe) public func clearAllPictureAngle()
   @_Concurrency.MainActor(unsafe) public func clearFarmlandOverlay()
   @_Concurrency.MainActor(unsafe) public func clearConstructionLandOverlay()
-  @_Concurrency.MainActor(unsafe) public func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float, height: Swift.Float, width: Swift.Float, isMoveUp: Swift.Bool = false, moveUpCellSize: Swift.Float = 17)
+  @_Concurrency.MainActor(unsafe) public func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float, height: Swift.Float, width: Swift.Float, isMoveUp: Swift.Bool = false, moveUpCellSize: Swift.Float = 19)
   @_Concurrency.MainActor(unsafe) public func addTimePhasesRaster(fileURL: Foundation.URL, id: Swift.String?)
 }
 public protocol JCYMapViewDelegate {

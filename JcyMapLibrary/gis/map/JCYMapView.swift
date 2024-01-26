@@ -206,7 +206,7 @@ public class JCYMapView: AGSMapView {
         }
     }
     
-    public func moveUpMap(cellSize: Float = 17) {
+    public func moveUpMap(cellSize: Float = 19) {
         setViewpointCenter(self.screen(toLocation: CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 20 * CGFloat(cellSize))))
     }
     
@@ -227,7 +227,7 @@ public class JCYMapView: AGSMapView {
     /**
      * 跳转到当前位置
     */
-    public func zoomToLocation(curLocation: CLLocation?, isMoveUp: Bool = false, moveUpCellSize: Float = 17) {
+    public func zoomToLocation(curLocation: CLLocation?, isMoveUp: Bool = false, moveUpCellSize: Float = 19) {
         guard let curLocation = curLocation else { return }
         setViewpointCenter(AGSPoint(x: curLocation.coordinate.longitude, y: curLocation.coordinate.latitude, spatialReference: AGSSpatialReference(wkid: 4326)), scale: 4000) { [weak self] finished in
             if (finished && isMoveUp) {
@@ -682,7 +682,7 @@ extension JCYMapView : JCYMapViewDelegate {
     /**
      * 显示定位方向角
      */
-    public func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float, height: Float, width: Float, isMoveUp: Bool = false, moveUpCellSize: Float = 17) {
+    public func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float, height: Float, width: Float, isMoveUp: Bool = false, moveUpCellSize: Float = 19) {
         guard let imageLocation = imageLocation else { return }
         if longitude <= 0 || latitude <= 0 { return }
         if abs(longitude) <= 1e-6 || abs(latitude) <= 1e-6 { return }
