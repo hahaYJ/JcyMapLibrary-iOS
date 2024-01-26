@@ -89,11 +89,12 @@ extension JCYMapView {
         guard let json = try? sketchEditor.geometry?.toJSON() as? NSDictionary else { return }
         guard let geometry = try? AGSGeometry.fromJSON(json) as? AGSGeometry else { return }
         guard let spatialReference = AGSSpatialReference(wkid: 4524) else { return }
-        var projectGeometry = AGSGeometryEngine.projectGeometry(geometry, to: spatialReference)
+        let projectGeometry = AGSGeometryEngine.projectGeometry(geometry, to: spatialReference)
+        guard let projectGeometry = projectGeometry else { return }
         if projectGeometry is AGSPolygon {
-            onSketchGeometry?(0, 0, abs(AGSGeometryEngine.area(of: geometry)).roundTo(places: 2), json.toJson(), "绘图完成")
+            onSketchGeometry?(0, 0, abs(AGSGeometryEngine.area(of: projectGeometry)).roundTo(places: 2), json.toJson(), "绘图完成")
         } else if projectGeometry is AGSPolyline {
-            onSketchGeometry?(0, abs(AGSGeometryEngine.length(of: geometry)).roundTo(places: 2), 0, json.toJson(), "绘图完成")
+            onSketchGeometry?(0, abs(AGSGeometryEngine.length(of: projectGeometry)).roundTo(places: 2), 0, json.toJson(), "绘图完成")
         } else if projectGeometry is AGSPoint {
             onSketchGeometry?(0, 0, 0, json.toJson(), "绘图完成")
         } else {

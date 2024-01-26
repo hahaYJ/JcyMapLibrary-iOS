@@ -101,8 +101,8 @@ struct MapView: UIViewRepresentable {
             mapView.baseMapLayerStyle(basemapStyle: .TIANDITU_VECTOR)
             break
         case 8:
-            mapView.createModePolyline { code, length, area, geometryJson, msg in
-                print("\(length)   \(geometryJson)")
+            mapView.createModePolygon { code, length, area, geometryJson, msg in
+                print("\(length)   \(area)")
             }
         default:
             break
