@@ -92,7 +92,7 @@ public typealias onSketchGeometryCallBack = (_ code: Swift.Int, _ length: Swift.
   @_Concurrency.MainActor(unsafe) public func moveUpMap(cellSize: Swift.Float = 17)
   @_Concurrency.MainActor(unsafe) public func mapZoomin()
   @_Concurrency.MainActor(unsafe) public func mapZoomout()
-  @_Concurrency.MainActor(unsafe) public func zoomToLocation(curLocation: CoreLocation.CLLocation?, isMoveUp: Swift.Bool = false, moveUpCellSize: Swift.Float = 19)
+  @_Concurrency.MainActor(unsafe) public func zoomToLocation(curLocation: CoreLocation.CLLocation?, isMoveUp: Swift.Bool = false, moveUpCellSize: Swift.Float = 17)
   @_Concurrency.MainActor(unsafe) public func baseMapLayerStyle(basemapStyle: JcyMapFramework.BasemapStyleEnum)
   @objc deinit
 }
@@ -126,7 +126,7 @@ extension JcyMapFramework.JCYMapView : JcyMapFramework.JCYMapViewDelegate {
   @_Concurrency.MainActor(unsafe) public func clearAllPictureAngle()
   @_Concurrency.MainActor(unsafe) public func clearFarmlandOverlay()
   @_Concurrency.MainActor(unsafe) public func clearConstructionLandOverlay()
-  @_Concurrency.MainActor(unsafe) public func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float, height: Swift.Float, width: Swift.Float)
+  @_Concurrency.MainActor(unsafe) public func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float, height: Swift.Float, width: Swift.Float, isMoveUp: Swift.Bool = false, moveUpCellSize: Swift.Float = 17)
   @_Concurrency.MainActor(unsafe) public func addTimePhasesRaster(fileURL: Foundation.URL, id: Swift.String?)
 }
 public protocol JCYMapViewDelegate {
@@ -149,7 +149,7 @@ public protocol JCYMapViewDelegate {
   func clearAllPictureAngle()
   func selecteAngle(id: Swift.String?, isSelected: Swift.Bool)
   func deleteAreaGeometryFromID(id: Swift.String?)
-  func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float, height: Swift.Float, width: Swift.Float)
+  func showLocationAndOrientationOnMap(imageLocation: UIKit.UIImage?, longitude: Swift.Double, latitude: Swift.Double, azimuth: Swift.Float, height: Swift.Float, width: Swift.Float, isMoveUp: Swift.Bool, moveUpCellSize: Swift.Float)
   func addTimePhasesRaster(fileURL: Foundation.URL, id: Swift.String?)
   func addCircle(point: ArcGIS.AGSPoint, radius: Swift.Double)
 }

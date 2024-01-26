@@ -227,7 +227,7 @@ public class JCYMapView: AGSMapView {
     /**
      * 跳转到当前位置
     */
-    public func zoomToLocation(curLocation: CLLocation?, isMoveUp: Bool = false, moveUpCellSize: Float = 19) {
+    public func zoomToLocation(curLocation: CLLocation?, isMoveUp: Bool = false, moveUpCellSize: Float = 17) {
         guard let curLocation = curLocation else { return }
         setViewpointCenter(AGSPoint(x: curLocation.coordinate.longitude, y: curLocation.coordinate.latitude, spatialReference: AGSSpatialReference(wkid: 4326)), scale: 4000) { [weak self] finished in
             if (finished && isMoveUp) {
@@ -682,7 +682,7 @@ extension JCYMapView : JCYMapViewDelegate {
     /**
      * 显示定位方向角
      */
-    public func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float, height: Float, width: Float) {
+    public func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float, height: Float, width: Float, isMoveUp: Bool = false, moveUpCellSize: Float = 17) {
         guard let imageLocation = imageLocation else { return }
         if longitude <= 0 || latitude <= 0 { return }
         if abs(longitude) <= 1e-6 || abs(latitude) <= 1e-6 { return }
@@ -694,7 +694,11 @@ extension JCYMapView : JCYMapViewDelegate {
             future.angle = azimuth
             future.load { [weak self] _ in
                 self?.mLocationOverlay.graphics.add(AGSGraphic(geometry: point, symbol: future))
-                self?.setViewpointCenter(point, scale: 4000)
+                self?.setViewpointCenter(point, scale: 4000, completion: { finished in
+                    if (finished && isMoveUp) {
+                        self?.moveUpMap(cellSize: moveUpCellSize)
+                    }
+                })
             }
         } else {
             if (mLocationOverlay.graphics.count > 1) {

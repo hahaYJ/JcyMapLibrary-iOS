@@ -108,7 +108,7 @@ public protocol JCYMapViewDelegate {
     /**
      * 显示定位方向角
      */
-    func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float, height: Float, width: Float)
+    func showLocationAndOrientationOnMap(imageLocation: UIImage?, longitude: Double, latitude: Double, azimuth: Float, height: Float, width: Float, isMoveUp: Bool, moveUpCellSize: Float)
     
     func addTimePhasesRaster(fileURL: URL, id: String?)
     

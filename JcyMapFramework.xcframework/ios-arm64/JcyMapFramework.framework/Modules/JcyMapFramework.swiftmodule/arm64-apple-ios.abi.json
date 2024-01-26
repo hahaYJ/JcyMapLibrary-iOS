@@ -5017,7 +5017,7 @@
           {
             "kind": "Function",
             "name": "showLocationAndOrientationOnMap",
-            "printedName": "showLocationAndOrientationOnMap(imageLocation:longitude:latitude:azimuth:height:width:)",
+            "printedName": "showLocationAndOrientationOnMap(imageLocation:longitude:latitude:azimuth:height:width:isMoveUp:moveUpCellSize:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -5067,11 +5067,25 @@
                 "name": "Float",
                 "printedName": "Swift.Float",
                 "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
               }
             ],
             "declKind": "Func",
-            "usr": "s:15JcyMapFramework10JCYMapViewC028showLocationAndOrientationOnB005imageG09longitude8latitude7azimuth6height5widthySo7UIImageCSg_S2dS3ftF",
-            "mangledName": "$s15JcyMapFramework10JCYMapViewC028showLocationAndOrientationOnB005imageG09longitude8latitude7azimuth6height5widthySo7UIImageCSg_S2dS3ftF",
+            "usr": "s:15JcyMapFramework10JCYMapViewC028showLocationAndOrientationOnB005imageG09longitude8latitude7azimuth6height5width8isMoveUp04moveS8CellSizeySo7UIImageCSg_S2dS3fSbSftF",
+            "mangledName": "$s15JcyMapFramework10JCYMapViewC028showLocationAndOrientationOnB005imageG09longitude8latitude7azimuth6height5width8isMoveUp04moveS8CellSizeySo7UIImageCSg_S2dS3fSbSftF",
             "moduleName": "JcyMapFramework",
             "declAttributes": [
               "Custom",
@@ -6777,7 +6791,7 @@
           {
             "kind": "Function",
             "name": "showLocationAndOrientationOnMap",
-            "printedName": "showLocationAndOrientationOnMap(imageLocation:longitude:latitude:azimuth:height:width:)",
+            "printedName": "showLocationAndOrientationOnMap(imageLocation:longitude:latitude:azimuth:height:width:isMoveUp:moveUpCellSize:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -6827,11 +6841,23 @@
                 "name": "Float",
                 "printedName": "Swift.Float",
                 "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
               }
             ],
             "declKind": "Func",
-            "usr": "s:15JcyMapFramework18JCYMapViewDelegateP028showLocationAndOrientationOnB005imageH09longitude8latitude7azimuth6height5widthySo7UIImageCSg_S2dS3ftF",
-            "mangledName": "$s15JcyMapFramework18JCYMapViewDelegateP028showLocationAndOrientationOnB005imageH09longitude8latitude7azimuth6height5widthySo7UIImageCSg_S2dS3ftF",
+            "usr": "s:15JcyMapFramework18JCYMapViewDelegateP028showLocationAndOrientationOnB005imageH09longitude8latitude7azimuth6height5width8isMoveUp04moveT8CellSizeySo7UIImageCSg_S2dS3fSbSftF",
+            "mangledName": "$s15JcyMapFramework18JCYMapViewDelegateP028showLocationAndOrientationOnB005imageH09longitude8latitude7azimuth6height5width8isMoveUp04moveT8CellSizeySo7UIImageCSg_S2dS3fSbSftF",
             "moduleName": "JcyMapFramework",
             "genericSig": "<τ_0_0 where τ_0_0 : JcyMapFramework.JCYMapViewDelegate>",
             "sugared_genericSig": "<Self where Self : JcyMapFramework.JCYMapViewDelegate>",
@@ -10202,7 +10228,7 @@
       "kind": "IntegerLiteral",
       "offset": 7806,
       "length": 2,
-      "value": "19"
+      "value": "17"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
@@ -10948,57 +10974,71 @@
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 27491,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
       "kind": "IntegerLiteral",
-      "offset": 27564,
+      "offset": 27522,
+      "length": 2,
+      "value": "17"
+    },
+    {
+      "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 27616,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
       "kind": "IntegerLiteral",
-      "offset": 27581,
+      "offset": 27633,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
       "kind": "FloatLiteral",
-      "offset": 27623,
+      "offset": 27675,
       "length": 4,
       "value": "1e-6"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
       "kind": "FloatLiteral",
-      "offset": 27648,
+      "offset": 27700,
       "length": 4,
       "value": "1e-6"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
       "kind": "IntegerLiteral",
-      "offset": 27814,
+      "offset": 27866,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
       "kind": "IntegerLiteral",
-      "offset": 28205,
+      "offset": 28257,
       "length": 4,
       "value": "4000"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
       "kind": "IntegerLiteral",
-      "offset": 28292,
+      "offset": 28525,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/bjack\/Desktop\/Xcode\/JcyMapLibrary-iOS\/JcyMapLibrary\/gis\/map\/JCYMapView.swift",
       "kind": "FloatLiteral",
-      "offset": 29223,
+      "offset": 29456,
       "length": 4,
       "value": "50.0"
     },

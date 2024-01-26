@@ -22,43 +22,43 @@
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		b9/Tci8j6FvaXcssDGB6Q0x2Sqg=
+		+fR9+1TmxJsQnBGAVYNjf4VwEbY=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		JULhxnVVOPJm4u71hpbdZSFyTmg=
+		iVoi3W0jho/R5SGujg6mHUVGipY=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		MDmC68v0sF0IdJuU9Zzn6Njdu/g=
+		3FGKXJVyejyDyfyfdHW6o9fvPY8=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		JULhxnVVOPJm4u71hpbdZSFyTmg=
+		iVoi3W0jho/R5SGujg6mHUVGipY=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		xitE6VXeUOXo6Rbz0ANJ8wsw7dA=
+		X/XkXU4h3VfQETH8esH/9s+7A0I=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		b9/Tci8j6FvaXcssDGB6Q0x2Sqg=
+		+fR9+1TmxJsQnBGAVYNjf4VwEbY=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		q8tvttaJqN1lSIMK/ejjHMDEIPk=
+		5x0PtJhjCVGGhDdgOK1Qn9E5HGA=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		X3yVIHG/ev8qRbRfDr/xf8OOPWE=
+		8h2TOd8omeFYVV5AaAd8HaZ771I=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		q8tvttaJqN1lSIMK/ejjHMDEIPk=
+		5x0PtJhjCVGGhDdgOK1Qn9E5HGA=
 		</data>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		YSmwHmzakQWQOohKkcn4OMHknwU=
+		jGsU+mDeCta/rrutlZysuByGeNg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -104,110 +104,110 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			b9/Tci8j6FvaXcssDGB6Q0x2Sqg=
+			+fR9+1TmxJsQnBGAVYNjf4VwEbY=
 			</data>
 			<key>hash2</key>
 			<data>
-			K4pT2VbG0QSjfzyytx/Mr3zQEGe7tcj3z1qhug5hUPU=
+			0g+YeyOLNoqqKvuJqu/UWhT8dHpeDpQJUKcLtWbkRKM=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JULhxnVVOPJm4u71hpbdZSFyTmg=
+			iVoi3W0jho/R5SGujg6mHUVGipY=
 			</data>
 			<key>hash2</key>
 			<data>
-			Whm+4KxP/x2KtVd+5iuSD27j/1CNz0LgeJnzXKlFGoE=
+			MhSIm0vmRzVCob7C+OIwmI+A+mub6OZBxE5rDQUCAfE=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MDmC68v0sF0IdJuU9Zzn6Njdu/g=
+			3FGKXJVyejyDyfyfdHW6o9fvPY8=
 			</data>
 			<key>hash2</key>
 			<data>
-			GDbblVfUEH9XjhulBC+sRHpcEwOwXgdqCMXAkqniSuI=
+			yJAJObWHORWxDZQ5Qv5EdnBfCjex45sxpxl0mChwwK0=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JULhxnVVOPJm4u71hpbdZSFyTmg=
+			iVoi3W0jho/R5SGujg6mHUVGipY=
 			</data>
 			<key>hash2</key>
 			<data>
-			Whm+4KxP/x2KtVd+5iuSD27j/1CNz0LgeJnzXKlFGoE=
+			MhSIm0vmRzVCob7C+OIwmI+A+mub6OZBxE5rDQUCAfE=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xitE6VXeUOXo6Rbz0ANJ8wsw7dA=
+			X/XkXU4h3VfQETH8esH/9s+7A0I=
 			</data>
 			<key>hash2</key>
 			<data>
-			E3Zjy1gTXcTv8ddluT9nK7FJt9ooyKi3WUJgXseMOpM=
+			tEdQUZYpSrmrlWh70Hoj6EhQNbCI/q3LQBiqvxNfMwg=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			b9/Tci8j6FvaXcssDGB6Q0x2Sqg=
+			+fR9+1TmxJsQnBGAVYNjf4VwEbY=
 			</data>
 			<key>hash2</key>
 			<data>
-			K4pT2VbG0QSjfzyytx/Mr3zQEGe7tcj3z1qhug5hUPU=
+			0g+YeyOLNoqqKvuJqu/UWhT8dHpeDpQJUKcLtWbkRKM=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			q8tvttaJqN1lSIMK/ejjHMDEIPk=
+			5x0PtJhjCVGGhDdgOK1Qn9E5HGA=
 			</data>
 			<key>hash2</key>
 			<data>
-			hmOhIA/zsXGvdTYYp0LOlLpkr51tbyrBCnWeGutKs2M=
+			QqoueKeyvhs+ZzaCT2qlx62fL0sRTxYjSq4+JPm1ub4=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			X3yVIHG/ev8qRbRfDr/xf8OOPWE=
+			8h2TOd8omeFYVV5AaAd8HaZ771I=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZCts5R2ok2IAxeLS78pnmogVlQ2s6TWz87jMMh4E1tc=
+			ukK8wn2OGjV7nBb5PZf4CJ/Ee5PeVvqLmmQuZhTdEeE=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			q8tvttaJqN1lSIMK/ejjHMDEIPk=
+			5x0PtJhjCVGGhDdgOK1Qn9E5HGA=
 			</data>
 			<key>hash2</key>
 			<data>
-			hmOhIA/zsXGvdTYYp0LOlLpkr51tbyrBCnWeGutKs2M=
+			QqoueKeyvhs+ZzaCT2qlx62fL0sRTxYjSq4+JPm1ub4=
 			</data>
 		</dict>
 		<key>Modules/JcyMapFramework.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YSmwHmzakQWQOohKkcn4OMHknwU=
+			jGsU+mDeCta/rrutlZysuByGeNg=
 			</data>
 			<key>hash2</key>
 			<data>
-			LzdqjB+NG1z4NEQUfzg9Of2wfV/W6xU1nZ3jN+Dw90Q=
+			W7X2JKSMsiP5VxdidGjE98OdrJjDHZjgQ+2b8BbZqQ0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

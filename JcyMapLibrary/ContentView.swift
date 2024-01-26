@@ -31,7 +31,7 @@ struct MapView: UIViewRepresentable {
             print(g)
         }
         
-        mapView.showLocationAndOrientationOnMap(imageLocation: UIImage(named: "jcy_map_location_arrow"), longitude: 108.11, latitude: 23.44, azimuth: 90, height: 40, width: 23.5)
+        mapView.showLocationAndOrientationOnMap(imageLocation: UIImage(named: "jcy_map_location_arrow"), longitude: 108.11, latitude: 23.44, azimuth: 90, height: 40, width: 23.5, isMoveUp: true)
         mapView.addCircle(point: AGSPointMakeWGS84(23.44, 108.11), radius: 1 / 1000.0)
 //
 //        let arrowImg = UIImage(named: "map_arrow")
